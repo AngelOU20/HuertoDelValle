@@ -12,7 +12,7 @@ namespace HuertoDelValle.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
+// Esto es un coms una prueba
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
