@@ -1,0 +1,36 @@
+@model IEnumerable<HuertoDelValle.Models.Categoria>
+
+<div class="container">
+    <h1>Lista de Categorias</h1> 
+    <hr>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Productos</th>
+                <th class="text-center">Operaciones</th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.NombreCategoria</td>
+                <td>
+                    @foreach (var producto in item.Productos)
+                    {
+                        <ol>
+                            <span>@producto.NombreProducto</span>
+                        </ol>
+                    }     
+                </td>
+                <td class="text-center">
+                    <a asp-action="EditarCategoria" asp-route-id="@item.Id"><i class="fa fa-pencil"></i></a>  |
+                    <a asp-action="DetalleCategoria" asp-route-id="@item.Id"><i class="fas fa-file"></i></a>   |   
+                    <a asp-action="EliminarCategoria" asp-route-id="@item.Id" class="text-danger ml-1" onclick="return confirm('¿Seguro que quieres eliminar el producto?')"><i class="fa fa-trash"></i></a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>

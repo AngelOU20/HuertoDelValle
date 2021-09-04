@@ -1,0 +1,103 @@
+@model Producto
+@{
+    ViewData["Title"] = "Descripcion del Producto";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-10"><h2>Producto</h2></div>
+        <div class="col-md-2">
+            <div class="modal__featured">
+                <a asp-controller="Catalogo" asp-action="Catalogo" >
+                    <button type="button" class="button--transparent button--close">
+                    <svg class="nc-icon glyph" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
+                        <g><path fill="#ffffff" d="M1.293,15.293L11,5.586L12.414,7l-8,8H31v2H4.414l8,8L11,26.414l-9.707-9.707 C0.902,16.316,0.902,15.684,1.293,15.293z"></path> </g></svg>
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+<hr>
+<div class="container">
+    <div class="row">
+        
+        <div class="col-md-6">
+            <div class="card-body">
+                <img src="@Html.DisplayFor(model => model.ImagenProducto)" class="d-block w-100" alt="">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card-body">
+                <h5 class="card-title"> <strong>@Html.DisplayFor(model => model.NombreProducto)</strong></h5>
+                <br>
+                <p class="card-text">@Html.DisplayFor(model => model.DescripcionProducto)</p>
+                <p class="card-text"><strong> S/. @Html.DisplayFor(model => model.PrecioProducto) </strong> </p>
+                <div>
+                    <div class="row">
+                    <div class="col-md-6">
+                        
+                    </div>
+                    <br>
+                    <div class="col-md-6">
+                        <form asp-action="" method="POST">
+                            <input type="hidden" name="id" value="@Html.DisplayFor(model => model.Id)">
+                            <button asp-action="Add" class="btn btn-outline-success">Agregar al carrito</button>
+                        </form>
+                    </div>
+                    </div>
+                </div>
+                <hr>
+                <p class="card-text">@Html.DisplayFor(model => model.Categoria.NombreCategoria) </p>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+</div>
+<br>
+
+
+<style>
+    body{
+        background-color:#F6F3F8;
+    }
+    .button--transparent {
+        background: transparent;
+        border: 0;
+        outline: 0; }
+    .button--close {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-align: center;
+            align-items: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        color: #000;
+        border-radius: 50%;
+        transition: all .25s;
+        z-index: 10; }
+    .button--close svg {
+        width: 20px;
+        height: 20px; }
+    .button--close svg * {
+        fill: currentColor; }
+    .button--close:hover, .button--close:active, .button--close:focus {
+        color: #000;
+        background-color: #ffffff;
+        box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.1); }
+    .modal__featured {
+        position: relative;
+        -ms-flex: 1;
+            flex: 1;
+        min-width: 230px;
+        padding: 20px;
+        overflow: hidden;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px; }
+</style>
