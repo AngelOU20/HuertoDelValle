@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Drawing;
 
 namespace HuertoDelValle.Models
 {
@@ -15,7 +16,7 @@ namespace HuertoDelValle.Models
         [Column("NombreProducto")]
         public String NombreProducto { get; set; }
 
-        [Required(ErrorMessage = "Por favor, ingrese la imagen del producto")]
+        [Required(ErrorMessage = "Por favor, ingrese la URL de la imagen del producto")]
         [Display(Name="Imagen del producto")]
         [Column("ImagenProducto")]
         public String ImagenProducto { get; set; }
