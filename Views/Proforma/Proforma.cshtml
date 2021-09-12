@@ -1,0 +1,72 @@
+@model IEnumerable<HuertoDelValle.Models.Proforma>
+
+@{
+    ViewData["Title"] = "Carrito";
+}
+
+
+<div class="container">
+    <h1>Carrito de Compras</h1>
+    <br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th colspan="2" class="text-center">
+                    Producto
+                </th>
+                <th></th>
+                <th class="text-center">
+                    Cantidad
+                </th>
+                <th class="text-center">
+                    SubTotal
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model) {
+                <tr>
+                    <td class="text-center">
+                        <a asp-action="QuitarProducto" asp-route-id="@item.Id" style="color: #D52F0B;" ><i class="fa fa-remove"></i></a>
+                    </td>
+                    <td colspan="2">
+                        <div class="row">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-2">
+                                <img src="@Html.DisplayFor(modelItem => item.Producto.ImagenProducto)" width="65px" height="65px" alt="">
+                            </div>
+                            <div class="col-md-8" style="text-align:left;">
+                                @Html.DisplayFor(modelItem => item.Producto.NombreProducto)
+                            </div>
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <a asp-action="EditarCantidad" asp-route-id="@item.Id" style="color: #000;" ><i class="fa fa-pencil"></i></a>
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.Cantidad)
+                    </td>
+                    <td class="text-center">
+                        S/ @Html.DisplayFor(modelItem => item.SubTotal)
+                    </td>
+                </tr>         
+            }
+        </tbody>
+    </table>
+</div>
+<br>
+
+<style>
+    table th {
+        padding: 15px 10px;
+        color: #2d2a2a;
+        vertical-align: middle;
+        text-align: left;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-family: "Poppins", Helvetica, sans-serif; 
+        font-size: 16px;
+        line-height: 1.2;
+    }
+</style>
