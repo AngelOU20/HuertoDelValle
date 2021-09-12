@@ -1,0 +1,39 @@
+@using HuertoDelValle.Models
+@model Proforma
+
+@{
+    ViewData["Title"] = "Editar Cantidad";
+}
+
+<br>
+<div class="container">
+    <h1>Editar Cantidad del Producto</h1>
+    <hr>
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="EditarCantidad" method="POST">
+                <div class="form-group">
+                    <label class="control-label" >Usuario :</label>
+                    <p class="card-text">@Html.DisplayFor(model => model.UserID)</p>
+                </div>
+                <div class="form-group">
+                    <label  class="control-label" >Producto :</label>
+                    <p class="card-text">@Html.DisplayFor(model => model.Producto.NombreProducto)</p>
+                </div>
+                <div class="form-group">
+                    <label  class="control-label" >Precio Unitario :</label>
+                    <p class="card-text">S/ @Html.DisplayFor(model => model.Precio)</p>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Cantidad" class="control-label"></label>
+                    <input asp-for="Cantidad" class="form-control" min="1" max="5"/>
+                    <span asp-validation-for="Cantidad" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-danger">Guardar</button>
+                    <a asp-action="Proforma"  class="btn btn-danger" >Regresar al Carrito</a>
+                </div>
+            </form>       
+        </div>
+    </div>
+</div>
