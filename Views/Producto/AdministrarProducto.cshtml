@@ -1,0 +1,33 @@
+@model IEnumerable<HuertoDelValle.Models.Producto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Categoria</th>
+                <th class="text-center">Operaciones</th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.NombreProducto</td>
+                <td>@item.PrecioProducto</td>
+                <td>@item.Categoria.NombreCategoria</td>
+                <td class="text-center">
+                    <a asp-action="EditarProducto" asp-route-id="@item.Id"><i class="fa fa-pencil"></i></a>  |
+                    <a asp-action="DetalleProducto" asp-route-id="@item.Id"><i class="fas fa-file"></i></a>   |   
+                    <a asp-action="EliminarProducto" asp-route-id="@item.Id" class="text-danger ml-1" onclick="return confirm('¿Seguro que quieres eliminar el producto?')"><i class="fa fa-trash"></i></a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
