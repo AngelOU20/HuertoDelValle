@@ -1,0 +1,13 @@
+@model Categoria
+
+<div class="container">
+    <form asp-action="AgregarCategoria" method="POST">
+        <div class="form-group">
+            <label asp-for="NombreCategoria" class=""></label>
+            <input asp-for="NombreCategoria" class="form-control">
+        </div>
+        <div>
+            <button class="btn btn-primary">Agregar Categoria</button>
+        </div>
+    </form>
+</div>
