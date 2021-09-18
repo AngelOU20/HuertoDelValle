@@ -1,8 +1,69 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+@{
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<div class="container-fondo">
+    <div class="fondo">
+        <div class="fondo__section">
+            <img src="~/img/fondo.jpg" alt="" class="fondo__img">
+            <div class="fondo__content">
+                <h2 class="fondo__title">LLEVAMOS DEL HUERTO A TU MESA</h2>
+                <p class="fondo__txt">
+                    El Huerto del Valle
+                </p>
+            </div>
+        </div>
+    </div>
 </div>
+<br>
+<style>
+    .container-fondo {
+        width: 90%;
+        max-width: 1500px;
+        margin: auto;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .fondo {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        z-index: -1;
+    }
+
+
+    .fondo__section {
+        width: 100%;
+        position: relative;
+    }
+
+    .fondo__img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .fondo__content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        text-align: center;
+        z-index: 999;
+    }
+
+    .fondo__title {
+        font-size: 52px;
+        font-family: "AdineuePRO";
+    }
+
+    .fondo__txt {
+        margin: 5px 0;
+        font-size: 20px;
+        font-family: "Monaco", monospace;
+    }
+</style>

@@ -54,6 +54,19 @@ namespace HuertoDelValle.Controllers
             return View(p);
         }
 
+         public IActionResult DetalleProducto(int Id){
+            var producto = _context.DataProducto.Find(Id);
+            return View(producto);
+        }
+
+        public IActionResult EliminarProducto(int Id) 
+        {
+            var Producto= _context.DataProducto.Find(Id);
+            _context.Remove(Producto);
+            _context.SaveChanges();
+            return RedirectToAction("AdministrarProducto");
+        }
+
 
         
     }

@@ -25,7 +25,7 @@ namespace HuertoDelValle.Services
             var client = new SendGridClient(apiKey);
             var msg = new SendGridMessage()
             {
-                From = new EmailAddress("julio_ucharima@usmp.pe", "El Huerto del Valle"),
+                From = new EmailAddress("familia@elhuertodelvalle.com", "El Huerto del Valle"),
                 Subject = subject,
                 PlainTextContent = message,
                 HtmlContent = message

@@ -45,6 +45,12 @@ namespace HuertoDelValle
             services.AddTransient<IEmailSender, EmailSender>();
             services.Configure<AuthMessageSenderOptions>(Configuration);
 
+            /*Tiempo de espera de inactividad del correo */
+            services.ConfigureApplicationCookie(o => {
+                o.ExpireTimeSpan = TimeSpan.FromDays(5);
+                o.SlidingExpiration = true;
+            });
+
             services.AddRazorPages();
             
 

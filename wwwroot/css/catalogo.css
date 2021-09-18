@@ -1,0 +1,338 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+}
+
+.container-fondo{
+    width: 90%;
+    max-width: 1600px;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.fondo{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: -1;
+}
+
+.fondo__section{
+    width: 100%;
+    position: relative;
+}
+
+.fondo__img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.fondo__content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    z-index: 999;
+}
+
+.fondo__title{
+    font-size: 52px;
+    font-family: 'Permanent Marker', cursive;
+    filter: blur(1.05px);
+}
+
+.fondo__txt{
+    margin: 5px 0;
+    font-size: 20px;
+    font-family: "Righteous";
+    letter-spacing: 5px;
+}
+
+/*Estilos de contenedor*/
+
+.container{
+    width: 80%;
+    max-width: 1250px;
+    margin: auto;
+    position: relative;
+    overflow: hidden; 
+}
+
+.main{
+    padding: 40px 0;
+    width: 100%;
+    max-width: 4000px;
+    overflow: hidden;
+}
+
+.main-tittle{
+    padding: 0 0 20px 0;
+    text-align: center;
+    font-family: "Monaco", monospace;
+}
+
+/*Estilos de Productos*/
+.container-products{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+}
+
+.product{
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.product:before{
+    content: "Producto";
+    background: #ffe498;
+    padding: 10px;
+    width: 85px;
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    transform: rotate(-90deg);
+    color: white;
+    z-index: 1;
+}
+
+.product__img{
+    width: 100%;
+    transition: transform .4s;
+}
+
+.product__img:hover{
+    transform: scale(1.05);
+}
+
+.product__title{
+    padding: 15px 0 0 0;
+    text-align: center;
+    font-size:18px;
+    font-family: "Roboto", Sans-serif;
+}
+
+.product__title:hover{
+    padding: 15px 0 0 0;
+    text-align: center;
+    color: #b3a8a8;
+    cursor: pointer;
+}
+
+.product__price{
+    color: #007175;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.btn__cart{
+    display: block;
+    border: 3px solid #FF4E00;
+    background-color: #fff;
+    color: #000000;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    width: 150px;
+    margin: 5px auto;
+    transition: all 0.5s;
+    transition: transform .4s;
+}
+
+.btn__cart:hover{
+    background-color: #FF4E00;
+    color: #fff;
+    transform: scale(1.08);
+}
+
+.product__icon{
+    margin: 0px;
+    font-size: 20px;
+}
+
+@media (max-width: 1800px) and (min-width:700px){
+
+    .container{
+        width: 90%;
+        max-width: 1400px;
+        margin: auto;
+        position: relative;
+        overflow: hidden; 
+    }
+
+    .fondo__title{
+        font-size: 30px;
+        font-family: "AdineuePRO";
+    }
+    
+    .fondo__txt{
+        margin: 5px 0;
+    }
+
+    .main{
+        padding: 50px 0px;
+        width: 100%;
+    }
+
+    .product{
+        border: 1px solid #ccc;
+        padding: 20px;
+        text-align: center;
+        position: relative;
+    }
+
+    .product:before{
+        content: "Producto";
+        background: #ffe498;
+        padding: 5px;
+        width: 80px;
+        position: absolute;
+        top: 20px;
+        right: 9px;
+        transform: rotate(-90deg);
+        color: white;
+    }
+
+    .product__title{
+        padding: 15px 0 0 0;
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .container-products{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 10px;
+    }
+
+    .btn__cart{
+        display: block;
+        border: 3px solid #FF4E00;
+        background-color: #fff;
+        color: #000000;
+        padding: 5px 0px;
+        text-align: center;
+        text-decoration: none;
+        width: 100px;
+        margin: 5px auto;
+        transition: all 0.5s;
+        transition: transform .4s;
+    }
+    
+    .btn__cart:hover{
+        background-color: #FF4E00;
+        color: #fff;
+        transform: scale(1.08);
+    }
+    
+    .product__icon{
+        margin: 0px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 700px){
+
+    .container{
+        width: 100%;
+        max-width: 1400px;
+        margin: auto;
+        position: relative;
+        overflow: hidden; 
+    }
+    
+    .fondo__title{
+        font-size: 15px;
+        font-family: "AdineuePRO";
+    }
+    
+    .fondo__txt{
+        margin: 5px 0;
+        font-size: 10px;
+    }
+
+    .fondo__btn{
+        display: block;
+        border: 2px solid #FFBB98;
+        color: aliceblue;
+        padding: 5px;
+        text-align: center;
+        text-decoration: none;
+        width: 100px;
+        font-size: 10px;
+        margin: 15px auto;
+        z-index: 999;
+    }
+
+    .main{
+        padding: 30px 0px;
+        width: 100%;
+    }
+
+    .product:before{
+        content: "Producto";
+        font-size: 12px;
+        background: #ffe498;
+        padding: 5px;
+        width: 75px;
+        position: absolute;
+        top: 23px;
+        right: 2px;
+        transform: rotate(-90deg);
+        color: white;
+    }
+
+    .product__title{
+        padding: 15px 0 0 0;
+        font-size: 15px;
+        text-align: center;
+    }
+    
+    .container-products{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 10px;
+    }
+
+    .product__price{
+        color: #007175;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .btn__cart{
+        display: block;
+        border: 3px solid #FF4E00;
+        background-color: #fff;
+        color: #000000;
+        padding: 5px 0px;
+        text-align: center;
+        text-decoration: none;
+        width: 100px;
+        margin: 5px auto;
+        transition: all 0.5s;
+        transition: transform .4s;
+    }
+    
+    .btn__cart:hover{
+        background-color: #FF4E00;
+        color: #fff;
+        transform: scale(1.08);
+    }
+    
+    .product__icon{
+        margin: 0px;
+        font-size: 15px;
+    }
+    
+
+}
