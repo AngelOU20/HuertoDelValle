@@ -3,18 +3,22 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - HuertoDelValle</title>
+    <title>@ViewData["Title"] | HuertoDelValle</title>
+    <link rel="shortcut icon" href="~/img/logo2.png" type="image/x-icon">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/footer.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="~/font/css/open-iconic-bootstrap.css" rel="stylesheet">
+    <!--Tipo de letra -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/0605142393.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm  box-shadow">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/img/logo1.jpg" width="90px" height="90px" alt="" style="border: 5px solid #FFBB98"></a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/img/logo1.jpg" width="100px" height="100px" alt="" style="border: 5px solid #FFBB98"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-reorder" style="font-size:33px"></i>
@@ -22,10 +26,13 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text" style="color: #000000; font-size: medium; font-family: cursive; font-weight: bolder;" asp-area="" asp-controller="Catalogo" asp-action="Catalogo">CATALOGO</a>
+                            <a class="nav-link text" style="color: #000000; font-size: 20px; font-family: cursive; font-weight: bolder;" asp-area="" asp-controller="Catalogo" asp-action="Catalogo">CATALOGO</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Nosotros">Nosotros</a>
+                            <a class="nav-link text" style="color: #000000; font-size: 20px; font-family: cursive; font-weight: bolder;" asp-area="" asp-controller="Home" asp-action="Nosotros">NOSOTROS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text" style="color: #000000; font-size: 20px; font-family: cursive; font-weight: bolder;" asp-area="" asp-controller="Proforma" asp-action="Proforma">CARRITO</a>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />
@@ -34,17 +41,51 @@
         </nav>
     </header>
     <br>
-    <div class="">
-        <main role="main" class="pb-3">
+    <div class="contenido">
+        <main role="main">
             @RenderBody()
         </main>
     </div>
     <br>
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - HuertoDelValle - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+
+    <footer class="main-footer">
+        <div class="container con__footer">
+            <div class="footer__section">
+                <div class="container__logo">
+                    <img src="~/img/logo.png" alt="" class="footer__logo">
+                </div>
+            </div>
+            <div class="footer__section">
+                
+            </div>
+            <div class="footer__section">
+                <h2 class="footer__title">Contacto</h2>
+                <div class="footer__contac">
+                    <i class="contac__icon fas fa-map-marker-alt"></i>
+                    <p class="footer__txt">Lima Perú.</p>
+                </div>
+                <div class="footer__contac">
+                    <i class="contac__icon fas fa-phone"></i>
+                    <p class="footer__txt">+51 922 708 667</p>
+                </div>
+                <div class="footer__contac">
+                    <i class="contac__icon fas fa-envelope"></i>
+                    <p class="footer__txt">familia@elhuertodelvalle.com</p>
+                </div>
+            </div>
+            <div class="footer__section">
+                <h2 class="footer__title">Redes Sociales</h2>
+                <div>
+                    <i class="footer__iconsocial fab fa-facebook"></i>
+                    <i class="footer__iconsocial fab fa-instagram"></i>
+                </div>
+            </div>
         </div>
+        <section class="footer__copy container">
+            <h3 class="footer__copyright">  Derechos reservados &copy; El Huerto del Valle</h3>
+        </section>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

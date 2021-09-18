@@ -54,7 +54,27 @@
             }
         </tbody>
     </table>
-</div>
+    @{
+        decimal total = 0;
+        var contar = 1;
+    }
+    @foreach (var item in Model){
+        <tr>
+            @{
+                total = total + item.SubTotal;
+                contar++;
+            }
+        </tr>
+    }
+    <div class="text-center">
+        <div class="" style="border-top: 2px solid black; padding-top: 5%;font-family: sans;">
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4"></div>
+                <div class="col-md-4"><p class="" style="font-size: 30px;" > <strong>Total :</strong> S/ @total</p> </div>
+            </div>
+        </div>    
+    </div>
 <br>
 
 <style>
