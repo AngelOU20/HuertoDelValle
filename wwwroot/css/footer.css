@@ -1,0 +1,141 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+}
+
+.contenido{
+    min-height: calc(100vh - 130px - 420px);
+}
+
+.container{
+    width: 100%;
+    max-width: 1500px;
+    margin: auto;
+}
+
+.main-footer{
+    border-top: 1px solid rgb(0, 0, 0);
+    background: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 0px 20px;
+    width: 100%;
+}
+
+.con__footer{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    padding: 30px 0;
+}
+
+.container__logo{
+    padding: 10px;
+    text-align: center;
+    position: relative;
+}
+
+.footer__logo{
+    transition: transform .4s;
+    width : 200px;
+}
+
+.footer__logo:hover{
+    transform: scale(1.15);
+}
+
+.footer__title{
+   border-bottom: 1px dotted #555;
+   padding: 20px 0; 
+   font-family: "Monaco", monospace;
+}
+
+.footer__contac{
+    display: block;
+}
+
+.footer__txt{
+    display: inline-block;
+    color: #555;
+    font-size: 15px;
+    font-family: "Monaco", monospace;
+    padding: 5px 10px;
+}
+
+.contac__icon{
+    color:#007175;
+}
+
+.footer__iconsocial{
+    display: block;
+    color:#007175;
+    margin: 10px 15px;
+    cursor: pointer;
+    font-size: 35px;
+}
+
+.footer__copy{
+    border-top: 1px solid #555;
+    --padding-container: 10px 0;
+    text-align: center;
+    color: #555;
+}
+
+.footer__copyright{
+    padding: 20px 0;
+    font-weight: 300;
+    font-size: 15px;
+}
+
+
+@media (max-width: 1800px) and (min-width:700px){
+    .container{
+        width: 100%;
+        max-width: 1700px;
+        margin: auto;
+        position: relative;
+        overflow: hidden; 
+    }
+    
+    .con__footer{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 10px;
+    }
+
+    .footer__txt{
+        display: inline-block;
+        color: #555;
+        font-size: 20px;
+        font-family: "Monaco", monospace;
+        padding: 5px 10px;
+    }
+}
+
+@media (max-width: 700px){
+    .container{
+        width: 100%;
+        max-width: 1700px;
+        margin: auto;
+        position: relative;
+        overflow: hidden; 
+    }
+    
+    .con__footer{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 10px;
+    }
+
+    .footer__txt{
+        display: inline-block;
+        color: #555;
+        font-size: 15px;
+        font-family: "Monaco", monospace;
+        padding: 5px 10px;
+    }
+}
