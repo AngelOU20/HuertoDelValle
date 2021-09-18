@@ -31,7 +31,6 @@ body{
     color: #fff;
     transform: scale(1.08);
 }
-
 .container-fondo{
     width: 90%;
     max-width: 1600px;
@@ -166,24 +165,6 @@ body{
     font-size: 22px;
     font-weight: bold;
 }
-
-.btn__cart{
-    display: block;
-    border: 3px solid #FF4E00;
-    background-color: #fff;
-    color: #000000;
-    padding: 10px;
-    text-align: center;
-    text-decoration: none;
-    width: 150px;
-    margin: 5px auto;
-    transition: all 0.5s;
-    transition: transform .4s;
-    border-radius: 10px;
-    box-shadow: 0 0 3px rgba(0, 0 , 0 , 5);
-}
-
-
 
 .product__icon{
     margin: 0px;
