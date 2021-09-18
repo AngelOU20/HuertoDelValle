@@ -59,9 +59,7 @@ namespace HuertoDelValle.Controllers
         {
             var userID = _userManager.GetUserName(User);
             if(userID == null){ 
-                ViewData["Message"] = "Por favor debe loguearse antes de agregar un producto";
-                List<Producto> productos = new List<Producto>();
-                return  View("Catalogo",productos);
+                return  RedirectToAction(nameof(Catalogo));
             }else{
                 var producto = await _context.DataProducto.FindAsync(id);
 
