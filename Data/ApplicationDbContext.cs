@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+
 using HuertoDelValle.Models;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,9 +16,9 @@ namespace HuertoDelValle.Data
         {
         }
 
+
         public DbSet<Categoria> DataCategoria { get; set; }
         public DbSet<Producto> DataProducto { get; set; }
         public DbSet<Proforma> DataProforma { get; set; }
-        public DbSet<CrearRol> DataCrearRol { get; set; }
     }
 }

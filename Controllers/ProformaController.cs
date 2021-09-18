@@ -15,8 +15,6 @@ namespace HuertoDelValle.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
-        private IEnumerable<Producto> _producto;
-        private List<Categoria> ListaCategoria;
 
         public ProformaController(ApplicationDbContext context,
         UserManager<IdentityUser> userManager)
