@@ -3,6 +3,7 @@
 }
 body{
     margin: 0;
+    background: #f7f7f7;
 }
 
 .container-fondo{
@@ -51,7 +52,7 @@ body{
 .fondo__txt{
     margin: 5px 0;
     font-size: 20px;
-    font-family: "Righteous";
+    font-family: "Righteous", cursive;
     letter-spacing: 5px;
 }
 
@@ -90,6 +91,8 @@ body{
     padding: 20px;
     text-align: center;
     position: relative;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2)
 }
 
 .product:before{
@@ -146,6 +149,8 @@ body{
     margin: 5px auto;
     transition: all 0.5s;
     transition: transform .4s;
+    border-radius: 10px;
+    box-shadow: 0 0 3px rgba(0, 0 , 0 , 5);
 }
 
 .btn__cart:hover{

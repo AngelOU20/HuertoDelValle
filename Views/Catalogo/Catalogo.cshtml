@@ -6,6 +6,10 @@
 <link rel="stylesheet" href="~/css/catalogo.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+<div class="text-center" style="color: red;">
+        <h1>@ViewData["Message"]</h1>
+</div>
+
 <div class="container-fondo">
     <div class="fondo">
         <div class="fondo__section">
@@ -20,7 +24,30 @@
     </div>
 </div>
 
-
+<div class="container">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="col-md-3">
+                <div class="dropdown">
+                    <form asp-controller="Catalogo" asp-action="Catalogo">
+                        <select class="custom-select btn btn-outline-light" type="button"  name="FiltrarCategoria" onchange="this.form.submit()">
+                            <option>Categorias</option>
+                            @foreach (Categoria item in Model.Categoria)
+                            {
+                            <option class="dropdown-item" value="@item.Id">@item.NombreCategoria</option>
+                            }
+                        </select>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <form class="d-flex" method="POST">
+                    <input type="text" name="Buscar" placeholder="Buscar..." required>
+                </form>
+            </div>
+        </div>
+    </nav> 
+</div> 
 
 <main class="main">
     <div class="container">
