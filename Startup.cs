@@ -12,8 +12,10 @@ using HuertoDelValle.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+
 using Microsoft.AspNetCore.Identity.UI.Services;
 using HuertoDelValle.Services;
+
 
 namespace HuertoDelValle
 {
@@ -37,6 +39,7 @@ namespace HuertoDelValle
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
+
             services.AddTransient<IEmailSender, EmailSender>();
             services.Configure<AuthMessageSenderOptions>(Configuration);
 
@@ -48,6 +51,7 @@ namespace HuertoDelValle
 
             services.AddRazorPages();
             
+
             services.AddControllersWithViews();
         }
 

@@ -22,10 +22,12 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-reorder" style="font-size:33px"></i>
+
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
+
                             <a class="nav-link text" style="color: #000000; font-size: 20px; font-family: cursive; font-weight: bolder;" asp-area="" asp-controller="Catalogo" asp-action="Catalogo">CATALOGO</a>
                         </li>
                         <li class="nav-item">
@@ -33,6 +35,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text" style="color: #000000; font-size: 20px; font-family: cursive; font-weight: bolder;" asp-area="" asp-controller="Proforma" asp-action="Proforma">CARRITO</a>
+
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />
@@ -40,12 +43,14 @@
             </div>
         </nav>
     </header>
+
     <br>
     <div class="contenido">
         <main role="main">
             @RenderBody()
         </main>
     </div>
+
     <br>
 
     <footer class="main-footer">
@@ -93,9 +98,11 @@
 </body>
 </html>
 
+
 <style>
     .navbar{
         background-color: #007175;
         color: black;
     }
 </style>
+
