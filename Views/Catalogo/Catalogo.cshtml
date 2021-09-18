@@ -56,7 +56,9 @@
             @foreach (Producto producto in Model.Producto)
             {
                 <div class="product">
-                    <img src="@Html.DisplayFor(modelItem => producto.ImagenProducto)" alt="" class="product__img">
+                    <a asp-action="Producto" asp-route-id="@producto.Id">
+                        <img src="@Html.DisplayFor(modelItem => producto.ImagenProducto)" alt="" class="product__img">
+                    </a>
                     <div class="product__description">
                         <h4 class="product__title">@Html.DisplayFor(modelItem => producto.NombreProducto)</h4>
                         <span class="product__price">S/ @Html.DisplayFor(modelItem => producto.PrecioProducto)</span>
