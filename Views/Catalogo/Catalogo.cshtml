@@ -24,34 +24,34 @@
     </div>
 </div>
 
-<div class="container">
-    <nav class="navbar">
-        <div class="container-fluid">
-            <div class="col-md-3">
-                <div class="dropdown">
-                    <form asp-controller="Catalogo" asp-action="Catalogo">
-                        <select class="custom-select btn btn-outline-light" type="button"  name="FiltrarCategoria" onchange="this.form.submit()">
-                            <option>Categorias</option>
-                            @foreach (Categoria item in Model.Categoria)
-                            {
-                            <option class="dropdown-item" value="@item.Id">@item.NombreCategoria</option>
-                            }
-                        </select>
-                    </form>
-                </div>
-            </div>
-            <div class="col-md-5">
-                <form class="d-flex" method="POST">
-                    <input type="text" name="Buscar" placeholder="Buscar..." required>
-                </form>
-            </div>
-        </div>
-    </nav> 
-</div> 
 
 <main class="main">
     <div class="container">
         <h2 class="main-tittle">CÁTALOGO DE PRODUCTOS</h2>
+        <div class="container__search">
+            <nav class="search">
+                <div class="nav__search"> 
+                    <div class="cont1">
+                        <form asp-controller="Catalogo" asp-action="Catalogo">
+                            <select class="dropdown" type="button"  name="FiltrarCategoria" onchange="this.form.submit()">
+                                <option>Categorias</option>
+                                @foreach (Categoria item in Model.Categoria)
+                                {
+                                <option class="dropdown__item" value="@item.Id">@item.NombreCategoria</option>
+                                }
+                            </select>
+                        </form>
+                    </div>
+                </div>
+                <div class="nav__search">
+                    <div class="cont">
+                        <form class="d-flex" method="POST">
+                            <input type="search" placeholder="Buscar..." name="Buscar" title="Presione Esc para supender la búsqueda" required>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </div> 
         <section class="container-products">
             @foreach (Producto producto in Model.Producto)
             {
