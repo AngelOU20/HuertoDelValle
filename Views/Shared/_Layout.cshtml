@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/footer.css" />
+    <link rel="stylesheet" href="~/css/header.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="~/font/css/open-iconic-bootstrap.css" rel="stylesheet">
     <!--Tipo de letra -->
@@ -15,31 +16,28 @@
     <script src="https://kit.fontawesome.com/0605142393.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm  box-shadow">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/img/logo1.jpg" width="100px" height="100px" alt="" style="border: 5px solid #FFBB98"></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fa fa-reorder" style="font-size:33px"></i>
+    <header class="hero">
+        <nav class="nav container1">
+            <div class="nav__logo">
+                <a asp-controller="Home" asp-action="Index"><img src="~/img/logo1.jpg" class="logo1_nav" alt="" ></a>
+            </div>
 
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-
-                            <a class="nav-link text" style="color: #000000; font-size: 20px; font-family: cursive; font-weight: bolder;" asp-area="" asp-controller="Catalogo" asp-action="Catalogo">CATALOGO</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text" style="color: #000000; font-size: 20px; font-family: cursive; font-weight: bolder;" asp-area="" asp-controller="Home" asp-action="Nosotros">NOSOTROS</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text" style="color: #000000; font-size: 20px; font-family: cursive; font-weight: bolder;" asp-area="" asp-controller="Proforma" asp-action="Proforma">CARRITO</a>
-
-                        </li>
-                    </ul>
+            <ul class="nav__link nav__link--menu">
+                <li class="nav__items">
+                    <a  asp-controller="Catalogo" asp-action="Catalogo" class="nav__links">Catálogo</a>
+                </li>
+                <li class="nav__items">
+                    <a  asp-area="" asp-controller="Home" asp-action="Nosotros" class="nav__links">Nosotros</a>
+                </li>
+                <li class="nav__items">
+                    <a asp-area="" asp-controller="Proforma" asp-action="Proforma" class="nav__links">Carrito</a>
+                </li>
                     <partial name="_LoginPartial" />
-                </div>
+                <img src="~/img/close.svg" class="nav__close" alt="" >
+            </ul>
+
+            <div class="nav__menu">
+                <img src="~/img/menu.svg" class="nav__img" alt="">
             </div>
         </nav>
     </header>
@@ -91,6 +89,7 @@
         </section>
     </footer>
 
+    <script src="~/js/menu.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
