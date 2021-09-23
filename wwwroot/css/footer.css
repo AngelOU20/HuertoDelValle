@@ -100,6 +100,15 @@ body{
         position: relative;
         overflow: hidden; 
     }
+
+    .footer__logo{
+        transition: transform .4s;
+        width : 150px;
+    }
+    
+    .footer__logo:hover{
+        transform: scale(1.15);
+    }
     
     .con__footer{
         display: grid;
@@ -123,6 +132,15 @@ body{
         margin: auto;
         position: relative;
         overflow: hidden; 
+    }
+
+    .footer__logo{
+        transition: transform .4s;
+        width : 150px;
+    }
+    
+    .footer__logo:hover{
+        transform: scale(1.15);
     }
     
     .con__footer{
@@ -148,6 +166,15 @@ body{
         position: relative;
         overflow: hidden; 
     }
+
+    .footer__logo{
+        transition: transform .4s;
+        width : 150px;
+    }
+    
+    .footer__logo:hover{
+        transform: scale(1.15);
+    }
     
     .con__footer{
         display: grid;
@@ -158,7 +185,7 @@ body{
     .footer__txt{
         display: inline-block;
         color: #555;
-        font-size: 10px;
+        font-size: 12px;
         font-family: "Monaco", monospace;
         padding: 5px 10px;
     }
