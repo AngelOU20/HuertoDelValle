@@ -13,10 +13,12 @@ namespace HuertoDelValle.Controllers
         public ProductoController(ApplicationDbContext context){
             _context = context;
         }
+        
         public IActionResult AdministrarProducto(){
             var producto = _context.DataProducto.Include(x => x.Categoria).OrderBy(r => r.Id).ToList();
             return View(producto);
         }
+
         public IActionResult AgregarProducto(){
             ViewBag.categoria=_context.DataCategoria.ToList().Select(r => new SelectListItem(r.NombreCategoria, r.Id.ToString()));
             return View();
