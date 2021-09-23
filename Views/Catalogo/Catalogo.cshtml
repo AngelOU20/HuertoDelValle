@@ -6,10 +6,6 @@
 <link rel="stylesheet" href="~/css/catalogo.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<div class="text-center" style="color: red;">
-        <h1>@ViewData["Message"]</h1>
-</div>
-
 <div class="container-fondo">
     <div class="fondo">
         <div class="fondo__section">
@@ -27,7 +23,7 @@
 
 <main class="main">
     <div class="container">
-        <h2 class="main-tittle">CÁTALOGO DE PRODUCTOS</h2>
+        <h2 class="main-tittle">CATÁLOGO DE PRODUCTOS</h2>
         <div class="container__search">
             <nav class="search">
                 <div class="nav__search"> 
@@ -52,6 +48,9 @@
                 </div>
             </nav>
         </div> 
+        <div class="text-center" style="color: red;">
+            <h1>@ViewData["Message1"]</h1>
+        </div>
         <section class="container-products">
             @foreach (Producto producto in Model.Producto)
             {
@@ -65,7 +64,7 @@
                     </div>
                     <form asp-action="" method="POST">
                         <input type="hidden" name="id" value="@producto.Id">
-                        <button asp-action ="Add" class="btn__cart"><i class="product__icon fas fa-cart-plus"></i></button>
+                        <button asp-action ="Add" class="btn__cart">Añadir</button> <!--<i class="product__icon fas fa-cart-plus"></i>-->
                     </form>
                 </div>
             }
