@@ -59,13 +59,13 @@ namespace HuertoDelValle.Controllers
         {
             var userID = _userManager.GetUserName(User);
             if(userID == null){ 
+                ViewData["Message1"] = "Por favor debe loguearse antes de agregar un producto"; /* Probar */
                 return  RedirectToAction(nameof(Catalogo));
             }else{
                 var producto = await _context.DataProducto.FindAsync(id);
 
                 Proforma proforma = new Proforma();
                 proforma.Producto = producto;
-                proforma.Producto.NombreProducto = producto.NombreProducto;
                 proforma.Cantidad = 1;
                 proforma.Precio = producto.PrecioProducto;
                 proforma.SubTotal = proforma.Cantidad * producto.PrecioProducto;
@@ -76,6 +76,33 @@ namespace HuertoDelValle.Controllers
                 await _context.SaveChangesAsync();
                 return  RedirectToAction(nameof(Catalogo));
             }
+
+            
+        }
+
+        public async Task<IActionResult> Agregar(int? id, int cantidad)
+        {
+            var userID = _userManager.GetUserName(User);
+            if(userID == null){ 
+                ViewData["Message1"] = "Por favor debe loguearse antes de agregar un producto"; /* Probar */
+                return  RedirectToAction(nameof(Catalogo));
+            }else{
+                var producto = await _context.DataProducto.FindAsync(id);
+
+                Proforma proforma = new Proforma();
+                proforma.Producto = producto;
+                proforma.Cantidad = cantidad;
+                proforma.Precio = producto.PrecioProducto;
+                proforma.SubTotal = proforma.Cantidad * producto.PrecioProducto;
+                proforma.UserID = userID;
+                
+                _context.Add(proforma);
+                
+                await _context.SaveChangesAsync();
+                return  RedirectToAction(nameof(Catalogo));
+            }
+
+            
         }
 
     }
