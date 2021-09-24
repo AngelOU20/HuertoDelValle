@@ -1,12 +1,19 @@
 @model IEnumerable<HuertoDelValle.Models.Producto>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Administrar Productos";
 }
+<link rel="stylesheet" href="~/css/producto.css" />
 
 <div class="container">
-    <table class="table table-bordered">
-        <thead>
+    <br>
+    <div>
+        <a asp-action="AgregarProducto" class="btn__add_product">Registrar Producto</a>
+    </div>
+    <br>
+    <table class="table__product">
+        <h1 class="table__title">Lista de Productos</h1>
+        <thead class="table__thead">
             <tr>
                 <th>Id</th>
                 <th>Nombre</th>
@@ -15,12 +22,13 @@
                 <th class="text-center">Operaciones</th>
             </tr>
         </thead>
+        <tbody class="table__body">
         @foreach (var item in Model)
         {
-            <tr>
+            <tr >
                 <td>@item.Id</td>
                 <td>@item.NombreProducto</td>
-                <td>@item.PrecioProducto</td>
+                <td>S/@item.PrecioProducto</td>
                 <td>@item.Categoria.NombreCategoria</td>
                 <td class="text-center">
                     <a asp-action="EditarProducto" asp-route-id="@item.Id"><i class="fa fa-pencil"></i></a>  |
@@ -29,5 +37,6 @@
                 </td>
             </tr>
         }
+        </tbody>
     </table>
 </div>

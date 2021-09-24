@@ -1,12 +1,13 @@
 @model Producto
 @{
-    ViewData["Title"] = "Descripcion del Producto";
+    ViewData["Title"] = "Descripción del Producto";
 }
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-10"><h2>Producto</h2></div>
-        <div class="col-md-2">
+
+<div class="cuerpo container">
+    <div class="conte">
+        <div class="title__conte"><h2>Producto</h2></div>
+        <div class="">
             <div class="modal__featured">
                 <a asp-controller="Catalogo" asp-action="Catalogo" >
                     <button type="button" class="button--transparent button--close">
@@ -17,48 +18,155 @@
             </div>
         </div>
     </div>
-
-<hr>
-<div class="container">
-    <div class="row">
-        
-        <div class="col-md-6">
-            <div class="card-body">
-                <img src="@Html.DisplayFor(model => model.ImagenProducto)" class="d-block w-100" alt="">
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="card-body">
-                <h5 class="card-title"> <strong>@Html.DisplayFor(model => model.NombreProducto)</strong></h5>
-                <br>
-                <p class="card-text">@Html.DisplayFor(model => model.DescripcionProducto)</p>
-                <p class="card-text"><strong> S/. @Html.DisplayFor(model => model.PrecioProducto) </strong> </p>
-                <div>
-                    <div class="row">
-                    <div class="col-md-6">
-                        
-                    </div>
-                    <br>
-                    <div class="col-md-6">
-                        <form asp-action="" method="POST">
-                            <input type="hidden" name="id" value="@Html.DisplayFor(model => model.Id)">
-                            <button asp-action="Add" class="btn btn-outline-success">Añadir al carrito</button>
-                        </form>
-                    </div>
-                    </div>
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-md-6">
+                <div class="contenedor-galeria">
+                    <img src="@Html.DisplayFor(model => model.ImagenProducto)" class="img__card" alt="">
                 </div>
-                <hr>
-                <p class="card-text">@Html.DisplayFor(model => model.Categoria.NombreCategoria) </p>
+                <div class="imagen-light">
+                    <img src="~/img/close.svg" alt="" class="close">
+                    <img src="" alt="" class="agregar-imagen">
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card-body">
+                    <h5 class="card-title"> <strong>@Html.DisplayFor(model => model.NombreProducto)</strong></h5>
+                    <br>
+                    <p class="card-text">@Html.DisplayFor(model => model.DescripcionProducto)</p>
+                    <p class="card-text"><strong> S/ @Html.DisplayFor(model => model.PrecioProducto) </strong> </p>
+
+                    <form asp-action="" method="POST">
+                        <div class="container__agregar">
+                            <div class="">
+                                <input  class="cantidad form-control" type="number" name="cantidad" min="1" max="5" value="1"/>
+                            </div>
+
+                            <div class="">
+                                <input type="hidden" name="id" value="@Html.DisplayFor(model => model.Id)">
+                                <button asp-action="Agregar" class="btn__agregar">Añadir al carrito</button>
+                            </div>
+                        </div>
+                    </form>
+                    <hr>
+                    <p class="card-text"> Categoría: @Html.DisplayFor(model => model.Categoria.NombreCategoria) </p>
+                </div>
             </div>
         </div>
     </div>
+    <hr>
 </div>
-<hr>
-</div>
-<br>
 
+<script src="~/js/lightbox.js"></script>
 
 <style>
+    .container__agregar{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px;
+    }
+
+    .btn__agregar{
+        color: #0099CC;
+        background: transparent;
+        border: 2px solid #0099CC;
+        border-radius: 6px;
+        padding: 10px;
+    }
+
+    .btn__agregar:hover {
+        background-color: #008CBA;
+        color: white;
+    }
+
+    .cuerpo{
+        overflow: hidden;
+    }
+
+    .contenedor-galeria{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        margin-top: 30px;
+        z-index: 99999;
+    }
+
+    .img__card{
+        width: 70%;
+        display: block;
+        margin-bottom: 15px;
+        cursor: pointer;
+        z-index: 99999;
+    }
+
+    .imagen-light{
+        position: fixed;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.534);
+        transform: translate(100%);
+        transition: transform .0s ease-in-out;
+        z-index: 99999;
+    }
+
+    .agregar-imagen{
+        width: 40%;
+        transform: scale(0);
+        border-radius: 10px;
+        transition: transform .1s .1s;
+        z-index: 99999;
+    }
+
+    .showImage{
+        transform: scale(1);
+        z-index: 99999;
+    }
+
+    .show{
+        transform: translate(0);
+        z-index: 99999;
+    }
+
+    .close{
+        position: relative;
+        bottom: 390px;
+        right: 0px;
+        width: 40px;
+        cursor: pointer;
+        z-index: 99999;
+    }
+
+    /**/
+
+    .cantidad{
+        padding: 10px 0;
+        width: 50%;
+        background: transparent;
+        border: 2px solid #0099CC;
+        text-align: center;
+        font-size: 25px;
+    }
+
+    .conte{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 10px;
+        padding: 30px 0;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .title__conte{
+        padding: 10px 0 0 0 ;
+    }
+    
+    /**/
     body{
         background-color:#F6F3F8;
     }
@@ -98,6 +206,52 @@
         min-width: 230px;
         padding: 20px;
         overflow: hidden;
+        left: 70%;
         border-top-left-radius: 5px;
-        border-bottom-left-radius: 5px; }
+        border-bottom-left-radius: 5px; 
+    }
+
+    @@media (max-width: 800px){
+
+        .cantidad{
+            padding: 20px 0;
+        }
+
+        .btn__agregar{
+            color: #0099CC;
+            background: transparent;
+            border: 2px solid #0099CC;
+            border-radius: 6px;
+            padding: 10px;
+            font-size: 12px;
+        }
+
+        .agregar-imagen{
+            width: 80%;
+            z-index: 99999;
+        }
+
+        .close{
+            position: relative;
+            color: white;
+            bottom: 165px;
+            right: 0px;
+            width: 20px;
+            cursor: pointer;
+            z-index: 99999;
+        }
+
+        .modal__featured {
+        position: relative;
+        -ms-flex: 1;
+            flex: 1;
+        min-width: 230px;
+        padding: 25px;
+        overflow: hidden;
+        left: 50%;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px; 
+        }
+    }
+        
 </style>

@@ -1,77 +1,75 @@
 @model dynamic
 
-<div class="container">
-    <h2>Catalogo</h2>
-        <hr>
-            <nav class="navbar">
-                <div class="container-fluid">
-                    <div class="col-md-3">
-                        <div class="dropdown">
-                            <form asp-controller="Catalogo" asp-action="Catalogo">
-                            <select class="custom-select btn btn-outline-light" type="button"  name="FiltrarCategoria" onchange="this.form.submit()">
-                                <option>Categorias</option>
-                                @foreach (Categoria item in Model.Categoria)
-                                {
-                                    <option class="dropdown-item" value="@item.Id">@item.NombreCategoria</option>
-                                }
-                            </select>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-md-5">
-                        <form class="d-flex" method="POST">
-                            <input type="text" name="Buscar" placeholder="Buscar..." required>
-                        </form>
-                    </div>
-                </div>
-            </nav> 
-        <br>
+@{
+    ViewData["Title"] = "Catálogo";
+}
+<link rel="stylesheet" href="~/css/catalogo.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <div class="text-center">
-        <div class="row catalogue-container" data-aos="fade-up">
-            @foreach (Producto producto in Model.Producto)
-            {
-                <div class="col-lg-3 catalogue-item filter-app">
-                    <div class="card h-100">
-                            <a asp-action="Producto" asp-route-id="@producto.Id"><img src="@Html.DisplayFor(modelItem => producto.ImagenProducto)" class="d-block w-100"></a>
-                            
-                            <div class="card-body">
-                                <hr>
-                                <h5 class="card-title">
-                                    @Html.DisplayFor(modelItem => producto.NombreProducto)
-                                </h5>
-                                <strong>S/. @Html.DisplayFor(modelItem => producto.PrecioProducto)</strong>
-                            </div>
-                            <div class="card-footer" >
-                                <form asp-action="" method="POST">
-                                    <input type="hidden" name="id" value="@producto.Id">
-                                    <button  asp-action ="Add" class="btn btn-outline-success">Añadir</button>
-                                </form>
-                            </div>
-                    </div>
-                </div>
-            }  
+<div class="container-fondo">
+    <div class="fondo">
+        <div class="fondo__section">
+            <img src="~/img/fondo.jpg" alt="" class="fondo__img">
+            <div class="fondo__content">
+                <h2 class="fondo__title">LLEVAMOS DEL HUERTO A TU MESA</h2>
+                <p class="fondo__txt">
+                    El Huerto del Valle
+                </p>
+            </div>
         </div>
     </div>
 </div>
+
+
+<main class="main">
+    <div class="container">
+        <h2 class="main-tittle">CATÁLOGO DE PRODUCTOS</h2>
+        <div class="container__search">
+            <nav class="search">
+                <div class="nav__search"> 
+                    <div class="cont1">
+                        <form asp-controller="Catalogo" asp-action="Catalogo">
+                            <select class="dropdown" type="button"  name="FiltrarCategoria" onchange="this.form.submit()">
+                                <option>Categorias</option>
+                                @foreach (Categoria item in Model.Categoria)
+                                {
+                                <option class="dropdown__item" value="@item.Id">@item.NombreCategoria</option>
+                                }
+                            </select>
+                        </form>
+                    </div>
+                </div>
+                <div class="nav__search">
+                    <div class="cont">
+                        <form class="d-flex" method="POST">
+                            <input type="search" placeholder="Buscar..." name="Buscar" title="Presione Esc para supender la búsqueda" required>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </div> 
+        <div class="text-center" style="color: red;">
+            <h1>@ViewData["Message1"]</h1>
+        </div>
+        <section class="container-products">
+            @foreach (Producto producto in Model.Producto)
+            {
+                <div class="product">
+                    <a asp-action="Producto" asp-route-id="@producto.Id">
+                        <img src="@Html.DisplayFor(modelItem => producto.ImagenProducto)" alt="" class="product__img">
+                    </a>
+                    <div class="product__description">
+                        <h4 class="product__title">@Html.DisplayFor(modelItem => producto.NombreProducto)</h4>
+                        <span class="product__price">S/ @Html.DisplayFor(modelItem => producto.PrecioProducto)</span>
+                    </div>
+                    <form asp-action="" method="POST">
+                        <input type="hidden" name="id" value="@producto.Id">
+                        <button asp-action ="Agregar" class="btn__cart">Añadir</button> <!--<i class="product__icon fas fa-cart-plus"></i>-->
+                    </form>
+                </div>
+            }
+        </section>
+    </div>
+</main>
+
 <br>
-
-<style> 
-    input[type=text] {
-        width: 130px;
-        box-sizing: border-box;
-        border: 2px solid #ccc;
-        border-radius: 4px;
-        font-size: 16px;
-        background-color: white;
-        background-image: url('searchicon.png');
-        background-position: 10px 10px; 
-        background-repeat: no-repeat;
-        padding: 12px 20px 12px 40px;
-        transition: width 0.4s ease-in-out;
-    }
-
-    input[type=text]:focus {
-        width: 100%;
-    }
-</style>

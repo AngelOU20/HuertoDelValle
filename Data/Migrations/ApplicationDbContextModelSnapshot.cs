@@ -19,7 +19,6 @@ namespace HuertoDelValle.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-
                 .HasAnnotation("Relational:MaxIdentifierLength", 63)
                 .HasAnnotation("ProductVersion", "5.0.9")
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
@@ -134,7 +133,6 @@ namespace HuertoDelValle.Data.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("character varying(256)");
 
-
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedName")
@@ -150,7 +148,6 @@ namespace HuertoDelValle.Data.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
@@ -164,7 +161,6 @@ namespace HuertoDelValle.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-
                     b.HasKey("Id");
 
                     b.HasIndex("RoleId");
@@ -175,7 +171,6 @@ namespace HuertoDelValle.Data.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
                 {
                     b.Property<string>("Id")
-
                         .HasColumnType("text");
 
                     b.Property<int>("AccessFailedCount")
@@ -236,7 +231,6 @@ namespace HuertoDelValle.Data.Migrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex");
 
-
                     b.ToTable("AspNetUsers");
                 });
 
@@ -244,7 +238,6 @@ namespace HuertoDelValle.Data.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
@@ -258,7 +251,6 @@ namespace HuertoDelValle.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-
                     b.HasKey("Id");
 
                     b.HasIndex("UserId");
@@ -269,7 +261,6 @@ namespace HuertoDelValle.Data.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-
                         .HasMaxLength(128)
                         .HasColumnType("character varying(128)");
 
@@ -284,7 +275,6 @@ namespace HuertoDelValle.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-
                     b.HasKey("LoginProvider", "ProviderKey");
 
                     b.HasIndex("UserId");
@@ -295,12 +285,10 @@ namespace HuertoDelValle.Data.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
                     b.Property<string>("UserId")
-
                         .HasColumnType("text");
 
                     b.Property<string>("RoleId")
                         .HasColumnType("text");
-
 
                     b.HasKey("UserId", "RoleId");
 
@@ -312,7 +300,6 @@ namespace HuertoDelValle.Data.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
                     b.Property<string>("UserId")
-
                         .HasColumnType("text");
 
                     b.Property<string>("LoginProvider")
@@ -326,12 +313,10 @@ namespace HuertoDelValle.Data.Migrations
                     b.Property<string>("Value")
                         .HasColumnType("text");
 
-
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
                 });
-
 
             modelBuilder.Entity("HuertoDelValle.Models.Producto", b =>
                 {
@@ -352,7 +337,6 @@ namespace HuertoDelValle.Data.Migrations
 
                     b.Navigation("Producto");
                 });
-
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
@@ -405,12 +389,10 @@ namespace HuertoDelValle.Data.Migrations
                         .IsRequired();
                 });
 
-
             modelBuilder.Entity("HuertoDelValle.Models.Categoria", b =>
                 {
                     b.Navigation("Productos");
                 });
-
 #pragma warning restore 612, 618
         }
     }
