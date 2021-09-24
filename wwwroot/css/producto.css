@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap');
+
+.btn__add_product{
+    background: #5DB075;
+    border: 0.5px solid #5DB075;
+    border-radius: 100px;
+    padding: 10px;
+    color: #FFFFFF;
+}
+
+.btn__add_product:hover{
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+table{
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    margin: 45px;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.table__title{
+    font-family: 'Source Code Pro', monospace;
+    text-align: center;
+}
+
+tr{
+    margin: 10px;
+}
+
+th{
+    padding: 10px;
+}
+
+td{
+    padding: 10px;
+}
+
+.table__thead{
+    border-bottom: 2px solid #B7C8C7;
+}
+
+.table__body{
+    border-bottom: 2px solid #B7C8C7;
+}
+
+@media screen and (max-width:800px){
+    .table__title{
+        font-family: 'Source Code Pro', monospace;
+        font-size: 20px ;
+    }
+
+    table{
+        font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+        font-size: 12px;
+        margin: 0px;
+        width: 100%;
+        text-align: left;
+        border-collapse: collapse;
+    }
+
+    th{
+        padding: 10px;
+    }
+
+    td{
+        padding: 10px 0;
+    }
+}

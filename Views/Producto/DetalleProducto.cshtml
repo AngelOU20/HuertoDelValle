@@ -1,0 +1,39 @@
+@model Producto
+
+@{
+    ViewData["Title"] = "Detalle";
+}
+
+<div class="container">
+    <br>
+    <section class="block">
+            <div class="block__container contenedor">
+
+                <div class="block__texts">
+                    <h2 class="block__subtitle">@Html.DisplayFor(model => model.NombreProducto)</h2>
+          
+                    <p class="block__paragraph">
+                        Precio: S/.@Html.DisplayFor(model => model.PrecioProducto)
+                    </p>
+                    <p class="block__paragraph">
+                        Stock : @Html.DisplayFor(model => model.Stock)
+                    </p>
+                    <p class="block__paragraph">
+                        Descripción: <br/>@Html.DisplayFor(model => model.DescripcionProducto)
+                    </p>
+                </div>
+
+                <figure class="block__picture">
+                     <img src="@Html.DisplayFor(model => model.ImagenProducto)" class="block__img" alt="">
+                </figure>
+            </div>
+        </section>
+</div>
+
+<br>
+
+<style>
+
+
+
+</style>
