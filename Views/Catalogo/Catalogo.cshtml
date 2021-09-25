@@ -26,7 +26,7 @@
 
 <div class="container">
     <nav class="navbar">
-        <div class="container-fluid">
+        <div class="container-fluid buscador-productos">
             <div class="col-md-3">
                 <div class="dropdown">
                     <form asp-controller="Catalogo" asp-action="Catalogo">
@@ -41,8 +41,8 @@
                 </div>
             </div>
             <div class="col-md-5">
-                <form class="d-flex" method="POST">
-                    <input type="text" name="Buscar" placeholder="Buscar..." required>
+                <form class="d-flex" method="POST" class="text-right">
+                    <input type="text" name="Buscar" placeholder="Buscar..." required >
                 </form>
             </div>
         </div>
