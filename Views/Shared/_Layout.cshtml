@@ -4,6 +4,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,65 +16,30 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="~/font/css/open-iconic-bootstrap.css" rel="stylesheet">
     <!--Tipo de letra -->
-    <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/0605142393.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
 
     <header class="hero">
         <nav class="nav container1">
             <div class="nav__logo">
-                <a asp-controller="Home" asp-action="Index"><img src="~/img/logo1.jpg" class="logo1_nav" alt="" ></a>
+                <a asp-controller="Home" asp-action="Index"><img src="~/img/logo1.jpg" class="logo1_nav" alt=""></a>
             </div>
 
             <ul class="nav__link nav__link--menu">
-                <partial name="_MenuPartial"/>
-                <partial name="_LoginPartial"/>
-                <img src="~/img/close.svg" class="nav__close" alt="" >
+                <partial name="_MenuPartial" />
+                <partial name="_LoginPartial" />
+                <img src="~/img/close.svg" class="nav__close" alt="">
             </ul>
 
             <div class="nav__menu">
                 <img src="~/img/menu.svg" class="nav__img" alt="">
             </div>
         </nav>
-    </header>-->
-    <header>
-        <nav class="navbar">
-            <div class="brand-title" asp-area="" asp-controller="Home" asp-action="Index">
-                <img src="~/img/logo1.jpg" width="90px" height="90px" alt="" style="border: 5px solid #FFBB98">
-            </div>
-        <a href="#" class="toggle-button">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </a>
-        <div class="navbar-links">
-          <ul>
-            <li><a asp-area="" asp-controller="Catalogo" asp-action="Catalogo">CATALOGO</a></li>
-            <li><a asp-area="" asp-controller="Home" asp-action="Nosotros">Nosotros</a></li>
-            @if (SignInManager.IsSignedIn(User))
-        {
-            <li>
-                <a  class="bar" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
-            </li>
-            <li>
-                <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                    <button  type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-                </form>
-            </li>
-        }
-        else
-        {
-            <li>
-                <a class="bar" asp-area="Identity" asp-page="/Account/Register">Register</a>
-            </li>
-            <li>
-                <a class="bar" asp-area="Identity" asp-page="/Account/Login">Login</a>
-            </li>
-        }
-          </ul>
-        </div>
-      </nav>
     </header>
 
     <br>
@@ -93,7 +59,7 @@
                 </div>
             </div>
             <div class="footer__section">
-                
+
             </div>
             <div class="footer__section">
                 <h2 class="footer__title">Contacto</h2>
@@ -119,7 +85,7 @@
             </div>
         </div>
         <section class="footer__copy container">
-            <h3 class="footer__copyright">  Derechos reservados &copy; El Huerto del Valle</h3>
+            <h3 class="footer__copyright"> Derechos reservados &copy; El Huerto del Valle</h3>
         </section>
     </footer>
 
@@ -129,13 +95,13 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>
 
 
 <style>
-    .navbar{
+    .navbar {
         background-color: #007175;
         color: black;
     }
 </style>
-
