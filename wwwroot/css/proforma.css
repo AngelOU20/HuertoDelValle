@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+.carrito__vacio{
+    margin: 50px auto;
+}
+
+.cart__img{
+    padding: 20px 0;
+    transition: transform .5s;
+}
+
+.cart__img:hover{
+    transform: scale(1.07);
+}
+
+.cart__title{
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+    font-size: 45px;
+    font-family: 'Righteous', cursive;
+    color: #3D272A;
+}
+
+.cart__txt{
+    font-family: "Lato", Arial, Helvetica, sans-serif;
+}
+
+.btn__cart{
+    padding: 10px;
+    color: #fff;
+    background-color: #007175;
+    border: 1px solid #007175;
+    border-radius: 20px;
+    transition: transform .5s;
+}
+
+.btn__cart:focus{
+    outline-style: none;
+}
+
+.btn__cart:hover{
+    transform: scale(1.09);
+}

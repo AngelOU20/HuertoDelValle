@@ -4,7 +4,21 @@
     ViewData["Title"] = "Carrito";
 }
 
+<link rel="stylesheet" href="~/css/proforma.css" />
 
+@if (Model.Count() == 0){
+    <div class="container text-center">
+        <div class="carrito__vacio">
+            <img src="~/img/cartvacio.png" alt="" class="cart__img">
+            <div class="cart__content">
+                <h2 class="cart__title">Tu carrito está vacio</h2>
+                <p class="cart__txt"> Antes de proceder con el pago, debe agregar algunos productos a su carrito de compras.
+                    <br/>Encontrará muchos productos interesantes en nuestra página "Tienda". </p>
+                <a asp-controller="Catalogo" asp-action="Catalogo"><button class="btn__cart">Volver a la tienda</button></a>
+            </div>
+        </div>
+    </div>
+}else{
 <div class="container">
     <h1>Carrito de Compras</h1>
     <br>
@@ -67,7 +81,7 @@
         </tr>
     }
     <div class="text-center">
-        <div class="" style="border-top: 2px solid black; padding-top: 5%;font-family: sans;">
+        <div class="" style="border-top: 1px solid #C4C4C4; padding-top: 5%;font-family: sans;">
             <div class="row">
                 <div class="col-md-4"></div>
                 <div class="col-md-4"></div>
@@ -76,7 +90,8 @@
         </div>    
     </div>
 <br>
-
+</div>
+}
 <style>
     table th {
         padding: 15px 10px;

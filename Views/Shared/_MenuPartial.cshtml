@@ -1,0 +1,32 @@
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+@if (SignInManager.IsSignedIn(User)){
+    @if(UserManager.GetUserName(User).Equals("Administrador@gmail.com")){
+        <li class="nav__items">
+            <a  asp-controller="Producto" asp-action="AdministrarProducto" class="nav__links">Administrar Producto</a>
+        </li>
+        <li class="nav__items">
+            <a  asp-area="" asp-controller="Categoria" asp-action="AdministrarCategoria" class="nav__links">Administrar Categoria</a>
+        </li>
+    }else{
+        <li class="nav__items">
+            <a  asp-controller="Catalogo" asp-action="Catalogo" class="nav__links">Catálogo</a>
+        </li>
+        <li class="nav__items">
+            <a  asp-area="" asp-controller="Home" asp-action="Nosotros" class="nav__links">Nosotros</a>
+        </li>
+        <li class="nav__items">
+            <a asp-area="" asp-controller="Proforma" asp-action="Proforma" class="nav__links">Carrito</a>
+        </li>
+    }
+}else{
+    <li class="nav__items">
+        <a  asp-controller="Catalogo" asp-action="Catalogo" class="nav__links">Catálogo</a>
+    </li>
+    <li class="nav__items">
+        <a  asp-area="" asp-controller="Home" asp-action="Nosotros" class="nav__links">Nosotros</a>
+    </li>
+}

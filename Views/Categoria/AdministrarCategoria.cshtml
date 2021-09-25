@@ -1,10 +1,19 @@
 @model IEnumerable<HuertoDelValle.Models.Categoria>
+@{
+    ViewData["Title"] = "Administrar Categorias";
+}
+<link rel="stylesheet" href="~/css/categoria.css" />
 
 <div class="container">
-    <h1>Lista de Categorias</h1> 
-    <hr>
-    <table class="table table-bordered">
-        <thead>
+    <br>
+    <div>
+        <a asp-action="AgregarCategoria" class="btn__add_categoria">Registrar Categoria</a>
+    </div>
+    <br>
+
+    <table>
+        <h1 class="table__title">Lista de Categorias</h1> 
+        <thead class="table__thead">
             <tr>
                 <th>Id</th>
                 <th>Nombre</th>
@@ -12,6 +21,7 @@
                 <th class="text-center">Operaciones</th>
             </tr>
         </thead>
+        <tbody class="table__body">
         @foreach (var item in Model)
         {
             <tr>
@@ -32,5 +42,6 @@
                 </td>
             </tr>
         }
+        </tbody>
     </table>
 </div>
