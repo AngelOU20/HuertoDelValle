@@ -19,6 +19,7 @@
     <script src="https://kit.fontawesome.com/0605142393.js" crossorigin="anonymous"></script>
 </head>
 <body>
+
 @if (SignInManager.IsSignedIn(User)){
     @if(UserManager.GetUserName(User).Equals("Administrador@gmail.com")){
         <link rel="stylesheet" href="~/css/menuAdmi.css" />
@@ -146,6 +147,7 @@
 
 
     }else{
+
     <header class="hero">
         <nav class="nav container1">
             <div class="nav__logo">
@@ -170,6 +172,44 @@
                 <img src="~/img/menu.svg" class="nav__img" alt="">
             </div>
         </nav>
+    </header>-->
+    <header>
+        <nav class="navbar">
+            <div class="brand-title" asp-area="" asp-controller="Home" asp-action="Index">
+                <img src="~/img/logo1.jpg" width="90px" height="90px" alt="" style="border: 5px solid #FFBB98">
+            </div>
+        <a href="#" class="toggle-button">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </a>
+        <div class="navbar-links">
+          <ul>
+            <li><a asp-area="" asp-controller="Catalogo" asp-action="Catalogo">CATALOGO</a></li>
+            <li><a asp-area="" asp-controller="Home" asp-action="Nosotros">Nosotros</a></li>
+            @if (SignInManager.IsSignedIn(User))
+        {
+            <li>
+                <a  class="bar" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+            </li>
+            <li>
+                <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                    <button  type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                </form>
+            </li>
+        }
+        else
+        {
+            <li>
+                <a class="bar" asp-area="Identity" asp-page="/Account/Register">Register</a>
+            </li>
+            <li>
+                <a class="bar" asp-area="Identity" asp-page="/Account/Login">Login</a>
+            </li>
+        }
+          </ul>
+        </div>
+      </nav>
     </header>
     <br>
     <div class="contenido">
