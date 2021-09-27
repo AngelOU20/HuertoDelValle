@@ -66,6 +66,7 @@ body {
     display: inline-block;
     margin: 5px 10px;
     position: relative;
+    z-index: 99999999;
 }
 
 .nav__links {
