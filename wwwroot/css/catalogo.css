@@ -240,7 +240,7 @@ input[type="search"]:focus{
     font-size: 20px;
 }
 
-@media (max-width: 1800px) and (min-width:700px){
+@media (max-width: 1000px) and (min-width:700px){
 
     .container{
         width: 90%;
@@ -300,7 +300,7 @@ input[type="search"]:focus{
 
     .btn__cart{
         display: block;
-        border: 3px solid #FF4E00;
+        border: 3px solid #22353C;
         background-color: #fff;
         color: #000000;
         padding: 5px 0px;
@@ -313,7 +313,7 @@ input[type="search"]:focus{
     }
     
     .btn__cart:hover{
-        background-color: #FF4E00;
+        background-color: #22353C;
         color: #fff;
         transform: scale(1.08);
     }
@@ -431,7 +431,7 @@ input[type="search"]:focus{
     }
 
     .btn__cart:hover{
-        background-color: #FF4E00;
+        background-color: #22353C;
         color: #fff;
         transform: scale(1.08);
     }
