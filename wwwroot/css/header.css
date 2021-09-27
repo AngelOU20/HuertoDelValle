@@ -160,6 +160,7 @@ body {
     .nav__link--show{
         --show: block;
         opacity:1 ;
+        z-index: 9999999;
         pointer-events: unset;
     }
 

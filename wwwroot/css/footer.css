@@ -184,6 +184,7 @@ body{
 
     .footer__txt{
         display: inline-block;
+        text-decoration:none;
         color: #555;
         font-size: 12px;
         font-family: "Monaco", monospace;
