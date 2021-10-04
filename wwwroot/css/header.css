@@ -137,9 +137,34 @@ body {
     border-radius: 32px;
 }
 
-@media (max-width:800px){
+@media (max-width:900px){
+    .container1 {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        overflow: hidden;
+        padding: 10px;
+    }
+
     .nav__menu{
         display: block;
+    }
+
+    .logo1_nav{
+        width: 55px;
+        height: 55px;
+        border: 2px solid #FFBB98;
+    }
+
+    .hero {
+        width: 100%;
+        height: 100px;
+        position: relative;
+        display: grid;
+        grid-template-rows: 100px 1fr;
+        color: #fff;
+        padding: 10px;
+        background: #007175;
     }
 
     .nav__link--menu{
@@ -157,12 +182,13 @@ body {
         opacity: 0;
         pointer-events: none;
         transition: .7s opacity;
+        z-index: 9999999;
     }
 
     .nav__link--show{
         --show: block;
         opacity:1 ;
-        z-index: 9999999;
+        z-index: 999999;
         pointer-events: unset;
     }
 
@@ -174,11 +200,4 @@ body {
         cursor: pointer;
     }
 
-}
-
-@media (max-width:600px){
-
-    .hero__paragraph{
-        font-size: 1rem;
-    }
 }
