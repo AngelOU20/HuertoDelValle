@@ -4,131 +4,66 @@
 @{
     ViewData["Title"] = "Log in";
 }
+<link rel="stylesheet" href="~/css/login.css" />
 
-<div class="container">
-<div class="row">
-    <div class="col-md-12">
-            <section>
-                <form id="account" method="post" class="form-register">
-                    <center>
-                        <h3 class="e0">Iniciar Sesión</h3>
-                    </center>
-                    <hr />
-                    <div asp-validation-summary="All" class="text-danger"></div>
-
-                    <div class="f1">
-                        <div class=" col-md-12">
-                            <br>
-                            <div class="text-center">
-                                <img src="https://www.vippng.com/png/full/355-3552587_change-icon-and-system-text-size-on-windows.png" width="200" height="200" alt="">
-                            </div>
-
-                        
-                            <div class="form-group">
-                                <label asp-for="Input.Email"></label>
-                                <input asp-for="Input.Email" class="form-control" />
-                                <span asp-validation-for="Input.Email" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Input.Password"></label>
-                                <input asp-for="Input.Password" class="form-control" />
-                                <span asp-validation-for="Input.Password" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <div class="checkbox">
-                                    <label asp-for="Input.RememberMe">
-                                        <input asp-for="Input.RememberMe" />
-                                        @Html.DisplayNameFor(m => m.Input.RememberMe)
-                                    </label>
-                                </div>
-                            </div>
+    <main>
+        <div class="box">
+            <div class="inner-box">
+                <div class="forms-wrap">
                     
-                            <center>
-                                <button type="submit" class="btn" >Iniciar sesión</button>
-                            </center>
-                        
-                            <br>
+                    <form id="account" method="post" autocomplete="off" class="sign-in-form">
+                        <div class="logo">
+                            <img src="~/img/logo2.png" alt="" />
+                            <h3>El Huerto del Valle</h3>
                         </div>
+
+                        <div asp-validation-summary="All" class="text-danger"></div>
+
+                        <div class="heading">
+                            <h2>Bienvenido</h2>
+                            <h6>¿Todavía no se ha registrado?</h6>
+                            <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" class="toggle">Registrate</a>
+                        </div>
+
+                        <div class="actual-form">
+
+                            <div class="input-wrap">
+                                <input asp-for="Input.Email" type="text" minlength="4" class="input-field" autocomplete="off" required/>
+                                <label class="label__login">Email</label>
+                            </div>
+
+                            <div class="input-wrap">
+                                <input asp-for="Input.Password" type="password" minlength="4" class="input-field" autocomplete="off" required/>
+                                <label class="label__login">Contraseña</label>
+                            </div>
+
+                        </div>
+
+                        <div class="input-check">
+                            <label asp-for="Input.RememberMe">
+                                <input asp-for="Input.RememberMe" />
+                                @Html.DisplayNameFor(m => m.Input.RememberMe)
+                            </label>
+                        </div>
+
+                        <button type="submit" class="sign-btn" >Iniciar sesión</button>
+
+                        <a id="forgot-password" asp-page="./ForgotPassword" class="text">¿Olvidaste tu contraseña?</a>
+                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation" class="text">Enviar confirmación por Email</a>
+                    </form>
+
+                </div>
+
+                <div class="carousel">
+                    <div class="images-wrapper">
+                        <img src="~/img/img1.jpg" class="image" alt="" />
                     </div>
+                </div>
+            </div>
+        </div>
+    </main>
 
-
-                    <br> 
-                    <div class="text-center">
-                        <p >
-                            <a id="forgot-password" asp-page="./ForgotPassword" class="p1">¿Olvidaste tu contraseña?</a>
-                        </p>
-                        <p >
-                            <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" class="p1">Registrarse</a>
-                        </p>
-                        <p >
-                            <a id="resend-confirmation" asp-page="./ResendEmailConfirmation" class="p1">Enviar confirmación por correo electrónico</a>
-                        </p>
-                    </div>
-                </form>
-            </section>
-    </div>
-</div>
-</div>
-
-<style>
-    body {
-        background: #f7f7f7;
-    }
-
-    .container{
-        width: 90%;
-        max-width: 1600px;
-        margin: auto;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .form-register {
-    width: 400px;
-    padding: 30px;
-    margin: auto;
-    margin-top: 100px;
-    border-radius: 4px;
-
-    background-color: #FFFFFF;
-    }
-    
-    .e0{
-    font-family: 'Broadway';
-    color: #36404D;
-    }
-   
-    .p1{
-        color: #36404D;
-        
-    }
-    .btn{
-        background-color: #2471A3;
-        color: #FFFFFF;
-        border-radius: 4px #FFFFFF;
-       font-family: 'Cooper Black';
-        
-    } 
-    .f1{
-        background-color: #FBF1F1;
-         font-family: 'Bauhaus 93';
-    }
-    @@media (max-width: 800px){
-        .form-register {
-        width: 100%;
-
-        padding: 20px;
-        margin: auto;
-        margin-top: 100px;
-        border-radius: 4px;
-
-        background-color: #FFFFFF;
-        }
-    }
-</style>
-
-
-
+<script src="~/js/form.js"></script>   
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
