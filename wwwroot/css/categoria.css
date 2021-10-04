@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap');
 
+
+.container__category{
+    width: 80%;
+    max-width: 1000px;
+    margin: auto;
+    position: relative;
+    overflow: hidden; 
+}
+
 .btn__add_categoria{
     background: #5DB075;
     border: 0.5px solid #5DB075;
@@ -10,7 +19,25 @@
 
 .btn__add_categoria:hover{
     text-decoration: none;
+    background: #41bd64;
+    border: 0.5px solid #41bd64;
+    color: #dce9e8;
+}
+
+.btn__volver{
+    background: #5DB075;
+    border: 0.5px solid #5DB075;
+    border-radius: 100px;
+    padding: 10px 35px;
+    margin: 0 10px;
     color: #FFFFFF;
+}
+
+.btn__volver:hover{
+    text-decoration: none;
+    background: #41bd64;
+    border: 0.5px solid #41bd64;
+    color: #dce9e8;
 }
 
 table{
@@ -46,6 +73,65 @@ td{
 .table__body{
     border-bottom: 2px solid #B7C8C7;
 }
+
+/*Registrar Producto*/
+
+.form-title{
+    font-family: 'Cairo', sans-serif;
+    text-align: center;
+    padding-bottom: 15px;
+    letter-spacing: 1.5px;
+}
+
+.form-list {
+    padding-left: 0;
+    list-style: none; 
+}
+
+.form-list__row {
+    margin-bottom: 25px; 
+}
+
+.form-list__row label {
+    position: relative;
+    display: block;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: .5px;
+    color: #939393; 
+}
+
+.form-list__row--inline {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+    justify-content: space-between; 
+}
+
+.form-list__row--inline > :first-child {
+    -ms-flex: 2;
+    flex: 2;
+    padding-right: 20px; }
+
+.form-list__row--inline > :nth-child(2n) {
+    -ms-flex: 1;
+    flex: 1; }
+
+
+input {
+    background: #F6F6F6;
+    width: calc(100% - 10px);
+    min-height: 30px;
+    padding: 5px;
+    letter-spacing: .5px;
+    border: 1.3px solid #E8E8E8; 
+    border-radius: 4px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #fbcf34; }
 
 @media screen and (max-width:800px){
     .table__title{

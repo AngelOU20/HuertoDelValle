@@ -1,13 +1,21 @@
 @model Categoria
 
-<div class="container">
-    <form asp-action="EditarCategoria" method="POST">
-        <div class="form-group">
-            <label asp-for="NombreCategoria" class=""></label>
-            <input asp-for="NombreCategoria" class="form-control">
+<link rel="stylesheet" href="~/css/categoria.css" />
+
+<div class="container__category">
+    <div class="card">
+        <div class="card-body">
+            <h3 class="form-title">Editar Categoria</h3>
+            <form asp-action="EditarCategoria" method="POST" class="form-list">
+                <div class="form-list__row">
+                    <label asp-for="NombreCategoria"></label>
+                    <input asp-for="NombreCategoria">
+                </div>
+                <div>
+                    <button class="btn__add_categoria">Editar Categoria</button>
+                    <a asp-action="AdministrarCategoria"  class="btn__volver" >Volver</a>
+                </div>
+            </form>
         </div>
-        <div>
-            <button class="btn btn-primary">Editar Categoria</button>
-        </div>
-    </form>
+    </div>
 </div>
