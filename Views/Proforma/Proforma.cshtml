@@ -19,89 +19,90 @@
         </div>
     </div>
 }else{
+
 <div class="container">
-    <h1>Carrito de Compras</h1>
-    <br>
-    <table class="table">
-        <thead>
-            <tr>
-                <th></th>
-                <th colspan="2" class="text-center">
-                    Producto
-                </th>
-                <th></th>
-                <th class="text-center">
-                    Cantidad
-                </th>
-                <th class="text-center">
-                    SubTotal
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model) {
-                <tr>
-                    <td class="text-center">
-                        <a asp-action="QuitarProducto" asp-route-id="@item.Id" style="color: #D52F0B;" ><i class="fa fa-remove"></i></a>
-                    </td>
-                    <td colspan="2">
-                        <div class="row">
-                            <div class="col-md-2"></div>
-                            <div class="col-md-2">
-                                <img src="@Html.DisplayFor(modelItem => item.Producto.ImagenProducto)" width="65px" height="65px" alt="">
-                            </div>
-                            <div class="col-md-8" style="text-align:left;">
-                                @Html.DisplayFor(modelItem => item.Producto.NombreProducto)
-                            </div>
-                        </div>
-                    </td>
-                    <td class="text-center">
-                        <a asp-action="EditarCantidad" asp-route-id="@item.Id" style="color: #000;" ><i class="fa fa-pencil"></i></a>
-                    </td>
-                    <td class="text-center">
-                        @Html.DisplayFor(modelItem => item.Cantidad)
-                    </td>
-                    <td class="text-center">
-                        S/ @Html.DisplayFor(modelItem => item.SubTotal)
-                    </td>
-                </tr>         
-            }
-        </tbody>
-    </table>
-    @{
+    <div class="block__shopping row">
+        <div class="shopping__cart col-md-8">
+            <table class="table__cart">
+                <thead class="table__thead">
+                    <tr>
+                        <th></th>
+                        <th colspan="2">Producto</th>
+                        <th>Precio</th>
+                        <th></th>
+                        <th>Cantidad</th>
+                        <th>SubTotal</th>
+                    </tr>
+                </thead>
+                <tbody class="table__tbody">
+                @foreach (var item in Model) {
+                    <tr>
+                        <td>
+                            <a asp-action="QuitarProducto" asp-route-id="@item.Id" style="color: #D52F0B;" ><i class="fa fa-remove"></i></a>
+                        </td>
+                        <td class="img__td">
+                            <img src="@Html.DisplayFor(modelItem => item.Producto.ImagenProducto)" class="img__product__cart" alt="">
+                        </td>
+                        <td class="td__product">
+                            @Html.DisplayFor(modelItem => item.Producto.NombreProducto)
+                        </td>
+                        <td>
+                            S/@Html.DisplayFor(modelItem => item.Producto.PrecioProducto)
+                        </td>
+                        <td>
+                            <a asp-action="EditarCantidad" asp-route-id="@item.Id" style="color: #000;" ><i class="fa fa-pencil"></i></a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cantidad)
+                        </td>
+                        <td>
+                            S/ @Html.DisplayFor(modelItem => item.SubTotal)
+                        </td>
+                    </tr>         
+                }
+                </tbody>
+            </table>
+        </div>
+        @{
         decimal total = 0;
         var contar = 1;
-    }
-    @foreach (var item in Model){
-        <tr>
-            @{
-                total = total + item.SubTotal;
-                contar++;
-            }
-        </tr>
-    }
-    <div class="text-center">
-        <div class="" style="border-top: 1px solid #C4C4C4; padding-top: 5%;font-family: sans;">
-            <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-4"></div>
-                <div class="col-md-4"><p class="" style="font-size: 30px;" > <strong>Total :</strong> S/ @total</p> </div>
+        }
+        @foreach (var item in Model){
+            <tr>
+                @{
+                    total = total + item.SubTotal;
+                    contar++;
+                }
+            </tr>
+        }
+        <div class="total col-md-4">
+            <h3 class="total__title">Total del Carrito</h3>
+            <div>
+                <div class="subtotal">
+                    <div class=""> <strong> SubTotal </strong> </div>
+                    <div class="">S/ @total</div>
+                </div>
             </div>
-        </div>    
+            <div>
+                <div class="envio">
+                    <div class="title__shipping"> <strong> Método de envío </strong> </div>
+                    <div class="method__shipping">
+                        <div class="method__shipping__delivery">
+                            <span>Delivery Lima Metropolinata</span>
+                            <br/>
+                            <span>Recoger en tienda</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="total__shipping">
+                    <div class=""> <strong> Total </strong> </div>
+                    <div class="">S/ @total</div>
+                </div>
+            </div>
+        </div>
     </div>
-<br>
 </div>
+
 }
-<style>
-    table th {
-        padding: 15px 10px;
-        color: #2d2a2a;
-        vertical-align: middle;
-        text-align: left;
-        text-transform: uppercase;
-        font-weight: 600;
-        font-family: "Poppins", Helvetica, sans-serif; 
-        font-size: 16px;
-        line-height: 1.2;
-    }
-</style>
