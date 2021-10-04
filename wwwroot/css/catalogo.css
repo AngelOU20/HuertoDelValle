@@ -6,7 +6,7 @@
 }
 body{
     margin: 0;
-    background: #f7f7f7;
+    background: #fff;
 }
 .btn__cart{
     display: block;
@@ -102,8 +102,8 @@ body{
     grid-gap: 20px;
     width:100%;
     font-family:sans-serif;
-    background: #f7f7f7;
-    border-bottom:4px solid rgba(0,0,0,0.1);
+    background: #fff;
+    border-bottom:2px solid rgba(0,0,0,0.1);
 }
 
 .cont1{
