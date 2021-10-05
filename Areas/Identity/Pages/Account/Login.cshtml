@@ -5,11 +5,9 @@
     ViewData["Title"] = "Log in";
 }
 
-
+<div class="container">
 <div class="row">
-    <div class="col-md-1"></div>
     <div class="col-md-12">
-        
             <section>
                 <form id="account" method="post" class="form-register">
                     <center>
@@ -68,14 +66,21 @@
                     </div>
                 </form>
             </section>
-        
     </div>
-    <div class="col-md-1"></div>
+</div>
 </div>
 
 <style>
     body {
         background: #f7f7f7;
+    }
+
+    .container{
+        width: 90%;
+        max-width: 1600px;
+        margin: auto;
+        position: relative;
+        overflow: hidden;
     }
 
     .form-register {

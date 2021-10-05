@@ -24,6 +24,134 @@
 
 <body>
 
+@if (SignInManager.IsSignedIn(User)){
+    @if(UserManager.GetUserName(User).Equals("Administrador@gmail.com")){
+        <link rel="stylesheet" href="~/css/menuAdmi.css" />
+        <section id="body">
+    
+            <header>
+                <div class="icon__menu">
+                    <i class="fas fa-bars" id="btn_open"></i>
+                </div>
+
+                <div class="icon__logout">
+                    <li class="nav__items">
+                        <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                            <button class="btn__logout__admi" type="submit"><i class="fas fa-sign-out-alt" class="icon__logout" title="Salir" ></i></button>
+                        </form>
+                    </li>
+                </div>
+            </header>
+
+            <div class="menu__side" id="menu_side">
+
+                <div class="name__page">
+                    <img src="~/img/logo2.png" class="img_logo_admi" alt="">
+                    <!--<img src="logo2.png" class="img_logo_admi" alt="">  <i class="fab fa-youtube"></i>-->
+                    <h5 class="menu_admi_title">El Huerto del Valle</h5>
+                </div>
+
+                <div class="options__menu">	
+
+                    <a href="#" class="selected">
+                        <div class="option">
+                            <i class="fas fa-users" title="Clientes"></i>
+                            <h5>Clientes</h5>
+                        </div>
+                    </a>
+
+                    <a asp-controller="Producto" asp-action="AdministrarProducto" class="selected">
+                        <div class="option">
+                            <i class="fas fa-seedling" title="Productos"></i>
+                            <h5>Productos</h5>
+                        </div>
+                    </a>
+                    
+                    <a asp-controller="Categoria" asp-action="AdministrarCategoria" class="selected">
+                        <div class="option">
+                            <i class="fas fa-seedling" title="Categorias"></i>
+                            <h5>Categorias</h5>
+                        </div>
+                    </a>
+
+                    <a href="#" class="selected">
+                        <div class="option">
+                            <i class="fas fa-money-bill-wave" title="Ventas"></i>
+                            <h5>Ventas</h5>
+                        </div>
+                    </a>
+
+                    <a href="#" class="selected">
+                        <div class="option">
+                            <i class="fas fa-handshake" title="Consultas"></i>
+                            <h5>Consultas</h5>
+                        </div>
+                    </a>
+
+                    <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" class="selected">
+                        <div class="option" class="selected">
+                            <i class="far fa-address-card" title="Perfil"></i>
+                            <h5>Perfil</h5>
+                        </div>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <br>
+                <div class="contenido">
+                    <main role="main">
+                        @RenderBody()
+                    </main>
+                </div>
+
+            <br>
+
+            <footer class="main-footer">
+                <div class="container con__footer">
+                    <div class="footer__section">
+                        <div class="container__logo">
+                            <img src="~/img/logo.png" alt="" class="footer__logo">
+                        </div>
+                    </div>
+                    <div class="footer__section">
+                        
+                    </div>
+                    <div class="footer__section">
+                        <h2 class="footer__title">Contacto</h2>
+                        <div class="footer__contac">
+                            <i class="contac__icon fas fa-map-marker-alt"></i>
+                            <p class="footer__txt">Lima Perú.</p>
+                        </div>
+                        <div class="footer__contac">
+                            <i class="contac__icon fas fa-phone"></i>
+                            <p class="footer__txt">+51 922 708 667</p>
+                        </div>
+                        <div class="footer__contac">
+                            <i class="contac__icon fas fa-envelope"></i>
+                            <p class="footer__txt">familia@elhuertodelvalle.com</p>
+                        </div>
+                    </div>
+                    <div class="footer__section">
+                        <h2 class="footer__title">Redes Sociales</h2>
+                        <div>
+                            <i class="footer__iconsocial fab fa-facebook"></i>
+                            <i class="footer__iconsocial fab fa-instagram"></i>
+                        </div>
+                    </div>
+                </div>
+                <section class="footer__copy container">
+                    <h3 class="footer__copyright">  Derechos reservados &copy; El Huerto del Valle</h3>
+                </section>
+            </footer>
+
+            <script src="~/js/menuAdmi.js"></script>
+        </section>
+
+
+    }else{
+
     <header class="hero">
         <nav class="nav container1">
             <div class="nav__logo">
@@ -31,9 +159,17 @@
             </div>
 
             <ul class="nav__link nav__link--menu">
-                <partial name="_MenuPartial" />
-                <partial name="_LoginPartial" />
-                <img src="~/img/close.svg" class="nav__close" alt="">
+                <li class="nav__items">
+                    <a  asp-controller="Catalogo" asp-action="Catalogo" class="nav__links">Catálogo</a>
+                </li>
+                <li class="nav__items">
+                    <a  asp-area="" asp-controller="Home" asp-action="Nosotros" class="nav__links">Nosotros</a>
+                </li>
+                <li class="nav__items">
+                    <a asp-area="" asp-controller="Proforma" asp-action="Proforma" class="nav__links">Carrito</a>
+                </li>
+                <partial name="_LoginPartial"/>
+                <img src="~/img/close.svg" class="nav__close" alt="" >
             </ul>
 
             <div class="nav__menu">
@@ -41,7 +177,7 @@
             </div>
         </nav>
     </header>
-
+    
     <br>
     <div class="contenido">
         <main role="main">
@@ -88,7 +224,76 @@
             <h3 class="footer__copyright"> Derechos reservados &copy; El Huerto del Valle</h3>
         </section>
     </footer>
+    }
+}else{
+    <header class="hero">
+        <nav class="nav container1">
+            <div class="nav__logo">
+                <a asp-controller="Home" asp-action="Index"><img src="~/img/logo1.jpg" class="logo1_nav" alt="" ></a>
+            </div>
 
+            <ul class="nav__link nav__link--menu">
+                <li class="nav__items">
+                    <a  asp-controller="Catalogo" asp-action="Catalogo" class="nav__links">Catálogo</a>
+                </li>
+                <li class="nav__items">
+                    <a  asp-area="" asp-controller="Home" asp-action="Nosotros" class="nav__links">Nosotros</a>
+                </li>
+                <partial name="_LoginPartial"/>
+                <img src="~/img/close.svg" class="nav__close" alt="" >
+            </ul>
+
+            <div class="nav__menu">
+                <img src="~/img/menu.svg" class="nav__img" alt="">
+            </div>
+        </nav>
+    </header>
+    <br>
+    <div class="contenido">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <br>
+    <footer class="main-footer">
+        <div class="container con__footer">
+            <div class="footer__section">
+                <div class="container__logo">
+                    <img src="~/img/logo.png" alt="" class="footer__logo">
+                </div>
+            </div>
+            <div class="footer__section">
+                
+            </div>
+            <div class="footer__section">
+                <h2 class="footer__title">Contacto</h2>
+                <div class="footer__contac">
+                    <i class="contac__icon fas fa-map-marker-alt"></i>
+                    <p class="footer__txt">Lima Perú.</p>
+                </div>
+                <div class="footer__contac">
+                    <i class="contac__icon fas fa-phone"></i>
+                    <p class="footer__txt">+51 922 708 667</p>
+                </div>
+                <div class="footer__contac">
+                    <i class="contac__icon fas fa-envelope"></i>
+                    <p class="footer__txt">familia@elhuertodelvalle.com</p>
+                </div>
+            </div>
+            <div class="footer__section">
+                <h2 class="footer__title">Redes Sociales</h2>
+                <div>
+                    <i class="footer__iconsocial fab fa-facebook"></i>
+                    <i class="footer__iconsocial fab fa-instagram"></i>
+                </div>
+            </div>
+        </div>
+        <section class="footer__copy container">
+            <h3 class="footer__copyright">  Derechos reservados &copy; El Huerto del Valle</h3>
+        </section>
+    </footer>
+}
     <script src="~/js/menu.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
