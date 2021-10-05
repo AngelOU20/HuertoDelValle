@@ -1,4 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Stick+No+Bills&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+.container__product{
+    width: 80%;
+    max-width: 1000px;
+    margin: auto;
+    position: relative;
+    overflow: hidden; 
+}
 
 .btn__add_product{
     background: #5DB075;
@@ -10,7 +21,25 @@
 
 .btn__add_product:hover{
     text-decoration: none;
+    background: #41bd64;
+    border: 0.5px solid #41bd64;
+    color: #dce9e8;
+}
+
+.btn__volver{
+    background: #5DB075;
+    border: 0.5px solid #5DB075;
+    border-radius: 100px;
+    padding: 10px 35px;
+    margin: 0 10px;
     color: #FFFFFF;
+}
+
+.btn__volver:hover{
+    text-decoration: none;
+    background: #41bd64;
+    border: 0.5px solid #41bd64;
+    color: #dce9e8;
 }
 
 table{
@@ -47,7 +76,178 @@ td{
     border-bottom: 2px solid #B7C8C7;
 }
 
+/*Registrar Producto*/
+
+.form-title{
+    font-family: 'Cairo', sans-serif;
+    text-align: center;
+    padding-bottom: 15px;
+    letter-spacing: 1.5px;
+}
+
+.form-list {
+    padding-left: 0;
+    list-style: none; 
+}
+
+.form-list__row {
+    margin-bottom: 25px; 
+}
+
+.form-list__row label {
+    position: relative;
+    display: block;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: .5px;
+    color: #939393; 
+}
+
+.form-list__row--inline {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+    justify-content: space-between; 
+}
+
+.form-list__row--inline > :first-child {
+    -ms-flex: 2;
+    flex: 2;
+    padding-right: 20px; }
+
+.form-list__row--inline > :nth-child(2n) {
+    -ms-flex: 1;
+    flex: 1; }
+
+select{
+    background: #F6F6F6;
+    width: calc(100% - 10px);
+    min-height: 30px;
+    padding: 5px;
+    letter-spacing: .5px;
+    border: 1.3px solid #E8E8E8; 
+    border-radius: 4px;
+}
+
+input {
+    background: #F6F6F6;
+    width: calc(100% - 10px);
+    min-height: 30px;
+    /*
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    */
+    padding: 5px;
+    letter-spacing: .5px;
+    border: 1.3px solid #E8E8E8; 
+    border-radius: 4px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #fbcf34; }
+
+textarea{
+    width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 1.3px solid #E8E8E8; 
+    border-radius: 4px;
+    background: #F6F6F6;
+    resize: none;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #fbcf34; }
+
+/*Detalle Producto*/
+.card{
+   background: #fff; 
+}
+
+.title__detalle{
+    font-family: 'Cairo', sans-serif;
+    text-align: center;
+    padding: 15px 0;
+    letter-spacing: 1.5px;
+    font-size: 2.5em;
+}
+
+.details__product{
+    display: grid;
+    padding: 40px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+}
+
+.details__txt{
+    padding: 40px 10px;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.product__details__img{
+    width: 100%;
+}
+
+span{
+    color: #BDBDBD;
+    font-family: 'Cairo', sans-serif;
+    font-size: 18px;
+    padding: 0 10px 0 0;
+}
+
+.details__btn{
+    padding: 10px 0;
+}
+
 @media screen and (max-width:800px){
+
+    .container{
+        width: 100%;
+        max-width: 1000px;
+        margin: auto;
+        position: relative;
+        overflow: hidden; 
+    }
+
+    .btn__add_product{
+        background: #5DB075;
+        border: 0.5px solid #5DB075;
+        border-radius: 100px;
+        font-size: 10px;
+        padding: 10px;
+        color: #FFFFFF;
+    }
+    
+    .btn__add_product:hover{
+        text-decoration: none;
+        background: #41bd64;
+        border: 0.5px solid #41bd64;
+        color: #dce9e8;
+    }
+    
+    .btn__volver{
+        background: #5DB075;
+        border: 0.5px solid #5DB075;
+        border-radius: 100px;
+        font-size: 10px;
+        padding: 10px 25px;
+        margin: 0 10px;
+        color: #FFFFFF;
+    }
+    
+    .btn__volver:hover{
+        text-decoration: none;
+        background: #41bd64;
+        border: 0.5px solid #41bd64;
+        color: #dce9e8;
+    }
+
     .table__title{
         font-family: 'Source Code Pro', monospace;
         font-size: 20px ;
@@ -68,5 +268,36 @@ td{
 
     td{
         padding: 10px 0;
+    }
+
+    /*Detalle Producto*/
+    .title__detalle{
+        font-family: 'Cairo', sans-serif;
+        text-align: center;
+        padding: 15px 0;
+        letter-spacing: 1.5px;
+        font-size: 20px;
+    }
+
+    .details__product{
+        display: grid;
+        padding: 5px;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px;
+    }
+
+    span{
+        color: #BDBDBD;
+        font-family: 'Cairo', sans-serif;
+        font-size: 10px;
+    }
+
+    .details__txt{
+        padding: 0 5px;
+        font-size: 10px;
+    }
+
+    .product__details__img{
+        width: 100%;
     }
 }

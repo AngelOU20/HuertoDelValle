@@ -3,6 +3,7 @@ using HuertoDelValle.Data;
 using HuertoDelValle.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 
 namespace HuertoDelValle.Controllers
@@ -18,10 +19,12 @@ namespace HuertoDelValle.Controllers
             _logger = logger;
             _context = context;
         }
+
         public IActionResult AdministrarCategoria(){
             var categoria = _context.DataCategoria.Include(x => x.Productos).OrderBy(r => r.Id).ToList();
             return View(categoria);
         }
+
         public IActionResult AgregarCategoria(){
             return View();
         }
@@ -35,6 +38,7 @@ namespace HuertoDelValle.Controllers
             }
             return View(c);
         }
+
         public IActionResult EditarCategoria(int Id) {
             var categoria = _context.DataCategoria.Find(Id);
             return View(categoria);
@@ -49,6 +53,11 @@ namespace HuertoDelValle.Controllers
                 return RedirectToAction("AdministrarCategoria");
             }
             return View(c);
+        }
+
+        public IActionResult DetalleCategoria(int Id){
+            var categoria = _context.DataCategoria.Find(Id);
+            return View(categoria);
         }
 
         public IActionResult BorrarCategoria(int Id){
