@@ -48,6 +48,9 @@ namespace HuertoDelValle.Controllers
             return View(proforma);
         }
 
+        public IActionResult Procesar(){
+            return View();
+        }
 
         [HttpPost]
         public IActionResult EditarCantidad(Proforma p){
