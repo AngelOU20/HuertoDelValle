@@ -55,7 +55,7 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Cantidad)
                         </td>
-                        <td>
+                        <td class="subtotal__td">
                             S/ @Html.DisplayFor(modelItem => item.SubTotal)
                         </td>
                     </tr>         
@@ -99,6 +99,11 @@
                 <div class="total__shipping">
                     <div class=""> <strong> Total </strong> </div>
                     <div class="">S/ @total</div>
+                </div>
+            </div>
+            <div>
+                <div class="compra__btn">
+                    <a href="" class="btn__finalizar__compra">Finalizar compra</a>
                 </div>
             </div>
         </div>

@@ -98,10 +98,16 @@ td{
     font-family: 'Lato', sans-serif;
 }
 
+.subtotal__td{
+    color: #007175;
+    font-weight: bold;
+}
+
 .td__product{
     text-align: left;
     padding: 0 2px;
     width: 135px;
+    font-weight: 400;
 }
 
 .table__thead{
@@ -116,7 +122,7 @@ td{
 
 .total{
     border: 3.5px solid #eaeef2;
-    padding: 30px;
+    padding: 30px 50px;
     font-size: 30px;
 }
 
@@ -149,6 +155,7 @@ td{
     font-size: 0.51em;
     text-align: center;
     border-bottom: 1px solid #eaeef2;
+    margin: 5px 0;
 }
 
 .title__shipping{
@@ -168,6 +175,30 @@ td{
     grid-gap: 20px;
     font-size: 0.7em;
     text-align: center;
+}
+
+.compra__btn{
+    display: grid;
+    padding: 0;
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.btn__finalizar__compra{
+    text-align: center;
+    font-family: 'Poppins', serif;
+    background: #007175;
+    border: 0.5px solid #007175;
+    text-transform: uppercase;
+    font-size: 18px;
+    border-radius: 100px;
+    padding: 5px 0px;
+    margin: 20px 50px 0;
+    color: #FFFFFF;
+}
+
+.btn__finalizar__compra:hover{
+    text-decoration: none;
+    color: #dce9e8;
 }
 
 @media screen and (max-width:800px){
@@ -191,6 +222,7 @@ td{
 
     .total{
         font-size: 20px;
+        padding: 30px 30px;
     }
 
     th{
@@ -208,5 +240,22 @@ td{
     .img__product__cart{
         width:45px; 
         height:45px;
+    }
+
+    .btn__finalizar__compra{
+        text-align: center;
+        background: #007175;
+        border: 0.5px solid #007175;
+        text-transform: uppercase;
+        font-size: 13px;
+        border-radius: 100px;
+        padding: 5px 0;
+        margin: 20px;
+        color: #FFFFFF;
+    }
+    
+    .btn__finalizar__compra:hover{
+        text-decoration: none;
+        color: #dce9e8;
     }
 }
