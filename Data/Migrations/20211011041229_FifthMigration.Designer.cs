@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace HuertoDelValle.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210905034918_ThirdMigration")]
-    partial class ThirdMigration
+    [Migration("20211011041229_FifthMigration")]
+    partial class FifthMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -39,6 +39,43 @@ namespace HuertoDelValle.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("T_Categoria");
+                });
+
+            modelBuilder.Entity("HuertoDelValle.Models.Contacto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("Id")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("Apellido")
+                        .HasColumnType("text")
+                        .HasColumnName("apellido");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("email");
+
+                    b.Property<string>("Mensaje")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("mensaje");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("nombre");
+
+                    b.Property<string>("Telefono")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("telefono");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("T_Contactenos");
                 });
 
             modelBuilder.Entity("HuertoDelValle.Models.Producto", b =>

@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace HuertoDelValle.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210915001606_FourthMigratoin")]
-    partial class FourthMigratoin
+    [Migration("20211015211421_SixthMigration")]
+    partial class SixthMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -41,20 +41,41 @@ namespace HuertoDelValle.Data.Migrations
                     b.ToTable("T_Categoria");
                 });
 
-            modelBuilder.Entity("HuertoDelValle.Models.CrearRol", b =>
+            modelBuilder.Entity("HuertoDelValle.Models.Contacto", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
+                        .HasColumnName("Id")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<string>("RoleName")
+                    b.Property<string>("Apellido")
+                        .HasColumnType("text")
+                        .HasColumnName("apellido");
+
+                    b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("email");
 
-                    b.HasKey("id");
+                    b.Property<string>("Mensaje")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("mensaje");
 
-                    b.ToTable("DataCrearRol");
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("nombre");
+
+                    b.Property<string>("Telefono")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("telefono");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("T_Contactenos");
                 });
 
             modelBuilder.Entity("HuertoDelValle.Models.Producto", b =>
@@ -126,6 +147,79 @@ namespace HuertoDelValle.Data.Migrations
                     b.HasIndex("ProductoId");
 
                     b.ToTable("T_Proforma");
+                });
+
+            modelBuilder.Entity("HuertoDelValle.Models.Receta", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("DescripcionReceta")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("DescripcionReceta");
+
+                    b.Property<string>("Imagen")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("urlImagen");
+
+                    b.Property<string>("Ingrediente")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("Ingrediente");
+
+                    b.Property<string>("NombreReceta")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("NombreReceta");
+
+                    b.Property<string>("Preparacion")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("Preparacion");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("T_Receta");
+                });
+
+            modelBuilder.Entity("HuertoDelValle.Models.Reseña", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<int?>("Calificacion")
+                        .IsRequired()
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Comentario")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("RecetaId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("UserId1")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RecetaId");
+
+                    b.HasIndex("UserId1");
+
+                    b.ToTable("T_Reseña");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -346,6 +440,23 @@ namespace HuertoDelValle.Data.Migrations
                     b.Navigation("Producto");
                 });
 
+            modelBuilder.Entity("HuertoDelValle.Models.Reseña", b =>
+                {
+                    b.HasOne("HuertoDelValle.Models.Receta", "Receta")
+                        .WithMany("Reseñas")
+                        .HasForeignKey("RecetaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId1");
+
+                    b.Navigation("Receta");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -400,6 +511,11 @@ namespace HuertoDelValle.Data.Migrations
             modelBuilder.Entity("HuertoDelValle.Models.Categoria", b =>
                 {
                     b.Navigation("Productos");
+                });
+
+            modelBuilder.Entity("HuertoDelValle.Models.Receta", b =>
+                {
+                    b.Navigation("Reseñas");
                 });
 #pragma warning restore 612, 618
         }
