@@ -95,6 +95,9 @@ namespace HuertoDelValle
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+
+            Rotativa.AspNetCore.RotativaConfiguration.Setup(env.WebRootPath,"../Rotativa");
+
         }
     }
 }
