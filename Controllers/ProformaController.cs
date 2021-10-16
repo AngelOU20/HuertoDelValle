@@ -35,12 +35,13 @@ namespace HuertoDelValle.Controllers
             
             var elements = await items.ToListAsync();
             var total = elements.Sum(c => c.SubTotal);
-            
+
             dynamic model = new ExpandoObject();
             model.montoTotal = total;
             model.proformas = elements;
             return View(model);
         }
+        
 
         public IActionResult QuitarProducto(int id) 
         {
@@ -55,6 +56,9 @@ namespace HuertoDelValle.Controllers
             return View(proforma);
         }
 
+        public IActionResult Procesar(){
+            return View();
+        }
 
         [HttpPost]
         public IActionResult EditarCantidad(Proforma p){

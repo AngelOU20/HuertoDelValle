@@ -24,7 +24,7 @@ namespace HuertoDelValle.Models
             PaymentDate = DateTime.Now;
         }
         
-
         public Decimal MontoTotal { get; set; }
+
     }
 }
