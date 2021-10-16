@@ -41,7 +41,7 @@
                     <form asp-action="" method="POST">
                         <div class="container__agregar">
                             <div class="">
-                                <input  class="cantidad form-control" type="number" name="cantidad" min="1" max="5" value="1"/>
+                                <input  class="cantidad" type="number" name="cantidad" min="1" max="5" value="1"/>
                             </div>
 
                             <div class="">
@@ -62,6 +62,10 @@
 <script src="~/js/lightbox.js"></script>
 
 <style>
+    body{
+        background: #fff;
+    }
+
     .container__agregar{
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -146,7 +150,7 @@
     /**/
 
     .cantidad{
-        padding: 10px 0;
+        padding: 5px 0;
         width: 50%;
         background: transparent;
         border: 2px solid #0099CC;
@@ -167,13 +171,13 @@
     }
     
     /**/
-    body{
-        background-color:#F6F3F8;
-    }
+
     .button--transparent {
         background: transparent;
         border: 0;
-        outline: 0; }
+        outline: 0; 
+    }
+
     .button--close {
         position: absolute;
         top: 10px;
@@ -189,16 +193,24 @@
         color: #000;
         border-radius: 50%;
         transition: all .25s;
-        z-index: 10; }
+        z-index: 10; 
+    }
+
     .button--close svg {
         width: 20px;
-        height: 20px; }
+        height: 20px; 
+    }
+
     .button--close svg * {
-        fill: currentColor; }
+        fill: currentColor; 
+    }
+
     .button--close:hover, .button--close:active, .button--close:focus {
         color: #000;
         background-color: #ffffff;
-        box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.1); }
+        box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.1); 
+    }
+
     .modal__featured {
         position: relative;
         -ms-flex: 1;
@@ -242,15 +254,15 @@
         }
 
         .modal__featured {
-        position: relative;
-        -ms-flex: 1;
-            flex: 1;
-        min-width: 220px;
-        padding: 20px;
-        overflow: hidden;
-        left: 50%;
-        border-top-left-radius: 5px;
-        border-bottom-left-radius: 5px; 
+            position: relative;
+            -ms-flex: 1;
+                flex: 1;
+            min-width: 220px;
+            padding: 20px;
+            overflow: hidden;
+            left: 50%;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px; 
         }
     }
         

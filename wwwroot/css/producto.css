@@ -11,10 +11,33 @@
     overflow: hidden; 
 }
 
+.btn__section{
+    display: block;
+}
+
+.btn__pdf{
+    background: #5DB075;
+    border: 0.5px solid #5DB075;
+    border-radius: 100px;
+    text-align: center;
+    padding: 10px 25px;
+    color: #FFFFFF;
+    position: relative;
+    left: 70%;
+}
+
+.btn__pdf:hover{
+    text-decoration: none;
+    background: #41bd64;
+    border: 0.5px solid #41bd64;
+    color: #dce9e8;
+}
+
 .btn__add_product{
     background: #5DB075;
     border: 0.5px solid #5DB075;
     border-radius: 100px;
+    text-align: center;
     padding: 10px;
     color: #FFFFFF;
 }
@@ -220,11 +243,29 @@ span{
         border: 0.5px solid #5DB075;
         border-radius: 100px;
         font-size: 10px;
-        padding: 10px;
+        padding: 8px;
         color: #FFFFFF;
     }
     
     .btn__add_product:hover{
+        text-decoration: none;
+        background: #41bd64;
+        border: 0.5px solid #41bd64;
+        color: #dce9e8;
+    }
+
+    .btn__pdf{
+        background: #5DB075;
+        border: 0.5px solid #5DB075;
+        border-radius: 100px;
+        font-size: 10px;
+        padding: 8px;
+        color: #FFFFFF;
+        position: relative;
+        left: 40%;
+    }
+
+    .btn__pdf:hover{
         text-decoration: none;
         background: #41bd64;
         border: 0.5px solid #41bd64;

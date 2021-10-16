@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using HuertoDelValle.Data;
 using HuertoDelValle.Models;
 using Microsoft.AspNetCore.Identity;
-using System.Dynamic;
+
 
 namespace HuertoDelValle.Controllers
 {
@@ -24,23 +24,27 @@ namespace HuertoDelValle.Controllers
             _userManager = userManager;
         }
 
-        public IActionResult Create(Decimal id)
-        {
-            Orden Orden = new Orden();
-            Orden.UserID = _userManager.GetUserName(User);
-            Orden.montoTotal = id;
 
-            return View(Orden);
+        public IActionResult Procesar(Decimal Id)
+        {
+            Orden orden = new Orden();
+            orden.UserID = _userManager.GetUserName(User);
+            orden.MontoTotal = Id;
+
+            return View(orden);
         }
 
         [HttpPost]
-        public IActionResult Pagar(Orden orden)
+        public IActionResult Envio(Orden orden)
+
         {
             orden.PaymentDate = DateTime.Now;
              _context.Add(orden);
             _context.SaveChanges();
-            ViewData["Message"] = "El pago se ha registrado";
-            return View("Create");
+
+            ViewData["Message"] = "Metodo registrado";
+            return View("Procesar");
+
         }
 
     }

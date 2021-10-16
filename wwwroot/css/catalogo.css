@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@500&display=swap');
 
 
 *{
@@ -9,6 +10,7 @@ body{
     background: #fff;
 }
 .btn__cart{
+    font-family: 'poppins';
     display: block;
     background-color: #fff;
     border: 2px solid  ;
@@ -18,12 +20,12 @@ body{
     padding: 5px 0px;
     text-align: center;
     text-decoration: none;
-    width: 8.2rem;
-    height: 3rem;
+    width: 7.2rem;
+    height: 2.3rem;
     margin: 5px auto;
     transition: all 0.5s;
     transition: transform .5s;
-    box-shadow: 0px 1px 1px 0px #fdfd96;
+    box-shadow: 0px 1px 1px 0px #bdbdbd;
     
 }
 .btn__cart:hover{
@@ -218,8 +220,8 @@ input[type="search"]:focus{
 .product__title{
     padding: 15px 0 0 0;
     text-align: center;
-    font-size:18px;
-    font-family: "Roboto", Sans-serif;
+    font-size: 16px;
+    font-family: 'poppins';
 }
 
 .product__title:hover{
@@ -232,7 +234,8 @@ input[type="search"]:focus{
 .product__price{
     color: #007175;
     font-size: 22px;
-    font-weight: bold;
+    font-weight: 600;
+    font-family: monospace;
 }
 
 .product__icon{
@@ -252,7 +255,6 @@ input[type="search"]:focus{
 
     .fondo__title{
         font-size: 30px;
-        font-family: "AdineuePRO";
     }
     
     .fondo__txt{
@@ -343,8 +345,7 @@ input[type="search"]:focus{
     }
     
     .fondo__title{
-        font-size: 15px;
-        font-family: "AdineuePRO";
+        font-size: 20px;
     }
     
     .fondo__txt{
@@ -371,7 +372,7 @@ input[type="search"]:focus{
         padding:10px 16px;
         border-radius:32px;
         outline:none;
-        border:2px solid #ccd1d1;
+        border:2px solid #17a2b8;
         background:#fff;
         transition:all 0.5s;
     }

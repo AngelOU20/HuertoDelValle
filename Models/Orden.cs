@@ -12,23 +12,19 @@ namespace HuertoDelValle.Models
         [Column("Id")]
         public int Id { get; set; }
 
-        public Proforma ProfId { get; set; }
-
         public String UserID { get; set;}
 
         public String Direccion { get; set; }
 
         public String Estado { get; set; }
 
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime PaymentDate { get; set; }
 
         public Orden() {  
             PaymentDate = DateTime.Now;
         }
         
+        public Decimal MontoTotal { get; set; }
 
-        public Decimal montoTotal { get; set; }
     }
 }

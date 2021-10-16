@@ -1,0 +1,44 @@
+@model IEnumerable<HuertoDelValle.Models.Receta>
+
+@{
+    ViewData["Title"] = "Administrar Receta";
+}
+
+<link rel="stylesheet" href="~/css/receta.css" />
+
+<div class="container">
+    <br>
+    <div class="btn__section">
+        <a asp-action="RegistrarReceta" class="btn__add__receta">Registrar Receta</a>
+    </div>
+    <br>
+    <table class="table__receta">
+        <h1 class="table__title">Lista de Recetas</h1>
+        <thead class="table__thead">
+            <tr>
+                <th>Id</th>
+                <th>Imagen</th>
+                <th>Receta</th>
+                <th>Ingredientes</th>
+                <th class="text-center">Operaciones</th>
+            </tr>
+        </thead>
+        <tbody class="table__body">
+        @foreach (var item in Model)
+        {
+            <tr >
+                <td>@item.Id</td>
+                <td><img src="@item.Imagen" alt="" class="img__receta__table"></td>
+                <td>@item.NombreReceta</td>
+                <td>
+                    @item.Ingrediente
+                </td>
+                <td class="text-center">
+                    <a asp-action="EditarReceta" asp-route-id="@item.Id"><i class="fa fa-pencil"></i></a>  |
+                    <a asp-action="EliminarReceta" asp-route-id="@item.Id" class="text-danger ml-1" onclick="return confirm('¿Seguro que quieres eliminar la receta?')"><i class="fa fa-trash"></i></a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

@@ -32,9 +32,10 @@ namespace HuertoDelValle.Controllers
             items = items.
                 Include(p => p.Producto).
                 Where(s => s.UserID.Equals(userID));
-            var elements = await items.ToListAsync();
-            var total = elements.Sum(c => c.Cantidad * c.Precio );
             
+            var elements = await items.ToListAsync();
+            var total = elements.Sum(c => c.SubTotal);
+
             dynamic model = new ExpandoObject();
             model.montoTotal = total;
             model.proformas = elements;

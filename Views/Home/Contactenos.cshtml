@@ -1,0 +1,68 @@
+@model Contacto
+
+@{
+    ViewData["Title"] = "Contáctenos";
+}
+
+<link rel="stylesheet" href="~/css/contactenos.css" />
+
+<div class="container-fondo">
+    <div class="fondo">
+        <div class="fondo__section">
+            <img src="~/img/fondo.jpg" alt="" class="fondo__img">
+            <div class="fondo__content">
+                <h2 class="fondo__title">Contáctenos</h2>
+                <p class="fondo__txt">
+                    El Huerto del Valle
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="contenedor">
+    <div class="form__con">
+        <div class="img__form">
+            <img src="~/img/logo1.jpg" class="img__log__form" alt="">
+        </div>
+        <div class="form">
+            <h3 class="title__form">contáctenos</h3>
+            <form asp-action="Contactenos" method="POST" class="form-list">
+                <div class="form-list__row">
+                    <label asp-for="Nombre" ></label>
+                    <input asp-for="Nombre"/>
+                    <span asp-validation-for="Nombre" class="text-danger"></span>
+                </div>
+
+                <div class="form-list__row">
+                    <label asp-for="Apellido" ></label>
+                    <input asp-for="Apellido"/>
+                    <span asp-validation-for="Apellido" class="text-danger"></span>
+                </div>
+
+                <div class="form-list__row">
+                    <label asp-for="Email" ></label>
+                    <input asp-for="Email"/>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="form-list__row">
+                    <label asp-for="Telefono" ></label>
+                    <input asp-for="Telefono"/>
+                    <span asp-validation-for="Telefono" class="text-danger"></span>
+                </div>
+
+                <div class="form-list__row">
+                    <label asp-for="Mensaje" ></label>
+                    <textarea asp-for="Mensaje"></textarea>
+                    <span asp-validation-for="Mensaje" class="text-danger"></span>
+                </div>
+
+                <div class="">
+                    <button class="btn__enviar">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
