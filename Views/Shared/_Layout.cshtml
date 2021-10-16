@@ -71,10 +71,10 @@
                         </div>
                     </a>
 
-                    <a href="#" class="selected">
+                    <a asp-controller="Receta" asp-action="AdministrarReceta" class="selected">
                         <div class="option">
-                            <i class="fas fa-money-bill-wave" title="Ventas"></i>
-                            <h5>Ventas</h5>
+                            <i class="fas fa-cookie-bite" title="Recetas"></i>
+                            <h5>Recetas</h5>
                         </div>
                     </a>
 
@@ -160,7 +160,13 @@
                     <a  asp-controller="Catalogo" asp-action="Catalogo" class="nav__links">Catálogo</a>
                 </li>
                 <li class="nav__items">
+                    <a  asp-controller="Receta" asp-action="Recetas" class="nav__links">Recetas</a>
+                </li>
+                <li class="nav__items">
                     <a  asp-area="" asp-controller="Home" asp-action="Nosotros" class="nav__links">Nosotros</a>
+                </li>
+                <li class="nav__items">
+                    <a  asp-area="" asp-controller="Home" asp-action="Contactenos" class="nav__links">Contáctenos</a>
                 </li>
                 <li class="nav__items">
                     <a asp-area="" asp-controller="Proforma" asp-action="Proforma" class="nav__links">Carrito</a>
@@ -234,6 +240,9 @@
                     <a  asp-controller="Catalogo" asp-action="Catalogo" class="nav__links">Catálogo</a>
                 </li>
                 <li class="nav__items">
+                    <a  asp-area="" asp-controller="Home" asp-action="Contactenos" class="nav__links">Contáctenos</a>
+                </li>
+                <li class="nav__items">
                     <a  asp-area="" asp-controller="Home" asp-action="Nosotros" class="nav__links">Nosotros</a>
                 </li>
                 <partial name="_LoginPartial"/>
@@ -297,12 +306,3 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
-
-
-<style>
-    .navbar{
-        background-color: #007175;
-        color: black;
-    }
-</style>
-
