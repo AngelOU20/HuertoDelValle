@@ -64,6 +64,7 @@ th{
 
 td{
     padding: 10px;
+    border-bottom: 2px solid #B7C8C7;
 }
 
 .table__thead{

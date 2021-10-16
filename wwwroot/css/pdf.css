@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@300;500&family=Roboto:wght@300&display=swap');
+.pdf{
+    border: 1px solid #000;
+    border-radius: 10px;
+    padding: 30px;
+    height: 100%;
+}
+
+.header{
+    border-bottom: 1px solid #000;
+    padding: 0 0 5px 0;
+    font-family: 'Noto Sans Mono', monospace;
+    font-weight: 300;
+}
+
+.logo__img{
+    width: 15%;
+}
+
+.table__title{
+    text-align: center;
+    font-size: 30px;
+    padding: 20px 0;
+    font-family: 'Noto Sans Mono', monospace;
+}
+
+.table__thead{
+    text-align: left;
+    font-family: 'Noto Sans Mono', monospace;
+    font-weight: 300;
+}
+
+.table__body{
+    text-align: left;
+    font-family: 'Noto Sans Mono', monospace;
+    font-weight: 300;
+}
