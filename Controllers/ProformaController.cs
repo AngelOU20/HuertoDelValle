@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using HuertoDelValle.Data;
 using HuertoDelValle.Models;
 using Microsoft.AspNetCore.Identity;
+using System.Dynamic;
 
 namespace HuertoDelValle.Controllers
 {
@@ -32,7 +33,13 @@ namespace HuertoDelValle.Controllers
                 Include(p => p.Producto).
                 Where(s => s.UserID.Equals(userID));
             
-            return View(await items.ToListAsync());
+            var elements = await items.ToListAsync();
+            var total = elements.Sum(c => c.SubTotal);
+            
+            dynamic model = new ExpandoObject();
+            model.montoTotal = total;
+            model.proformas = elements;
+            return View(model);
         }
 
         public IActionResult QuitarProducto(int id) 
@@ -60,6 +67,8 @@ namespace HuertoDelValle.Controllers
             }
             return View(p);
         }
+
+        
     }
 
 }
