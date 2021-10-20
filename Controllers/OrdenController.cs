@@ -9,7 +9,7 @@ using HuertoDelValle.Data;
 using HuertoDelValle.Models;
 using Microsoft.AspNetCore.Identity;
 
-
+/*No se utiliza*/
 namespace HuertoDelValle.Controllers
 {
     public class OrdenController : Controller
@@ -30,17 +30,24 @@ namespace HuertoDelValle.Controllers
             orden.UserID = _userManager.GetUserName(User);
             orden.MontoTotal = Id;
 
+
+
             return View(orden);
         }
 
         [HttpPost]
         public IActionResult Envio(Orden orden)
         {
-            orden.PaymentDate = DateTime.Now;
-             _context.Add(orden);
-            _context.SaveChanges();
-            ViewData["Message"] = "Metodo registrado";
-            return View("Procesar");
+            if(ModelState.IsValid){
+                orden.PaymentDate = DateTime.Now;
+                _context.Add(orden);
+                _context.SaveChanges();
+                ViewData["Message"] = "Metodo registrado";
+                return View("Proforma","Proforma");
+            }
+            
+            return View(orden);
+    
         }
 
     }
