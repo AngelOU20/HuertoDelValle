@@ -41,12 +41,12 @@
                     <form asp-action="" method="POST">
                         <div class="container__agregar">
                             <div class="">
-                                <input  class="cantidad" type="number" name="cantidad" min="1" max="5" value="1"/>
+                                <input  class="cantidad" type="number" name="cant" min="1" max="5" value="1"/>
                             </div>
 
                             <div class="">
                                 <input type="hidden" name="id" value="@Html.DisplayFor(model => model.Id)">
-                                <button asp-action="Agregar" class="btn__agregar">Añadir al carrito</button>
+                                <button asp-controller="Proforma" asp-action="Buy1" class="btn__agregar">Añadir al carrito</button>
                             </div>
                         </div>
                     </form>

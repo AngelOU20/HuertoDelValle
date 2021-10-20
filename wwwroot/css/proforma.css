@@ -114,6 +114,15 @@ td{
     border-bottom: 2px solid #eaeef2;
 }
 
+.update__cantidad{
+    width: 50%;
+    text-align: center;
+}
+
+.update__cantidad:focus{
+    outline: none;
+}
+
 .table__tbody{
     border-bottom: 2px solid #eaeef2;
 }
@@ -199,6 +208,56 @@ td{
 .btn__finalizar__compra:hover{
     text-decoration: none;
     color: #dce9e8;
+}
+
+.container__btn__envio{
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.btn__metodo__envio{
+    text-align: center;
+    font-family: 'Poppins', serif;
+    background: #007175;
+    border: 0.5px solid #007175;
+    font-size: 18px;
+    border-radius: 100px;
+    padding: 5px 20px;
+    color: #FFFFFF;
+}
+
+.btn__metodo__envio:focus{
+    outline: none;
+}
+
+.cont__btn__env{
+    display: grid;  
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0px;
+}
+
+.btn__def__envi{
+    text-align: center;
+    font-family: 'Poppins', serif;
+    background: #007175;
+    border: 0.5px solid #007175;
+    font-size: 15px;
+    border-radius: 100px;
+    padding: 7px 5px;
+    margin: 0;
+    color: #FFFFFF;
+}
+
+.btn__def__envi:focus{
+    outline: none;
+}
+
+.btn__def__envi:hover{
+    text-decoration: none;
+    color: #FFFFFF;
 }
 
 @media screen and (max-width:800px){
