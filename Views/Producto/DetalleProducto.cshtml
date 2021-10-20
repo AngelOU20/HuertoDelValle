@@ -4,36 +4,24 @@
     ViewData["Title"] = "Detalle";
 }
 
-<div class="container">
-    <br>
-    <section class="block">
-            <div class="block__container contenedor">
+<link rel="stylesheet" href="~/css/producto.css" />
 
-                <div class="block__texts">
-                    <h2 class="block__subtitle">@Html.DisplayFor(model => model.NombreProducto)</h2>
-          
-                    <p class="block__paragraph">
-                        Precio: S/.@Html.DisplayFor(model => model.PrecioProducto)
-                    </p>
-                    <p class="block__paragraph">
-                        Stock : @Html.DisplayFor(model => model.Stock)
-                    </p>
-                    <p class="block__paragraph">
-                        Descripción: <br/>@Html.DisplayFor(model => model.DescripcionProducto)
-                    </p>
-                </div>
-
-                <figure class="block__picture">
-                     <img src="@Html.DisplayFor(model => model.ImagenProducto)" class="block__img" alt="">
-                </figure>
+<div class="container__product">
+    <div class="card">
+        <h3 class="title__detalle">Detalle del Producto</h3>
+        <div class="details__product">
+            <div class="details__txt">
+                <p> <span>Nombre:</span> @Html.DisplayFor(model => model.NombreProducto)</p>
+                <p> <span>Stock:</span> @Html.DisplayFor(model => model.Stock) unidades</p>
+                <p> <span>Precio:</span> S/ @Html.DisplayFor(model => model.PrecioProducto)</p>
+                <p> <span>Descripción:</span> <br/> @Html.DisplayFor(model => model.DescripcionProducto)</p>
             </div>
-        </section>
+            <div class="details__img">
+                <img src="@Html.DisplayFor(model => model.ImagenProducto)" class="product__details__img" alt="">
+            </div>
+            <div class="details__btn">
+                <a asp-action="AdministrarProducto"  class="btn__volver" >Volver</a>
+            </div>
+        </div>
+    </div>
 </div>
-
-<br>
-
-<style>
-
-
-
-</style>

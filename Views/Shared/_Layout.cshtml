@@ -8,13 +8,13 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no">
     <title>@ViewData["Title"] | HuertoDelValle</title>
     <link rel="shortcut icon" href="~/img/logo2.png" type="image/x-icon">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/footer.css" />
     <link rel="stylesheet" href="~/css/header.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="~/font/css/open-iconic-bootstrap.css" rel="stylesheet">
     <!--Tipo de letra -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -74,10 +74,10 @@
                         </div>
                     </a>
 
-                    <a href="#" class="selected">
+                    <a asp-controller="Receta" asp-action="AdministrarReceta" class="selected">
                         <div class="option">
-                            <i class="fas fa-money-bill-wave" title="Ventas"></i>
-                            <h5>Ventas</h5>
+                            <i class="fas fa-cookie-bite" title="Recetas"></i>
+                            <h5>Recetas</h5>
                         </div>
                     </a>
 
@@ -163,7 +163,13 @@
                     <a  asp-controller="Catalogo" asp-action="Catalogo" class="nav__links">Catálogo</a>
                 </li>
                 <li class="nav__items">
+                    <a  asp-controller="Receta" asp-action="Recetas" class="nav__links">Recetas</a>
+                </li>
+                <li class="nav__items">
                     <a  asp-area="" asp-controller="Home" asp-action="Nosotros" class="nav__links">Nosotros</a>
+                </li>
+                <li class="nav__items">
+                    <a  asp-area="" asp-controller="Home" asp-action="Contactenos" class="nav__links">Contáctenos</a>
                 </li>
                 <li class="nav__items">
                     <a asp-area="" asp-controller="Proforma" asp-action="Proforma" class="nav__links">Carrito</a>
@@ -237,6 +243,9 @@
                     <a  asp-controller="Catalogo" asp-action="Catalogo" class="nav__links">Catálogo</a>
                 </li>
                 <li class="nav__items">
+                    <a  asp-area="" asp-controller="Home" asp-action="Contactenos" class="nav__links">Contáctenos</a>
+                </li>
+                <li class="nav__items">
                     <a  asp-area="" asp-controller="Home" asp-action="Nosotros" class="nav__links">Nosotros</a>
                 </li>
                 <partial name="_LoginPartial"/>
@@ -248,14 +257,13 @@
             </div>
         </nav>
     </header>
-    <br>
-    <div class="contenido">
-        <main role="main">
+
+    <div class="">
+
             @RenderBody()
-        </main>
+
     </div>
 
-    <br>
     <footer class="main-footer">
         <div class="container con__footer">
             <div class="footer__section">
@@ -303,13 +311,4 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
-
 </html>
-
-
-<style>
-    .navbar {
-        background-color: #007175;
-        color: black;
-    }
-</style>

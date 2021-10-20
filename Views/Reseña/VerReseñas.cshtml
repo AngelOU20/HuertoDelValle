@@ -1,0 +1,68 @@
+@model List<Reseña>
+
+@{
+    ViewData["Title"] = "Comentarios";
+}
+
+<link rel="stylesheet" href="~/css/reseña.css" />
+
+<div class="fondo">
+    <div class="text-center">
+        <h1 class="title__rese">@ViewBag.rece</h1>
+        <h3 class="title__rese">Reseñas</h3>
+    </div>
+    @if (true)
+    {
+        int comentarionro = 1;
+        @foreach (var receta in Model)
+        {
+            <div class="container reseña__cont">
+                <div class="row" style="background-color: teal;">
+                    <div class="col-8">
+                        Comentario #@comentarionro
+                        <small style="margin-left: 15px;">
+                            @receta.Fecha.ToString()
+                        </small>
+                    </div>
+                    <div class="col-4 text-right">
+                        <label>
+                        @for (int i = 0; i < (int)receta.Calificacion; i++)
+                        {
+                            <span class="fa fa-star checked"></span>
+                        }
+                        @for (int i = 0; i < 5-(int)receta.Calificacion; i++)
+                        {
+                            <span class="fa fa-star"></span>
+                        }
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" style="padding-left: 10%; padding-right: 10%; padding-top: 0.5rem; text-align: justify; text-justify: auto;">
+                        <i>
+                            "@receta.Comentario"
+                        </i>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-8">                        
+                    </div>
+                    <div class="col-4 text-right mb-3">
+                        <small>
+                            <b>
+                                ~@receta.UserId~
+                            </b>
+                        </small>
+                    </div>
+                </div>
+            </div>
+            comentarionro++;
+        }
+    }
+</div>
+
+<div class="contenedor">
+    <div class="contenedor__boton">
+        <a asp-controller="Receta" asp-action="Recetas" class="btn__volver" >Volver</a>    
+    </div>
+</div>

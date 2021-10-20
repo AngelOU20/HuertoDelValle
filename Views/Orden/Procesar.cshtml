@@ -1,0 +1,132 @@
+@model HuertoDelValle.Models.Orden
+
+@{
+    ViewData["Title"] = "Procesar Compra";
+}           
+
+    <!-- <script>
+           function concatenar (){
+            Campo1=document.getElementById('campo1').value;
+            Campo2=document.getElementById('campo2').value;
+
+            Final=campo1+(", ")+campo2;
+
+            Document.getelementbyid('final').value=final;
+            Document.forms.(nombre del forms).submit();*/
+
+        }
+    </script>-->
+<br>
+<div class="container">
+    <h1>Confirmar Compra</h1>
+    <hr>
+    <div class="row">
+        <div class="col-md-8">
+            <form asp-controller="Orden" asp-action="Envio" method="POST">
+
+                <input type="hidden" asp-for="UserID"/>
+                
+                <input type="radio" name="entrega" value="1" onclick="habilitar(this)" checked>Delivery  
+                <input type="radio" name="entrega" value="2" onclick="habilitar(this)">Entrega en Tienda
+                
+                <div id="uno" class="form-group">
+                    <br/>
+                    <label class="control-label">Direccion</label>
+                    <br>
+                    <select>
+                        <option value="">Seleccione</option>
+                        <option value="Ancon, ">ANCON</option>
+                        <option value="Ate, ">ATE</option>
+                        <option value="Barranco, ">BARRANCO</option>
+                        <option value="Breña, ">BREÑA</option>
+                        <option value="Carabayllo, ">CARABAYLLO</option>
+                        <option value="Chaclacayo, ">CHACLACAYO</option>
+                        <option value="Chorrillos, ">CHORRILLOS</option>
+                        <option value="Cieneguill, ">CIENEGUILLA</option>
+                        <option value="Comas, ">COMAS</option>
+                        <option value="El agustino, ">EL AGUSTINO</option>
+                        <option value="Independencia, ">INDEPENDENCIA</option>
+                        <option value="Jesis Maria, ">JESUS MARIA</option>
+                        <option value="La molina, ">LA MOLINA</option>
+                        <option value="La victoria, ">LA VICTORIA</option>
+                        <option value="Lima, ">LIMA</option>
+                        <option value="Lince, ">LINCE</option>
+                        <option value="Los olivos, ">LOS OLIVOS</option>
+                        <option value="Lurigancho, ">LURIGANCHO</option>
+                        <option value="Lurin, ">LURIN</option>
+                        <option value="Magdalena, ">MAGDALENA DEL MAR</option>
+                        <option value="Miraflores, ">MIRAFLORES</option>
+                        <option value="Pchacamac, ">PACHACAMAC</option>
+                        <option value="Pucusana, ">PUCUSANA</option>
+                        <option value="Pueblo Libre, ">PUEBLO LIBRE</option>
+                        <option value="Puente piedra, ">PUENTE PIEDRA</option>
+                        <option value="Punta hermosa, ">PUNTA HERMOSA</option>
+                        <option value="Punta negra, ">PUNTA NEGRA</option>
+                        <option value="Rimac, ">RIMAC</option>
+                        <option value="San bartolo, ">SAN BARTOLO</option>
+                        <option value="San borja, ">SAN BORJA</option>
+                        <option value="San Isidro, ">SAN ISIDRO</option>
+                        <option value="San Juan de Lurigancho, ">SAN JUAN DE LURIGANCHO</option>
+                        <option value="San Juan de Miraflores, ">SAN JUAN DE MIRAFLORES</option>
+                        <option value="San Luis, ">SAN LUIS</option>
+                        <option value="San Martin de Porres, ">SAN MARTIN DE PORRES</option>
+                        <option value="San Miguel, ">SAN MIGUEL</option>
+                        <option value="Santa Anita, ">SANTA ANITA</option>
+                        <option value="Santa Maria del Mar, ">SANTA MARIA DEL MAR</option>
+                        <option value="Santa Rosa, ">SANTA ROSA</option>
+                        <option value="Santiago de Surco, ">SANTIAGO DE SURCO</option>
+                        <option value="Surquillo, ">SURQUILLO</option>
+                        <option value="Villa el Salvador, ">VILLA EL SALVADOR</option>
+                        <option value="Villa Maria del Triunfo, ">VILLA MARIA DEL TRIUNFO</option>
+                    </select>
+                    <br>
+                    <br>
+                    <input type=text name="direccion" class="form-control"/>
+                    <span  class="text-danger"></span>
+                </div>
+
+                <div id="dos" class="form-group">
+                    <br/>
+                    <label class="control-label">Entrega en Tienda</label>
+                    <a>"Insertar direccion de la tienda fisica"</a>
+                    <span  class="text-danger"></span>
+                </div>
+
+                <div class="total__shipping">
+                    <div class=""> <strong> Total </strong> 
+                        <div class="form-group row">
+                            <div class="col-sm-6">
+                                <input asp-for="MontoTotal" class="form-control" data-thousands="," data-decimal="." />
+                                <p>"*El delivery costo adicional de S/ 10.00"</p>
+                            </div>
+                    </div>
+                    <br/>
+                </div>
+                <div class="form-group">
+                    <a asp-action="PagarPedido" class="btn btn-danger">Pagar Pedido</a>
+                    <a  asp-controller="Proforma" asp-action="Proforma"  class="btn btn-danger">Regresar al Carrito</a>
+                    <br/>
+                </div>
+            </form>       
+        </div>
+    </div>
+</div>
+@{
+    Decimal montoTotal = @Model.MontoTotal;
+}
+    <script>
+            function habilitar(elemento) {
+
+                if (elemento.value=="1"){
+                    document.getElementById("uno").style.display ="block";
+                    document.getElementById("dos").style.display = "none";
+                    total= @Model.MontoTotal + 10;
+                }else{
+                    if(elemento.value=="2"){
+                     document.getElementById("uno").style.display = "none";
+                     document.getElementById("dos").style.display = "block";
+                    }
+                    
+                }
+           }
+    </script>

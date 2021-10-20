@@ -33,7 +33,12 @@
                         <ol>
                             <span>@producto.NombreProducto</span>
                         </ol>
-                    }     
+                    } 
+                    @if (item.Productos.Count == 0){
+                        <ol>
+                            <span>No hay productos registrados 😔</span>
+                        </ol>
+                    }    
                 </td>
                 <td class="text-center">
                     <a asp-action="EditarCategoria" asp-route-id="@item.Id"><i class="fa fa-pencil"></i></a>  |

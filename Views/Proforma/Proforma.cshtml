@@ -1,4 +1,3 @@
-@model IEnumerable<HuertoDelValle.Models.Proforma>
 
 @{
     ViewData["Title"] = "Carrito";
@@ -6,7 +5,10 @@
 
 <link rel="stylesheet" href="~/css/proforma.css" />
 
-@if (Model.Count() == 0){
+@{int count = 0;}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js">
+</script>
+@if (ViewBag.cart == null){
     <div class="container text-center">
         <div class="carrito__vacio">
             <img src="~/img/cartvacio.png" alt="" class="cart__img">
@@ -19,89 +21,162 @@
         </div>
     </div>
 }else{
-<div class="container">
-    <h1>Carrito de Compras</h1>
-    <br>
-    <table class="table">
-        <thead>
-            <tr>
-                <th></th>
-                <th colspan="2" class="text-center">
-                    Producto
-                </th>
-                <th></th>
-                <th class="text-center">
-                    Cantidad
-                </th>
-                <th class="text-center">
-                    SubTotal
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model) {
-                <tr>
-                    <td class="text-center">
-                        <a asp-action="QuitarProducto" asp-route-id="@item.Id" style="color: #D52F0B;" ><i class="fa fa-remove"></i></a>
-                    </td>
-                    <td colspan="2">
-                        <div class="row">
-                            <div class="col-md-2"></div>
-                            <div class="col-md-2">
-                                <img src="@Html.DisplayFor(modelItem => item.Producto.ImagenProducto)" width="65px" height="65px" alt="">
-                            </div>
-                            <div class="col-md-8" style="text-align:left;">
-                                @Html.DisplayFor(modelItem => item.Producto.NombreProducto)
+@using (Html.BeginForm("Update", "Proforma", FormMethod.Post))
+{
+    <input type="submit" value="Update" style="display:none">
+        <div class="container">
+            <div class="block__shopping row">
+                <div class="shopping__cart col-md-8">
+                    <table class="table__cart">
+                        <thead class="table__thead">
+                            <tr>
+                                <th></th>
+                                <th colspan="2">Producto</th>
+                                <th>Precio</th>
+                                <th>Cantidad</th>
+                                <th>SubTotal</th>
+                            </tr>
+                        </thead>
+
+                        <tbody class="table__tbody">
+                        @foreach (var item in ViewBag.cart) {
+                            <tr>
+                                <td>
+                                    <a asp-controller="Proforma" asp-action="Quitar" asp-route-id="@item.producto.Id" style="color: #D52F0B;" ><i class="fa fa-remove"></i></a>
+                                </td>
+                                <td class="img__td">
+                                    <img src="@item.producto.ImagenProducto" class="img__product__cart" alt="">
+                                </td>
+                                <td class="td__product">
+                                    @item.producto.NombreProducto
+                                </td>
+                                <td>
+                                    S/@item.producto.PrecioProducto
+                                </td>
+                                <td>
+                                    <div class="product-quantity">
+                                        <input type="number" name="quantity" value="@item.cantidad" min="1" pattern="^[0-9]+" class="update__cantidad">
+                                    </div>
+                                </td>
+                                <td class="subtotal__td">
+                                    S/ @(item.producto.PrecioProducto * item.cantidad)
+                                </td>
+                            </tr>  
+                            count++;                
+
+                        }
+                        </tbody>
+                    </table>
+                </div>
+   
+                <div class="total col-md-4">
+                    <h3 class="total__title">Total del Carrito</h3>
+                    <div>
+                        <div class="subtotal">
+                            <div class=""> <strong> SubTotal </strong> </div>
+                            <div class="">S/@ViewBag.subtotal</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="envio">
+                            <div class="title__shipping"> <strong> Método de envío </strong> </div>
+                            <div class="method__shipping">
+                                <div class="method__shipping__delivery">
+                                    <span>Delivery Lima Metropolinata</span>
+                                    <br/>
+                                    <span>o</span>
+                                    <br/>
+                                    <span>Recoger en tienda</span>
+                                </div>
                             </div>
                         </div>
-                    </td>
-                    <td class="text-center">
-                        <a asp-action="EditarCantidad" asp-route-id="@item.Id" style="color: #000;" ><i class="fa fa-pencil"></i></a>
-                    </td>
-                    <td class="text-center">
-                        @Html.DisplayFor(modelItem => item.Cantidad)
-                    </td>
-                    <td class="text-center">
-                        S/ @Html.DisplayFor(modelItem => item.SubTotal)
-                    </td>
-                </tr>         
-            }
-        </tbody>
-    </table>
-    @{
-        decimal total = 0;
-        var contar = 1;
-    }
-    @foreach (var item in Model){
-        <tr>
-            @{
-                total = total + item.SubTotal;
-                contar++;
-            }
-        </tr>
-    }
-    <div class="text-center">
-        <div class="" style="border-top: 1px solid #C4C4C4; padding-top: 5%;font-family: sans;">
-            <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-4"></div>
-                <div class="col-md-4"><p class="" style="font-size: 30px;" > <strong>Total :</strong> S/ @total</p> </div>
+                    </div>
+                    <div>
+                        <div class="total__shipping">
+                            <div class=""> <strong> Total </strong> </div>
+                            <div class="">S/@ViewBag.total </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="compra__btn">
+                            <a asp-controller="Orden" asp-action="Procesar" class="btn__finalizar__compra">Finalizar Compra</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>    
-    </div>
-<br>
-</div>
+        </div>
 }
-<style>
-    table th {
-        padding: 15px 10px;
-        color: #2d2a2a;
-        vertical-align: middle;
-        text-align: left;
-        text-transform: uppercase;
-        font-weight: 600;
-        font-family: "Poppins", Helvetica, sans-serif; 
-        font-size: 16px;
-        line-height: 1.2;
-    }
-</style>
+<div class="container__btn__envio">
+    <button type="button" class="btn__metodo__envio" data-toggle="modal" data-target="#exampleModalCenter">   
+		Método de Envio
+	</button>
+</div>			
+		@using (Html.BeginForm("envio", "Proforma", FormMethod.Post))
+	    {
+		
+					<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered" role="document">
+						<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLongTitle">Método de envio</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							@if (ViewBag.envios == null)
+							{
+
+							<h4>Distrito</h4>
+							<select class="form-select" aria-label="Default select example" name="id">
+								<option selected>Selecione su distrito:  ... </option>
+								@foreach (var envio in ViewBag.tipoenvio)
+								{
+									<option value="@envio.Id">@envio.lugar</option>
+								}
+
+
+								
+							</select>
+							<br><br>
+							<div class="input-group mb-3">
+								<span class="input-group-text" id="inputGroup-sizing-default">Dirección</span>
+								<input type="text" class="form-control" aria-label="Sizing example input"  name="distrito" aria-describedby="inputGroup-sizing-default" placeholder="No es necesario si selecciona recojo en tienda" required>
+							</div>
+							}else {
+								
+							<h4>Distrito</h4>
+							<select class="form-select" aria-label="Default select example" name="id">
+								@foreach (var item in ViewBag.envios)
+								{
+								<option value="@item.tipoEnvio.Id" selected>@item.tipoEnvio.lugar</option>
+								}
+								@foreach (var envio in ViewBag.tipoenvio)
+								{
+									<option value="@envio.Id">@envio.lugar</option>
+								}
+							</select>
+							<br><br>
+							<div class="input-group mb-3">
+								<span class="input-group-text" id="inputGroup-sizing-default">Dirección</span>
+								@foreach (var item in ViewBag.envios)
+								{
+								    <input type="text" class="form-control" aria-label="Sizing example input"  name="distrito" aria-describedby="inputGroup-sizing-default" placeholder="No es necesario si selecciona recojo en tienda" value="@item.Direccion">
+								}
+							</div>
+							}
+						</div>
+						<div class="modal-footer cont__btn__env">
+							<button type="button" class="btn__def__envi" data-dismiss="modal">Cancelar</button>
+							<button type="submit" class="btn__def__envi">Guardar</button>
+							<a type="button" class="btn__def__envi" asp-controller="Proforma" asp-action="recojoTienda">Recojo en tienda</a>
+						</div>
+						</div>
+					</div>
+					</div>
+	    }
+
+}
+
+
+<script src="~/js/carrito.js"></script>

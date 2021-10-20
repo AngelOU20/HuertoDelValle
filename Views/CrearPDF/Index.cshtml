@@ -1,0 +1,60 @@
+@model List<Producto>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    Layout = null;
+}
+
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/pdf.css" />
+</head>
+@{
+    var fecha = "";
+
+    fecha = DateTime.Now.ToString("");
+
+}
+
+
+<div class="pdf">
+    <header class="header">
+        <div class="row">
+            <div class="col-md-5 text-center">
+                <img src="~/img/logo.png" alt="" class="logo__img">
+            </div>
+            <div class="col-md-7">
+                <p>
+                Fecha: @fecha </br>
+                Usuario: @User.Identity.Name
+                </p>
+            </div> 
+        </div>
+    </header>
+    <h1 class="table__title">Inventario de productos</h1>
+    <table class="table table-bordered">
+        <thead class="table__thead">
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Categoria</th>
+            </tr>
+        </thead>
+        <tbody class="table__body">
+        @foreach (var item in Model)
+        {
+            <tr >
+                <td>@item.Id</td>
+                <td>@item.NombreProducto</td>
+                <td>S/@item.PrecioProducto</td>
+                <td>@item.Stock unidades</td>
+                <td>@item.Categoria.NombreCategoria</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using HuertoDelValle.Data;
 using HuertoDelValle.Models;
 
 namespace HuertoDelValle.Controllers
@@ -12,10 +13,12 @@ namespace HuertoDelValle.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ApplicationDbContext _context;
 // Esto es un coms una prueba
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger,ApplicationDbContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
@@ -28,6 +31,20 @@ namespace HuertoDelValle.Controllers
             return View();
         }
 
+        public IActionResult Contactenos()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Contactenos(Contacto c){
+            if(ModelState.IsValid){
+                _context.Add(c);
+                _context.SaveChanges();
+                return RedirectToAction("Index","Home");
+            }
+            return View(c);
+        }
 
         public IActionResult Privacy()
         {

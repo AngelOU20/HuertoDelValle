@@ -17,7 +17,7 @@ using Microsoft.AspNetCore.Authorization;
 
 using Microsoft.AspNetCore.Identity.UI.Services;
 using HuertoDelValle.Services;
-
+using Microsoft.AspNetCore.Http;
 
 namespace HuertoDelValle
 {
@@ -64,6 +64,18 @@ namespace HuertoDelValle
             {
                 options.AddPolicy("Admin", policy => policy.RequireRole("Admin"));
             });
+            
+            services.AddSession(options =>
+            {
+                // Set a short timeout for easy testing.
+                options.IdleTimeout = TimeSpan.FromMinutes(60);
+                // You might want to only set the application cookies over a secure connection:
+                options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+                options.Cookie.SameSite = SameSiteMode.Strict;
+                options.Cookie.HttpOnly = true;
+                // Make the session cookie essential
+                options.Cookie.IsEssential = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -85,6 +97,9 @@ namespace HuertoDelValle
 
             app.UseRouting();
 
+            app.UseSession(new SessionOptions() { Cookie = new CookieBuilder() { 
+            Name = ".AspNetCore.Session.HuertoDelValle"}});
+
             app.UseAuthentication();
             app.UseAuthorization();
 
@@ -95,6 +110,9 @@ namespace HuertoDelValle
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+
+            Rotativa.AspNetCore.RotativaConfiguration.Setup(env.WebRootPath,"../Rotativa");
+
         }
     }
 }

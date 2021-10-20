@@ -41,7 +41,7 @@ body{
 
 .footer__logo{
     transition: transform .4s;
-    width : 200px;
+    width : 150px;
 }
 
 .footer__logo:hover{
@@ -50,8 +50,9 @@ body{
 
 .footer__title{
    border-bottom: 1px dotted #555;
-   padding: 20px 0; 
+   padding: 10px 0; 
    font-family: "Monaco", monospace;
+   font-size: 22px;
 }
 
 .footer__contac{
@@ -86,7 +87,7 @@ body{
 }
 
 .footer__copyright{
-    padding: 20px 0;
+    padding: 10px 0;
     font-weight: 300;
     font-size: 15px;
 }
@@ -109,7 +110,7 @@ body{
     .footer__logo:hover{
         transform: scale(1.15);
     }
-    
+
     .con__footer{
         display: grid;
         grid-template-columns: repeat(1, 1fr);
@@ -169,7 +170,7 @@ body{
 
     .footer__logo{
         transition: transform .4s;
-        width : 150px;
+        width : 100px;
     }
     
     .footer__logo:hover{
@@ -179,14 +180,40 @@ body{
     .con__footer{
         display: grid;
         grid-template-columns: repeat(1, 1fr);
-        grid-gap: 10px;
+        grid-gap: 5px;
+    }
+
+    .footer__title{
+        border-bottom: 1px dotted #555;
+        padding: 20px 0; 
+        font-family: "Monaco", monospace;
+        font-size: 15px;
+     }
+
+     .contac__icon{
+        font-size: 11px;
     }
 
     .footer__txt{
         display: inline-block;
+        text-decoration:none;
         color: #555;
-        font-size: 12px;
+        font-size: 11px;
         font-family: "Monaco", monospace;
         padding: 5px 10px;
+    }
+
+    .footer__iconsocial{
+        display: block;
+        color:#007175;
+        margin: 10px 10px;
+        cursor: pointer;
+        font-size: 20px;
+    }
+
+    .footer__copyright{
+        padding: 5px 0;
+        font-weight: 300;
+        font-size: 12px;
     }
 }
