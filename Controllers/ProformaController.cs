@@ -23,6 +23,11 @@ namespace HuertoDelValle.Controllers
             _userManager = userManager;
         }
 
+        public IActionResult Pasarela()
+        {
+            return View();
+        }
+
         // GET: Proforma
         public async Task<IActionResult> Proforma()
         {

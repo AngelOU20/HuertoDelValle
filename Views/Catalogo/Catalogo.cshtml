@@ -22,31 +22,6 @@
     </div>
 </div>
 
-<div class="container">
-    <nav class="navbar">
-        <div class="container-fluid buscador-productos">
-            <div class="col-md-3">
-                <div class="dropdown">
-                    <form asp-controller="Catalogo" asp-action="Catalogo">
-                        <select class="custom-select btn btn-outline-light" type="button" name="FiltrarCategoria"
-                            onchange="this.form.submit()">
-                            <option>Categorias</option>
-                            @foreach (Categoria item in Model.Categoria)
-                            {
-                                <option class="dropdown-item" value="@item.Id">@item.NombreCategoria</option>
-                            }
-                        </select>
-                    </form>
-                </div>
-            </div>
-            <div class="col-md-5">
-                <form class="d-flex" method="POST" class="text-right">
-                    <input type="text" name="Buscar" placeholder="Buscar..." required>
-                </form>
-            </div>
-        </div>
-    </nav>
-</div>
 
 <main class="main">
     <div class="container">
