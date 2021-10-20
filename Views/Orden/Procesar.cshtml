@@ -4,7 +4,7 @@
     ViewData["Title"] = "Procesar Compra";
 }           
 
-   <!-- <script>
+    <!-- <script>
            function concatenar (){
             Campo1=document.getElementById('campo1').value;
             Campo2=document.getElementById('campo2').value;
@@ -95,8 +95,9 @@
                 <div class="total__shipping">
                     <div class=""> <strong> Total </strong> 
                         <div class="form-group row">
-                            <div class="col-sm-2">
+                            <div class="col-sm-6">
                                 <input asp-for="MontoTotal" class="form-control" data-thousands="," data-decimal="." />
+                                <p>"*El delivery costo adicional de S/ 10.00"</p>
                             </div>
                     </div>
                     <br/>
@@ -110,13 +111,16 @@
         </div>
     </div>
 </div>
-
+@{
+    Decimal montoTotal = @Model.MontoTotal;
+}
     <script>
             function habilitar(elemento) {
+
                 if (elemento.value=="1"){
                     document.getElementById("uno").style.display ="block";
                     document.getElementById("dos").style.display = "none";
-                    /*total= totaal + 10;*/
+                    total= @Model.MontoTotal + 10;
                 }else{
                     if(elemento.value=="2"){
                      document.getElementById("uno").style.display = "none";
