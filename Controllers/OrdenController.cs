@@ -24,6 +24,7 @@ namespace HuertoDelValle.Controllers
             _userManager = userManager;
         }
 
+
         public IActionResult Procesar(Decimal Id)
         {
             Orden orden = new Orden();
@@ -37,7 +38,9 @@ namespace HuertoDelValle.Controllers
 
         [HttpPost]
         public IActionResult Envio(Orden orden)
+
         {
+
             if(ModelState.IsValid){
                 orden.PaymentDate = DateTime.Now;
                 _context.Add(orden);
@@ -48,6 +51,7 @@ namespace HuertoDelValle.Controllers
             
             return View(orden);
     
+
         }
 
     }

@@ -54,6 +54,7 @@ namespace HuertoDelValle.Controllers
                 return RedirectToAction("Login","Account");
             }
         }
+        
 
         public IActionResult Buy(int id)
         {
@@ -123,6 +124,7 @@ namespace HuertoDelValle.Controllers
                 SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", carrito);
             }
             return RedirectToAction("Proforma", "Proforma");
+
         }
 
         [HttpPost]
