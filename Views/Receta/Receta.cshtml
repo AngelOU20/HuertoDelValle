@@ -4,13 +4,87 @@
     ViewData["Title"] = "Detalle de la Receta";
 }
 
-<div>
-    <div>
-        <div>
-            <img src="" alt="">
+<link rel="stylesheet" href="~/css/receta.css" />
+
+<div class="container">
+    <div class="contenedor__receta">
+        <div class="contenedor__img">
+            <img src="@Html.DisplayFor(model => model.Imagen)" alt="" class="img__receta">
         </div>
         <div>
-            
+            <div class="contenedor__desc__receta">
+                <p>@Html.DisplayFor(model => model.DescripcionReceta)</p>
+                <span>Te dejamos la receta: 👇🏻</span>
+                <div class="contenedor__ingredientes">
+                    <span>Ingredientes:</span>
+                    <p>@Html.DisplayFor(model => model.Ingrediente)</p>
+                </div>
+                <span>Preparación:</span>
+                <ol>@Html.DisplayFor(model => model.Preparacion)</ol>
+            </div>
         </div>
     </div>
+</div>
+
+<div class="container">
+    <h2 class="mt-3 title__comentario">Comentarios</h2>
+   @if(@ViewBag.resenas)
+   {
+        <div class="container reseña__cont">
+            <div class="row" style="background-color: teal; color:white;">
+                <div class="col-8">
+                Comentario
+                <small style="margin-left: 15px;">
+                    @ViewBag.fecha
+                </small>
+                </div>
+                <div class="col-4 text-right">
+                <label>
+                @for (int i = 0; i < ViewBag.calificacion; i++)
+                {
+                    <span class="fa fa-star checked"></span>
+                }
+                @for (int i = 0; i < 5-ViewBag.calificacion; i++)
+                {
+                    <span class="fa fa-star"></span>
+                }
+                </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" style="padding-left: 10%; padding-right: 10%; padding-top: 0.5rem; text-align: justify; text-justify: auto;">
+                <i>
+                    "@ViewBag.resenausuario"
+                </i>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8">                        
+                </div>
+                <div class="col-4 text-right mb-3">
+                <small>
+                    <b>
+                        ~@ViewBag.nombreusuario~
+                    </b>
+                </small>
+                </div>
+            </div>
+            <div class="btn__conte">
+                <a asp-controller="Reseña" asp-action="AgregarReseña" asp-route-rece="@Model.Id" class="btn__reseña">Agregue un comentario</a>
+                <a asp-controller="Reseña" asp-action="VerReseñas" asp-route-rece="@Model.Id" class="btn__reseña">Ver todas las reseñas</a>
+            </div>
+        </div>
+
+   }else{
+       <div class="container">
+            <p>Aun no se han agregado reseñas, puedes agregar una 
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a asp-controller="Reseña" asp-action="AgregarReseña" asp-route-rece="@Model.Id" class="btn__reseña"> Aqui</a>
+                }else{
+                    <a asp-page="./Login" class="btn__reseña"> Registrandote aqui</a>
+                }
+            </p>
+       </div>
+   }
 </div>
