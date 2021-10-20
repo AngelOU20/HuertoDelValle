@@ -2,6 +2,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+/*No se utiliza*/
 namespace HuertoDelValle.Models
 {
     [Table("T_Orden")]
