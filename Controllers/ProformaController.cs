@@ -11,11 +11,14 @@ using HuertoDelValle.Models;
 using Microsoft.AspNetCore.Identity;
 using System.Dynamic;
 using HuertoDelValle.Helpers;
+using System.Security;
+
 
 namespace HuertoDelValle.Controllers
 {
     public class ProformaController : Controller
     {
+        
         private readonly ApplicationDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
@@ -28,14 +31,11 @@ namespace HuertoDelValle.Controllers
             _signInManager = signInManager;
         }
 
-        public IActionResult Pasarela()
-        {
-            return View();
-        }
 
         // GET: Proforma
         public IActionResult Proforma()
         {
+            
             if(_signInManager.IsSignedIn(User)){
                  
                 var cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
@@ -49,17 +49,26 @@ namespace HuertoDelValle.Controllers
 
                         if(envios != null){
                             ViewBag.subtotal = cart.Sum(item => item.producto.PrecioProducto * item.cantidad); 
-                            ViewBag.total = cart.Sum(item => item.producto.PrecioProducto * item.cantidad) + envios.Sum(item => item.tipoEnvio.precio); 
+                            ViewBag.total = cart.Sum(item => item.producto.PrecioProducto * item.cantidad) + envios.Sum(item => item.tipoEnvio.precio);
+                            
+
                         }
                     }
 
+        
                 ViewBag.tipoenvio = _context.DataTipoEnvio.ToList();
+
+                
+
                 return View();
             } else {
                 return RedirectToAction("Login","Account");
             }
         }
         
+         public IActionResult Aprobada(){
+            return View();
+        }
 
         public IActionResult Buy(int id)
         {

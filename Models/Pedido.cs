@@ -23,7 +23,7 @@ namespace HuertoDelValle.Models
             public int cantidad {get; set;}
 
             [Column("subtotal")]
-            public Double subtotal {get; set;}
+            public decimal subtotal {get; set;}
 
             [Column("codcliente")]
             public String cliente {get; set;}
@@ -39,6 +39,7 @@ namespace HuertoDelValle.Models
             public Estado estado {get; set;}
             [Column("estado")]
             public int? estadoid {get; set;}
+
 
     }
 }

@@ -1,10 +1,8 @@
-
+@model HuertoDelValle.Models.Pedido;
 @{
     ViewData["Title"] = "Carrito";
 }
-
 <link rel="stylesheet" href="~/css/proforma.css" />
-
 @{int count = 0;}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js">
 </script>
@@ -94,7 +92,7 @@
                     <div>
                         <div class="total__shipping">
                             <div class=""> <strong> Total </strong> </div>
-                            <div class="">S/@ViewBag.total </div>
+                            <div class="" >S/ @ViewBag.total </div>
                         </div>
                     </div>
                     <div>
@@ -102,10 +100,55 @@
                             <a asp-controller="Orden" asp-action="Procesar" class="btn__finalizar__compra">Finalizar Compra</a>
                         </div>
                     </div>
+
+                    <!-- Pasarela -->
+    <script src="https://www.paypal.com/sdk/js?client-id=AUU5T0AL-pAzWKlMfuWznThFsVXs-mlFhW1py1j-KMKPVQC9v9zKeX6RGVaZ-Llqk3ijl0KOKfgdQSZr&currency=USD"></script>
+    
+    <div id="paypal-button-container" style="margin-top: 1rem;"></div>
+    
+
+    <script>
+
+        var cc = @Json.Serialize(ViewBag.total);
+      paypal.Buttons({
+        style: { 
+            color: 'silver', 
+            label: 'pay', 
+            shape: 'pill', 
+            height: 40, 
+            width: 20,
+        },
+        createOrder: function(data, actions) {
+          return actions.order.create({
+            purchase_units: [{
+              amount: {
+                value: cc
+              }
+            }]
+          });
+        },
+
+        
+        onApprove: function(data, actions) {
+          return actions.order.capture().then(function(orderData) {
+            
+                console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                var transaction = orderData.purchase_units[0].payments.captures[0];
+                alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
+                window.location.href = "/Orden/Aprobada";
+          });
+        }
+      }).render('#paypal-button-container');
+        
+    </script>
+
+<!-- Pasarela -->
+
                 </div>
             </div>
         </div>
 }
+
 <div class="container__btn__envio">
     <button type="button" class="btn__metodo__envio" data-toggle="modal" data-target="#exampleModalCenter">   
 		Método de Envio
@@ -177,6 +220,5 @@
 	    }
 
 }
-
 
 <script src="~/js/carrito.js"></script>

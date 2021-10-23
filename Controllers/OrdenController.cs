@@ -9,6 +9,7 @@ using HuertoDelValle.Data;
 using HuertoDelValle.Models;
 using Microsoft.AspNetCore.Identity;
 
+
 /*No se utiliza*/
 namespace HuertoDelValle.Controllers
 {
@@ -24,7 +25,10 @@ namespace HuertoDelValle.Controllers
             _userManager = userManager;
         }
 
-
+        public IActionResult PagarPedido(){
+            return View();
+        }
+    
         public IActionResult Procesar(Decimal Id)
         {
             Orden orden = new Orden();
@@ -35,6 +39,8 @@ namespace HuertoDelValle.Controllers
 
             return View(orden);
         }
+
+       
 
         [HttpPost]
         public IActionResult Envio(Orden orden)
