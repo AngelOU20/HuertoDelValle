@@ -62,10 +62,7 @@
                         <h4 class="product__title">@Html.DisplayFor(modelItem => producto.NombreProducto)</h4>
                         <span class="product__price">S/ @Html.DisplayFor(modelItem => producto.PrecioProducto)</span>
                     </div>
-                    <form asp-action="" method="POST">
-                        <input type="hidden" name="id" value="@producto.Id">
-                        <button asp-controller="Proforma" asp-action="Buy" asp-route-id="@producto.Id" class="btn__cart">Añadir</button> <!--<i class="product__icon fas fa-cart-plus"></i>-->
-                    </form>
+                        <a asp-controller="Proforma" asp-action="Buy" asp-route-id="@producto.Id" class="btn__cart">Añadir</a> <!--<i class="product__icon fas fa-cart-plus"></i>-->
                 </div>
             }
         </section>
