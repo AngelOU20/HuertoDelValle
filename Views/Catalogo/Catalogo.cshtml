@@ -26,14 +26,15 @@
         <h2 class="main-tittle">CATÁLOGO DE PRODUCTOS</h2>
         <div class="container__search">
             <nav class="search">
-                <div class="nav__search"> 
+                <div class="nav__search">
                     <div class="cont1">
                         <form asp-controller="Catalogo" asp-action="Catalogo">
-                            <select class="dropdown" type="button"  name="FiltrarCategoria" onchange="this.form.submit()">
+                            <select class="dropdown" type="button" name="FiltrarCategoria"
+                                onchange="this.form.submit()">
                                 <option>Categorias</option>
                                 @foreach (Categoria item in Model.Categoria)
                                 {
-                                <option class="dropdown__item" value="@item.Id">@item.NombreCategoria</option>
+                                    <option class="dropdown__item" value="@item.Id">@item.NombreCategoria</option>
                                 }
                             </select>
                         </form>
@@ -42,12 +43,13 @@
                 <div class="nav__search">
                     <div class="cont">
                         <form class="d-flex" method="POST">
-                            <input type="search" placeholder="Buscar..." name="Buscar" title="Presione Esc para supender la búsqueda" required>
+                            <input type="search" placeholder="Buscar..." name="Buscar"
+                                title="Presione Esc para supender la búsqueda" required>
                         </form>
                     </div>
                 </div>
             </nav>
-        </div> 
+        </div>
         <div class="text-center" style="color: red;">
             <h1>@ViewData["Message1"]</h1>
         </div>

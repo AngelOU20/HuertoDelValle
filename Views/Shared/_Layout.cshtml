@@ -4,6 +4,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,9 +16,12 @@
     <link rel="stylesheet" href="~/css/header.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--Tipo de letra -->
-    <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/0605142393.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
 
 @if (SignInManager.IsSignedIn(User)){
@@ -151,7 +155,7 @@
     <header class="hero">
         <nav class="nav container1">
             <div class="nav__logo">
-                <a asp-controller="Home" asp-action="Index"><img src="~/img/logo1.jpg" class="logo1_nav" alt="" ></a>
+                <a asp-controller="Home" asp-action="Index"><img src="~/img/logo1.jpg" class="logo1_nav" alt=""></a>
             </div>
 
             <ul class="nav__link nav__link--menu">
@@ -200,7 +204,7 @@
                 </div>
             </div>
             <div class="footer__section">
-                
+
             </div>
             <div class="footer__section">
                 <h2 class="footer__title">Contacto</h2>
@@ -226,7 +230,7 @@
             </div>
         </div>
         <section class="footer__copy container">
-            <h3 class="footer__copyright">  Derechos reservados &copy; El Huerto del Valle</h3>
+            <h3 class="footer__copyright"> Derechos reservados &copy; El Huerto del Valle</h3>
         </section>
     </footer>
     }
@@ -301,6 +305,9 @@
         </section>
     </footer>
 }
+
+    
+    
     <script src="~/js/menu.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
