@@ -193,6 +193,7 @@ td{
 }
 
 .btn__finalizar__compra{
+    cursor: pointer;
     text-align: center;
     font-family: 'Poppins', serif;
     background: #007175;
