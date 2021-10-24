@@ -23,7 +23,7 @@ namespace HuertoDelValle.Models
             public int cantidad {get; set;}
 
             [Column("subtotal")]
-            public Double subtotal {get; set;}
+            public decimal total {get; set;}
 
             [Column("codcliente")]
             public String cliente {get; set;}
