@@ -44,6 +44,35 @@ namespace HuertoDelValle.Controllers
             return View(r);
         }
 
+        public IActionResult EditarReceta(int Id) {
+            var receta = _context.DataReceta.Find(Id);
+            return View(receta);
+        }
+
+        [HttpPost]
+        public IActionResult EditarReceta(Receta r){
+            if(ModelState.IsValid){
+                var receta = _context.DataReceta.Find(r.Id);  
+                receta.NombreReceta = r.NombreReceta;
+                receta.Imagen = r.Imagen;
+                receta.DescripcionReceta = r.DescripcionReceta;
+                receta.Ingrediente = r.Ingrediente;
+                receta.Preparacion = r.Preparacion;
+                _context.SaveChanges();
+                return RedirectToAction("AdministrarReceta");
+            }
+            
+            return View(r);
+        }
+
+        public IActionResult EliminarReceta(int Id) 
+        {
+            var receta= _context.DataReceta.Find(Id);
+            _context.Remove(receta);
+            _context.SaveChanges();
+            return RedirectToAction("AdministrarReceta");
+        }
+
         /*
         public async Task<IActionResult> Receta(int? Id){
             Receta objProduct = await _context.DataReceta.FindAsync(Id);
