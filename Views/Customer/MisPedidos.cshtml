@@ -37,7 +37,11 @@
                         <td class="text-center">
                             <a class="btn__detalle__pedido" asp-controller="Customer" asp-action="DetalleMiPedido" asp-route-id="@item.idpedido">Detalle</a>
                         </td>
-                        @if(item.estadoid != 4){
+                        @if(item.estadoid == 1){
+                            <td class="text-center">
+                                Pedido Registrado
+                            </td>
+                        }else if(item.estadoid == 2 ){
                             <td class="text-center">
                                 <a class="btn__confirmar__pedido" asp-controller="Customer" asp-action="ConfirmarPedido"  asp-route-id="@item.idpedido" >Confirmar Recepción</a>
                             </td>
