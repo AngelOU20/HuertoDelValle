@@ -57,7 +57,7 @@ namespace HuertoDelValle.Controllers
 
                 Pedido p = new Pedido();
                 p.idpedido = id;
-                p.fechapedido = DateTime.Today;
+                p.fechapedido = DateTime.Now;
                 p.cantidad = cart.Count;
                 p.total = total;
                 p.cliente = User.Identity.Name;
