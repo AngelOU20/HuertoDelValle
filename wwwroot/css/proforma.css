@@ -190,6 +190,7 @@ td{
     display: grid;
     padding: 0;
     grid-template-columns: repeat(1, 1fr);
+
 }
 
 .btn__finalizar__compra{
@@ -198,16 +199,20 @@ td{
     font-family: 'Poppins', serif;
     background: #007175;
     border: 0.5px solid #007175;
-    text-transform: uppercase;
     font-size: 18px;
     border-radius: 100px;
     padding: 5px 0px;
+    width : 100%;
     margin: 20px 50px 0;
     color: #FFFFFF;
+    align-self: center;
+    justify-self: center;
 }
 
 .btn__finalizar__compra:hover{
     text-decoration: none;
+    background: #027e82;
+    border: 0.5px solid #027e82;
     color: #dce9e8;
 }
 
@@ -307,7 +312,6 @@ td{
         text-align: center;
         background: #007175;
         border: 0.5px solid #007175;
-        text-transform: uppercase;
         font-size: 13px;
         border-radius: 100px;
         padding: 5px 0;

@@ -99,7 +99,7 @@
                     </div>
                     <div>
                         <div class="compra__btn">
-                            <a style="color:#fff;" asp-controller="Proforma" asp-action="Checkout" class="btn__finalizar__compra" data-target="#exampleModalCenter1" data-toggle="modal">Finalizar Compra</a>
+                            <a style="color:#fff;" class="btn__finalizar__compra" data-target="#exampleModalCenter1" data-toggle="modal">Resumen de Compra</a>
                         </div>
                     </div>
 
@@ -137,7 +137,7 @@
                 console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
                 var transaction = orderData.purchase_units[0].payments.captures[0];
                 alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
-                window.location.href = "/Proforma/Aprobada"; //Redireccionar a la página de aprobación
+                window.location.href = "/Pagos/Checkout"; //Redireccionar a la página de aprobación
           });
         }
       }).render('#paypal-button-container');
@@ -289,7 +289,7 @@
 							<button type="button" class="btn__def__envi" data-dismiss="modal">Cancelar</button>
 
 							@if(ViewBag.cart != null) {
-							    <a type="button" class="btn__def__envi" asp-controller="Pagos" asp-action="Index">Confirmar</a>
+							    <a type="button" class="btn__def__envi" asp-controller="Proforma" asp-action="Proforma">Confirmar</a>
 							}
 
 						</div>
