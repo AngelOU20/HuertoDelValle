@@ -1,17 +1,12 @@
-@model dynamic;
-@using System.Collections.Generic;
-
+@model HuertoDelValle.Models.Pedido;
 @{
     ViewData["Title"] = "Carrito";
-    IEnumerable<HuertoDelValle.Models.Proforma> listProformas = new List<Proforma>();
-    listProformas = @Model.proformas;
-    Decimal montoTotal = @Model.montoTotal;  
-        
 }
-
 <link rel="stylesheet" href="~/css/proforma.css" />
-
-@if (listProformas.Count() == 0){
+@{int count = 0;}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js">
+</script>
+@if (ViewBag.cart == null){
     <div class="container text-center">
         <div class="carrito__vacio">
             <img src="~/img/cartvacio.png" alt="" class="cart__img">
@@ -24,80 +19,284 @@
         </div>
     </div>
 }else{
+@using (Html.BeginForm("Update", "Proforma", FormMethod.Post))
+{
+    <input type="submit" value="Update" style="display:none">
+        <div class="container">
+            <div class="block__shopping row">
+                <div class="shopping__cart col-md-8">
+                    <table class="table__cart">
+                        <thead class="table__thead">
+                            <tr>
+                                <th></th>
+                                <th colspan="2">Producto</th>
+                                <th>Precio</th>
+                                <th>Cantidad</th>
+                                <th>SubTotal</th>
+                            </tr>
+                        </thead>
 
-<div class="container">
-    <div class="block__shopping row">
-        <div class="shopping__cart col-md-8">
-            <table class="table__cart">
-                <thead class="table__thead">
-                    <tr>
-                        <th></th>
-                        <th colspan="2">Producto</th>
-                        <th>Precio</th>
-                        <th></th>
-                        <th>Cantidad</th>
-                        <th>SubTotal</th>
-                    </tr>
-                </thead>
-                <tbody class="table__tbody">
-                @foreach (Proforma item in Model.proformas) {
-                    <tr>
-                        <td>
-                            <a asp-action="QuitarProducto" asp-route-id="@item.Id" style="color: #D52F0B;" ><i class="fa fa-remove"></i></a>
-                        </td>
-                        <td class="img__td">
-                            <img src="@Html.DisplayFor(modelItem => item.Producto.ImagenProducto)" class="img__product__cart" alt="">
-                        </td>
-                        <td class="td__product">
-                            @Html.DisplayFor(modelItem => item.Producto.NombreProducto)
-                        </td>
-                        <td>
-                            S/@Html.DisplayFor(modelItem => item.Producto.PrecioProducto)
-                        </td>
-                        <td>
-                            <a asp-action="EditarCantidad" asp-route-id="@item.Id" style="color: #000;" ><i class="fa fa-pencil"></i></a>
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Cantidad)
-                        </td>
-                        <td class="subtotal__td">
-                            S/ @Html.DisplayFor(modelItem => item.SubTotal)
-                        </td>
-                    </tr>         
-                }
-                </tbody>
-            </table>
-        </div>
+                        <tbody class="table__tbody">
+                        @foreach (var item in ViewBag.cart) {
+                            <tr>
+                                <td>
+                                    <a asp-controller="Proforma" asp-action="Quitar" asp-route-id="@item.producto.Id" style="color: #D52F0B;" ><i class="fa fa-remove"></i></a>
+                                </td>
+                                <td class="img__td">
+                                    <img src="@item.producto.ImagenProducto" class="img__product__cart" alt="">
+                                </td>
+                                <td class="td__product">
+                                    @item.producto.NombreProducto
+                                </td>
+                                <td>
+                                    S/@item.producto.PrecioProducto
+                                </td>
+                                <td>
+                                    <div class="product-quantity">
+                                        <input type="number" name="quantity" value="@item.cantidad" min="1" pattern="^[0-9]+" class="update__cantidad">
+                                    </div>
+                                </td>
+                                <td class="subtotal__td">
+                                    S/ @(item.producto.PrecioProducto * item.cantidad)
+                                </td>
+                            </tr>  
+                            count++;                
+
+                        }
+                        </tbody>
+                    </table>
+                </div>
+   
+                <div class="total col-md-4">
+                    <h3 class="total__title">Total del Carrito</h3>
+                    <div>
+                        <div class="subtotal">
+                            <div class=""> <strong> SubTotal </strong> </div>
+                            <div class="">S/@ViewBag.subtotal</div>
+                            <div>Total de productos</div>
+						    <div>@count</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="envio">
+                            <div class="title__shipping"> <strong> Método de envío </strong> </div>
+                            <div class="method__shipping">
+                                <div class="method__shipping__delivery">
+                                    <span>Delivery Lima Metropolinata</span>
+                                    <br/>
+                                    <span>o</span>
+                                    <br/>
+                                    <span>Recoger en tienda</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="total__shipping">
+                            <div class=""> <strong> Total </strong> </div>
+                            <div class="" >S/ @ViewBag.total </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="compra__btn">
+                            <a style="color:#fff;" class="btn__finalizar__compra" data-target="#exampleModalCenter1" data-toggle="modal">Resumen de Compra</a>
+                        </div>
+                    </div>
+
+                    <!-- Pasarela -->
+    <script src="https://www.paypal.com/sdk/js?client-id=AUU5T0AL-pAzWKlMfuWznThFsVXs-mlFhW1py1j-KMKPVQC9v9zKeX6RGVaZ-Llqk3ijl0KOKfgdQSZr&currency=USD"></script>
+    
+    <div id="paypal-button-container" style="margin-top: 1rem;"></div>
+    
+
+    <script>
+
+        var total = @Json.Serialize(ViewBag.total);
+      paypal.Buttons({
+        style: { 
+            color: 'silver', 
+            label: 'pay', 
+            shape: 'pill', 
+            height: 40, 
+            width: 20,
+        },
+        createOrder: function(data, actions) {
+          return actions.order.create({
+            purchase_units: [{
+              amount: {
+                value: total
+              }
+            }]
+          });
+        },
+
         
-        <div class="total col-md-4">
-            <h3 class="total__title">Total del Carrito</h3>
-            <div>
-                <div class="subtotal">
-                    <div class=""> <strong> SubTotal </strong> </div>
-                    <div class="">S/ @montoTotal</div>
+        onApprove: function(data, actions) {
+          return actions.order.capture().then(function(orderData) {
+            
+                console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                var transaction = orderData.purchase_units[0].payments.captures[0];
+                alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
+                window.location.href = "/Pagos/Checkout"; //Redireccionar a la página de aprobación
+          });
+        }
+      }).render('#paypal-button-container');
+        
+    </script>
+
+<!-- Pasarela -->
+
                 </div>
-            </div>
-            <div>
-               <div class="envio">
-                    <div class="title__shipping"> <strong> Pago en una cuota </strong> </div>
-                </div>
-            </div>
-            <div>
-                <div class="total__shipping">
-                    <div class=""> <strong> Total </strong> </div>
-                    <div class="">S/ @montoTotal</div>
-                </div>
-            </div>
-            <div>
-                <div class="compra__btn">
-                    <a asp-controller="Orden" asp-action="Procesar" class="btn__finalizar__compra">Metodo de envio</a>
-                </div>
-            </div>
-            <div style="text-align: center;">
-                <a asp-action ="Procesar" class="btn btn-danger">Procesar Pedido</a>
             </div>
         </div>
-    </div>
-</div>
+}
+
+<div class="container__btn__envio">
+    <button type="button" class="btn__metodo__envio" data-toggle="modal" data-target="#exampleModalCenter">   
+		Método de Envio
+	</button>
+</div>			
+		@using (Html.BeginForm("envio", "Proforma", FormMethod.Post))
+	    {
+		
+					<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered" role="document">
+						<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLongTitle">Método de envio</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							@if (ViewBag.envios == null)
+							{
+
+							<h4>Distrito</h4>
+							<select class="form-select" aria-label="Default select example" name="id">
+								<option selected>Selecione su distrito:  ... </option>
+								@foreach (var envio in ViewBag.tipoenvio)
+								{
+									<option value="@envio.Id">@envio.lugar</option>
+								}
+
+
+								
+							</select>
+							<br><br>
+							<div class="input-group mb-3">
+								<span class="input-group-text" id="inputGroup-sizing-default">Dirección</span>
+								<input type="text" class="form-control" aria-label="Sizing example input"  name="distrito" aria-describedby="inputGroup-sizing-default" placeholder="No es necesario si selecciona recojo en tienda" required>
+							</div>
+							}else {
+								
+							<h4>Distrito</h4>
+							<select class="form-select" aria-label="Default select example" name="id">
+								@foreach (var item in ViewBag.envios)
+								{
+								<option value="@item.tipoEnvio.Id" selected>@item.tipoEnvio.lugar</option>
+								}
+								@foreach (var envio in ViewBag.tipoenvio)
+								{
+									<option value="@envio.Id">@envio.lugar</option>
+								}
+							</select>
+							<br><br>
+							<div class="input-group mb-3">
+								<span class="input-group-text" id="inputGroup-sizing-default">Dirección</span>
+								@foreach (var item in ViewBag.envios)
+								{
+								    <input type="text" class="form-control" aria-label="Sizing example input"  name="distrito" aria-describedby="inputGroup-sizing-default" placeholder="No es necesario si selecciona recojo en tienda" value="@item.Direccion">
+								}
+							</div>
+							}
+						</div>
+						<div class="modal-footer cont__btn__env">
+							<button type="button" class="btn__def__envi" data-dismiss="modal">Cancelar</button>
+							<button type="submit" class="btn__def__envi">Guardar</button>
+							<a type="button" class="btn__def__envi" asp-controller="Proforma" asp-action="recojoTienda">Recojo en tienda</a>
+						</div>
+						</div>
+					</div>
+					</div>
+	    }
+
+            <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLongTitle">Resumen de compras</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<table class="table">
+								<thead>
+									<tr>
+									<th scope="col">Productos</th>
+									<th scope="col">Cantidad</th>
+									<th scope="col">Precio</th>
+									<th scope="col">SubTotal</th>
+									</tr>
+								</thead>
+								<tbody>
+									@foreach (var item in ViewBag.cart)
+									{
+										<tr>
+											<td>@item.producto.NombreProducto</td>
+											<td>@item.cantidad</td>
+											<td>S/@item.producto.PrecioProducto</td>
+											<td>S/@(item.cantidad * item.producto.PrecioProducto)</td>
+										</tr>
+									}
+										<tr>
+
+									@if (ViewBag.envios!=null)
+									{
+										@foreach (var item in ViewBag.envios)
+										{
+											<tr>
+												<th colspan="3" align="right">
+													Precio por Envio
+												</th>
+												<td>
+													S/@item.tipoEnvio.precio
+												</td>
+											</tr>	
+										}
+									} else {
+										<tr>
+											<th colspan="3" align="right">
+												Precio por Envio
+											</th>
+											<td>
+												S/ 0.00
+											</td>
+										</tr>	
+									}
+											<th colspan="3" align="right">
+												Total
+											</th>
+											<td>
+											S/ @ViewBag.total	
+											</td>
+										</tr>
+								</tbody>
+								</table>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn__def__envi" data-dismiss="modal">Cancelar</button>
+
+							@if(ViewBag.cart != null) {
+							    <a type="button" class="btn__def__envi" asp-controller="Proforma" asp-action="Proforma">Confirmar</a>
+							}
+
+						</div>
+					</div>
+				</div>
+		    </div>
 
 }
+
+<script src="~/js/carrito.js"></script>

@@ -1,0 +1,86 @@
+@model ICollection<Pedido>
+@{
+    Layout = null;
+}
+
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/pdf.css" />
+    <meta name="format-detection" content="email=no">
+</head>
+@{
+    var fecha = "";
+
+    fecha = DateTime.Now.ToString("");
+
+}
+
+<div class="pdf">
+    <header class="header">
+        <div class="row">
+            <div class="col-md-5 text-center">
+                <img src="~/img/logo.png" alt="" class="logo__img">
+            </div>
+            <div class="col-md-7">
+                <p>
+                Fecha: @fecha </br>
+                Usuario: @User.Identity.Name
+                </p>
+            </div> 
+        </div>
+    </header>
+    <h1 class="table__title">Inventario de Pedidos</h1>
+    <table class="table table-bordered">
+        <thead class="table__thead">
+            <tr>
+                <th>ID</th>     
+                <th>Nombre</th>           
+                <th>Total</th>
+                <th>Envio</th>
+                <th>Direccion</th>
+                <th>Fecha de Registro</th> 
+                <th></th>
+            </tr>
+        </thead>
+        <tbody class="table__body">
+        @foreach (var Pedido in Model)
+            {
+                <tr>
+
+                    <td>@Pedido.idpedido</td>
+                    
+                    <td>@Pedido.cliente</td>
+
+                    <td>S/@Pedido.total</td>
+
+                    <td>@Pedido.tipoenvio.lugar</td>
+                    
+                    @if (Pedido.tipoenvioid==1)
+                    {
+                        <td>Recojo en tienda</td>
+                    }else{ 
+                        <td>@Pedido.direccion</td>
+                    }
+
+                    <td>@Pedido.fechapedido</td>
+
+                    @if(Pedido.estadoid == 1){
+                        <td class="text-center" style="font-weight: bold;">
+                            Pedido Registrado
+                        </td>
+                    }else if(Pedido.estadoid == 2){
+                        <td class="text-center" style="font-weight: bold;">
+                            Pedido enviado
+                        </td>
+                    }else if(Pedido.estadoid == 4){
+                        <td class="text-center" style="color:green; font-weight: bold;">
+                            Recepción confirmada
+                        </td>
+                    }
+
+                    
+                </tr>     
+            }
+        </tbody>
+    </table>
+</div>

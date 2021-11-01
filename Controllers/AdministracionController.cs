@@ -125,7 +125,7 @@ namespace HuertoDelValle.Controllers
             foreach (var user in userManager.Users)
             {
 
-            if (await userManager.IsInRoleAsync(user, role.Name))
+                if (await userManager.IsInRoleAsync(user, role.Name))
                 {
                     model.Users.Add(user.UserName);
                 }

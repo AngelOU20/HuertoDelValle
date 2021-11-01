@@ -55,62 +55,7 @@ namespace HuertoDelValle.Controllers
             return View(await Task.FromResult(modelo));
         }
 
-        /*
-        public async Task<IActionResult> Add(int? id)
-        {
-            var userID = _userManager.GetUserName(User);
-            if(userID == null){ 
-                ViewData["Message1"] = "Por favor debe loguearse antes de agregar un producto"; 
-                return  RedirectToAction(nameof(Catalogo));
-            }else{
-                var producto = await _context.DataProducto.FindAsync(id);
-
-                Proforma proforma = new Proforma();
-                proforma.Producto = producto;
-                proforma.Cantidad = 1;
-                proforma.Precio = producto.PrecioProducto;
-                proforma.SubTotal = proforma.Cantidad * producto.PrecioProducto;
-                proforma.UserID = userID;
-                
-                _context.Add(proforma);
-                
-                await _context.SaveChangesAsync();
-                return  RedirectToAction(nameof(Catalogo));
-            }
-
-            
-        }
-        */
-
-        public async Task<IActionResult> Agregar(int? id, int cantidad)
-        {
-            var userID = _userManager.GetUserName(User);
-            if(userID == null){ 
-                return RedirectToAction("Login","Account");
-            }else{
-                var producto = await _context.DataProducto.FindAsync(id);
-
-                Proforma proforma = new Proforma();
-                proforma.Producto = producto;
-
-                if(cantidad == 0){
-                    proforma.Cantidad = 1;
-                }else{
-                    proforma.Cantidad = cantidad;
-                }
-                
-                proforma.Precio = producto.PrecioProducto;
-                proforma.SubTotal = proforma.Cantidad * producto.PrecioProducto;
-                proforma.UserID = userID;
-                
-                _context.Add(proforma);
-                
-                await _context.SaveChangesAsync();
-                return  RedirectToAction(nameof(Catalogo));
-            }
-
-            
-        }
+        
 
     }
 }

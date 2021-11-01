@@ -17,7 +17,8 @@ using Microsoft.AspNetCore.Authorization;
 
 using Microsoft.AspNetCore.Identity.UI.Services;
 using HuertoDelValle.Services;
-
+using Microsoft.AspNetCore.Http;
+using HuertoDelValle.Models;
 
 namespace HuertoDelValle
 {
@@ -44,6 +45,7 @@ namespace HuertoDelValle
 
             services.AddTransient<IEmailSender, EmailSender>();
             services.Configure<AuthMessageSenderOptions>(Configuration);
+            services.AddControllersWithViews();
 
             /*Tiempo de espera de inactividad del correo */
             services.ConfigureApplicationCookie(o => {
@@ -63,6 +65,18 @@ namespace HuertoDelValle
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("Admin", policy => policy.RequireRole("Admin"));
+            });
+            
+            services.AddSession(options =>
+            {
+                // Set a short timeout for easy testing.
+                options.IdleTimeout = TimeSpan.FromMinutes(60);
+                // You might want to only set the application cookies over a secure connection:
+                options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+                options.Cookie.SameSite = SameSiteMode.Strict;
+                options.Cookie.HttpOnly = true;
+                // Make the session cookie essential
+                options.Cookie.IsEssential = true;
             });
         }
 
@@ -84,6 +98,9 @@ namespace HuertoDelValle
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseSession(new SessionOptions() { Cookie = new CookieBuilder() { 
+            Name = ".AspNetCore.Session.HuertoDelValle"}});
 
             app.UseAuthentication();
             app.UseAuthorization();

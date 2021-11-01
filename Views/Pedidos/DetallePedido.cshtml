@@ -1,0 +1,40 @@
+@model List<ProductoPedido>
+
+<link rel="stylesheet" href="~/css/MiPedido.css" />
+
+<div class="container">
+    <div class="card">
+        <h1 class="title__pedido">Detalle de mi Pedido</h1>
+
+        <table class="table table-light">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre del Producto</th>
+                    <th scope="col">Precio del Producto</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Subtotal</th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                    <tr>
+                        <td scope="col">@item.pedidoId</td>
+                        <td scope="col">@item.producto.NombreProducto</td>
+                        <td scope="col">S/@item.producto.PrecioProducto</td>
+                        <td scope="col">@item.cantidad</td>                   
+                        <td scope="col">S/@item.subtotal</td>
+                    </tr>        
+            }
+                    <tr>
+                        @if (ViewBag.totalPedido != null)
+                        {
+                            <th colspan="5" text-align="right">Total:</th>
+                            <td>S/ @ViewBag.totalPedido</td>
+                        }
+                    </tr>
+        </table>
+        <a class="btn__volver" asp-controller="Pedidos" asp-action="Pedidos">Regresar</a>
+    </div>
+</div>
+

@@ -10,11 +10,11 @@
     <div class="container">
         <h2 class="receta-main-tittle">Recetas Saludables</h2>
 
-        <section class="container-receta">
+        <section class="container-recetas">
             @foreach (var item in Model)
             {
                 <div class="receta">
-                    <img src="@Html.DisplayFor(modelItem => item.Imagen)" alt="" class="receta__img">
+                    <img src="@Html.DisplayFor(modelItem => item.Imagen)" alt="" class="recetas__img">
 
                     <div class="receta__description">
                         <h4 class="receta__title">@Html.DisplayFor(modelItem => item.NombreReceta)</h4>

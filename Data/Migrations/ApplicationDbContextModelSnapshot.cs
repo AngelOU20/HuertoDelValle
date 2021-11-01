@@ -76,32 +76,64 @@ namespace HuertoDelValle.Data.Migrations
                     b.ToTable("T_Contactenos");
                 });
 
-            modelBuilder.Entity("HuertoDelValle.Models.Orden", b =>
+            modelBuilder.Entity("HuertoDelValle.Models.Estado", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
-                        .HasColumnName("Id")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<string>("Direccion")
+                    b.Property<string>("descripcion")
                         .HasColumnType("text");
 
-                    b.Property<string>("Estado")
-                        .HasColumnType("text");
+                    b.HasKey("id");
 
-                    b.Property<decimal>("MontoTotal")
-                        .HasColumnType("numeric");
+                    b.ToTable("estados");
+                });
 
-                    b.Property<DateTime>("PaymentDate")
-                        .HasColumnType("timestamp without time zone");
+            modelBuilder.Entity("HuertoDelValle.Models.Pedido", b =>
+                {
+                    b.Property<int>("idpedido")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("idPedido")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<string>("UserID")
-                        .HasColumnType("text");
+                    b.Property<int>("cantidad")
+                        .HasColumnType("integer")
+                        .HasColumnName("cantidad");
 
-                    b.HasKey("Id");
+                    b.Property<string>("cliente")
+                        .HasColumnType("text")
+                        .HasColumnName("codcliente");
 
-                    b.ToTable("T_Orden");
+                    b.Property<string>("direccion")
+                        .HasColumnType("text")
+                        .HasColumnName("direccion");
+
+                    b.Property<int?>("estadoid")
+                        .HasColumnType("integer")
+                        .HasColumnName("estado");
+
+                    b.Property<DateTime>("fechapedido")
+                        .HasColumnType("timestamp without time zone")
+                        .HasColumnName("fechapedido");
+
+                    b.Property<int?>("tipoenvioid")
+                        .HasColumnType("integer")
+                        .HasColumnName("envio");
+
+                    b.Property<decimal>("total")
+                        .HasColumnType("numeric")
+                        .HasColumnName("subtotal");
+
+                    b.HasKey("idpedido");
+
+                    b.HasIndex("estadoid");
+
+                    b.HasIndex("tipoenvioid");
+
+                    b.ToTable("pedido");
                 });
 
             modelBuilder.Entity("HuertoDelValle.Models.Producto", b =>
@@ -145,34 +177,33 @@ namespace HuertoDelValle.Data.Migrations
                     b.ToTable("T_Producto");
                 });
 
-            modelBuilder.Entity("HuertoDelValle.Models.Proforma", b =>
+            modelBuilder.Entity("HuertoDelValle.Models.ProductoPedido", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<int>("pedidoId")
                         .HasColumnType("integer")
-                        .HasColumnName("Id")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnName("numPedido");
 
-                    b.Property<int>("Cantidad")
-                        .HasColumnType("integer");
+                    b.Property<int>("productoId")
+                        .HasColumnType("integer")
+                        .HasColumnName("numProducto");
 
-                    b.Property<decimal>("Precio")
-                        .HasColumnType("numeric");
+                    b.Property<int>("cantidad")
+                        .HasColumnType("integer")
+                        .HasColumnName("cantidad");
 
-                    b.Property<int?>("ProductoId")
-                        .HasColumnType("integer");
+                    b.Property<string>("observaciones")
+                        .HasColumnType("text")
+                        .HasColumnName("observaciones");
 
-                    b.Property<decimal>("SubTotal")
-                        .HasColumnType("numeric");
+                    b.Property<decimal>("subtotal")
+                        .HasColumnType("numeric")
+                        .HasColumnName("subtotal");
 
-                    b.Property<string>("UserID")
-                        .HasColumnType("text");
+                    b.HasKey("pedidoId", "productoId");
 
-                    b.HasKey("Id");
+                    b.HasIndex("productoId");
 
-                    b.HasIndex("ProductoId");
-
-                    b.ToTable("T_Proforma");
+                    b.ToTable("T_pedido_producto");
                 });
 
             modelBuilder.Entity("HuertoDelValle.Models.Receta", b =>
@@ -233,19 +264,36 @@ namespace HuertoDelValle.Data.Migrations
                     b.Property<int>("RecetaId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("UserId1")
+                    b.Property<string>("UserId")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
 
                     b.HasIndex("RecetaId");
 
-                    b.HasIndex("UserId1");
-
                     b.ToTable("T_Reseña");
+                });
+
+            modelBuilder.Entity("HuertoDelValle.Models.TipoEnvio", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("lugar")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("lugar");
+
+                    b.Property<decimal>("precio")
+                        .HasColumnType("numeric")
+                        .HasColumnName("precio");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("T_TipoEnvio");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -446,6 +494,21 @@ namespace HuertoDelValle.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("HuertoDelValle.Models.Pedido", b =>
+                {
+                    b.HasOne("HuertoDelValle.Models.Estado", "estado")
+                        .WithMany("pedidos")
+                        .HasForeignKey("estadoid");
+
+                    b.HasOne("HuertoDelValle.Models.TipoEnvio", "tipoenvio")
+                        .WithMany()
+                        .HasForeignKey("tipoenvioid");
+
+                    b.Navigation("estado");
+
+                    b.Navigation("tipoenvio");
+                });
+
             modelBuilder.Entity("HuertoDelValle.Models.Producto", b =>
                 {
                     b.HasOne("HuertoDelValle.Models.Categoria", "Categoria")
@@ -457,13 +520,23 @@ namespace HuertoDelValle.Data.Migrations
                     b.Navigation("Categoria");
                 });
 
-            modelBuilder.Entity("HuertoDelValle.Models.Proforma", b =>
+            modelBuilder.Entity("HuertoDelValle.Models.ProductoPedido", b =>
                 {
-                    b.HasOne("HuertoDelValle.Models.Producto", "Producto")
+                    b.HasOne("HuertoDelValle.Models.Pedido", "pedido")
                         .WithMany()
-                        .HasForeignKey("ProductoId");
+                        .HasForeignKey("pedidoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("Producto");
+                    b.HasOne("HuertoDelValle.Models.Producto", "producto")
+                        .WithMany()
+                        .HasForeignKey("productoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("pedido");
+
+                    b.Navigation("producto");
                 });
 
             modelBuilder.Entity("HuertoDelValle.Models.Reseña", b =>
@@ -474,13 +547,7 @@ namespace HuertoDelValle.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId1");
-
                     b.Navigation("Receta");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -537,6 +604,11 @@ namespace HuertoDelValle.Data.Migrations
             modelBuilder.Entity("HuertoDelValle.Models.Categoria", b =>
                 {
                     b.Navigation("Productos");
+                });
+
+            modelBuilder.Entity("HuertoDelValle.Models.Estado", b =>
+                {
+                    b.Navigation("pedidos");
                 });
 
             modelBuilder.Entity("HuertoDelValle.Models.Receta", b =>

@@ -3,8 +3,8 @@
 @{
     ViewData["Title"] = "Catálogo";
 }
-<link rel="stylesheet" href="~/css/catalogo.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="~/css/catalogo.css" />
 
 <div class="container-fondo">
     <div class="fondo">
@@ -26,14 +26,15 @@
         <h2 class="main-tittle">CATÁLOGO DE PRODUCTOS</h2>
         <div class="container__search">
             <nav class="search">
-                <div class="nav__search"> 
+                <div class="nav__search">
                     <div class="cont1">
                         <form asp-controller="Catalogo" asp-action="Catalogo">
-                            <select class="dropdown" type="button"  name="FiltrarCategoria" onchange="this.form.submit()">
+                            <select class="dropdown" type="button" name="FiltrarCategoria"
+                                onchange="this.form.submit()">
                                 <option>Categorias</option>
                                 @foreach (Categoria item in Model.Categoria)
                                 {
-                                <option class="dropdown__item" value="@item.Id">@item.NombreCategoria</option>
+                                    <option class="dropdown__item" value="@item.Id">@item.NombreCategoria</option>
                                 }
                             </select>
                         </form>
@@ -42,12 +43,13 @@
                 <div class="nav__search">
                     <div class="cont">
                         <form class="d-flex" method="POST">
-                            <input type="search" placeholder="Buscar..." name="Buscar" title="Presione Esc para supender la búsqueda" required>
+                            <input type="search" placeholder="Buscar..." name="Buscar"
+                                title="Presione Esc para supender la búsqueda" required>
                         </form>
                     </div>
                 </div>
             </nav>
-        </div> 
+        </div>
         <div class="text-center" style="color: red;">
             <h1>@ViewData["Message1"]</h1>
         </div>
@@ -62,10 +64,7 @@
                         <h4 class="product__title">@Html.DisplayFor(modelItem => producto.NombreProducto)</h4>
                         <span class="product__price">S/ @Html.DisplayFor(modelItem => producto.PrecioProducto)</span>
                     </div>
-                    <form asp-action="" method="POST">
-                        <input type="hidden" name="id" value="@producto.Id">
-                        <button asp-action ="Agregar" class="btn__cart">Añadir</button> <!--<i class="product__icon fas fa-cart-plus"></i>-->
-                    </form>
+                        <a asp-controller="Proforma" asp-action="Buy" asp-route-id="@producto.Id" class="btn__cart">Añadir</a> <!--<i class="product__icon fas fa-cart-plus"></i>-->
                 </div>
             }
         </section>

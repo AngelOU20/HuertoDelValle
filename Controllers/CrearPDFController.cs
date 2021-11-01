@@ -25,5 +25,16 @@ namespace HuertoDelValle.Controllers
                 FileName = "Lista de Productos.pdf"
             };
         }
+
+        public IActionResult ReportePedido(){
+            var pedido=_context.DataPedido.OrderBy(x => x.idpedido).Include(x => x.estado).Include(z => z.tipoenvio).ToList();
+            
+            return new ViewAsPdf("ReportePedido" , pedido )
+            {
+                /*PageSize = Rotativa.AspNetCore.Options.Size.A4, Tamaño*/
+                /*PageOrientation = Rotativa.AspNetCore.Options.Orientation.Landscape, Orientación del pdf*/
+                FileName = "Lista de Pedidos.pdf"
+            };
+        }
     }
 }

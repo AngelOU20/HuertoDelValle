@@ -1,0 +1,54 @@
+@model Receta
+@{
+    ViewData["Title"] = "Editar Receta";
+}
+
+<link rel="stylesheet" href="~/css/receta.css" />
+
+<div class="container__receta">
+    <div class="card">
+        <div class="card-body">
+            <h3 class="form-title">Registrar Receta</h3>
+
+            <form asp-action="EditarReceta" method="POST" class="form-list">
+
+                <!--<div asp-validation-summary="ModelOnly" class="text-danger"></div>-->
+
+                <div class="form-list__row">
+                    <label asp-for="NombreReceta" ></label>
+                    <input asp-for="NombreReceta"/>
+                    <span asp-validation-for="NombreReceta" class="text-danger"></span>
+                </div>
+                
+                <div class="form-list__row">
+                    <label asp-for="Imagen" ></label>
+                    <input asp-for="Imagen"/>
+                    <span asp-validation-for="Imagen" class="text-danger"></span>
+                </div>
+
+                <div class="form-list__row">
+                    <label asp-for="DescripcionReceta" ></label>
+                    <textarea asp-for="DescripcionReceta"></textarea>
+                    <span asp-validation-for="DescripcionReceta" class="text-danger"></span>
+                </div>
+
+                <div class="form-list__row">
+                    <label asp-for="Ingrediente"></label>
+                    <textarea asp-for="Ingrediente"></textarea>
+                    <span asp-validation-for="Ingrediente" class="text-danger"></span>
+                </div>
+
+                <div class="form-list__row">
+                    <label asp-for="Preparacion"></label>
+                    <textarea asp-for="Preparacion"></textarea>
+                    <span asp-validation-for="Preparacion" class="text-danger"></span>
+                </div>
+
+                <div class="form-list__row">
+                    <button class="btn__add__receta">Editar Receta</button>
+                    <a asp-action="AdministrarReceta"  class="btn__volver" >Volver</a>
+                </div>
+            </form>
+        </div>     
+    </div>
+</div>

@@ -23,8 +23,7 @@ namespace HuertoDelValle.Models{
         public Receta Receta { get; set; }
         public int RecetaId { get; set; }
 
-        public IdentityUser User { get; set; }
-        public int UserId { get; set; }
+        public String UserId { get; set; }
 
         public Reseña(){
             Fecha = DateTime.Now;

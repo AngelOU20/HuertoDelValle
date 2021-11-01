@@ -1,0 +1,59 @@
+@model List<Pedido>
+@{
+    ViewData["Title"] = "Mis Pedidos";
+}
+
+<link rel="stylesheet" href="~/css/MiPedido.css" />
+
+<div class="container">
+    <div class="card"> 
+        <h1 class="title__pedido">Mis Pedidos</h1>
+
+        <table class="table table-light">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>                
+                    <th scope="col">Total</th>
+                    <th scope="col">Envio</th>
+                    <th scope="col">Direccion</th>
+                    <th scope="col">Fecha de Registro</th> 
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+
+        @foreach (var item in Model)
+        {
+                <tr>
+                    <td>@item.idpedido</td>                             
+                    <td>S/ @item.total</td>
+                    <td>@item.tipoenvio.lugar</td>
+                        @if (item.tipoenvioid==1)
+                        {
+                            <td>Recojo en tienda</td>
+                        }else{ 
+                            <td>@item.direccion</td>
+                        }                               
+                    <td>@item.fechapedido</td>
+                        <td class="text-center">
+                            <a class="btn__detalle__pedido" asp-controller="Customer" asp-action="DetalleMiPedido" asp-route-id="@item.idpedido">Detalle</a>
+                        </td>
+                        @if(item.estadoid == 1){
+                            <td class="text-center">
+                                Pedido Registrado
+                            </td>
+                        }else if(item.estadoid == 2 ){
+                            <td class="text-center">
+                                <a class="btn__confirmar__pedido" asp-controller="Customer" asp-action="ConfirmarPedido"  asp-route-id="@item.idpedido" >Confirmar Recepción</a>
+                            </td>
+                        }else{
+                            <td class="text-center">
+                                Recepción del pedido confirmada
+                            </td>
+                        }
+                    </tr>
+                    
+            }
+        </table>
+        <a  class="btn__volver" asp-controller="Catalogo" asp-action="Catalogo">Regresar</a>
+    </div>
+</div>
