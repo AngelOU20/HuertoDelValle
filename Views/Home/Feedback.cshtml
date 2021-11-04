@@ -1,0 +1,49 @@
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@model IEnumerable<HuertoDelValle.Models.Calificacion>
+
+    <div class="container">
+    <div class="text-center" style="margin-top: 50px;">
+        <h1 class="display-4">Calificaciones</h1>
+    </div>
+    <table class="table">
+        <thead>
+            <tr class="text-center">
+                <th >
+                    @Html.DisplayNameFor(model => model.calificacion) 
+                </th>
+                <th >
+                    @Html.DisplayNameFor(model => model.comentario)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var dato in Model) {
+            <tr class="text-center">
+                <td style="padding-top: 1.1rem;">
+                    @Html.DisplayFor(modelItem => dato.calificacion)
+                </td>
+                <td style="padding-top: 1.1rem;">
+                    @Html.DisplayFor(modelItem => dato.comentario) 
+                </td>
+                <td>
+                            <form action="/Home/EliminarCalificacion" method="POST">
+                                <input type="hidden" name="Id" value="@dato.id">
+                                <button class="btn btn-danger">Eliminar</button>
+                            </form> 
+
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+
+</div>

@@ -1,49 +1,35 @@
-@using Microsoft.AspNetCore.Identity
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
-@model IEnumerable<Huerto_Del_valle.Models.Calificacion>
-
-    <div class="container">
-    <div class="text-center" style="margin-top: 50px;">
-        <h1 class="display-4">Calificaciones</h1>
-    </div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th class="text-center">
-                    @Html.DisplayNameFor(model => model.calificacion) 
-                </th>
-                <th>@Html.DisplayNameFor(model => model.comentario)</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-    @foreach (var dato in Model) {
-            <tr>
-                <td class="text-center">
-                    @Html.DisplayFor(modelItem => dato.calificacion)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => dato.comentario) 
-                </td>
-                <td>
-                    <div class="card-body" style="text-align: center;">
-                            <form action="/Pago/Delete" method="POST">
-                                <input type="hidden" name="Id" value="@dato.id">
-                                <button class="btn btn-outline-danger">Eliminar</button>
-                            </form> 
-                    </div>
-                </td>
-            </tr>
-    }
-        </tbody>
-    </table>
-    <br><br>
-    <br><br>
-    <br><br>
-    <br><br>
-    <br><br>
-    <br><br>
+@model HuertoDelValle.Models.Calificacion
+<section style= "justify-content: center; width: 100%; text-align: center;">
+  <div>
+    <img width="200px" height="200px" src="/img/compraExitosa.png" alt="">
+    <h1 style="color: #38726C; font-size: 50px; font-family: 'Lobster', cursive; margin-top: 20px;  margin-bottom: 10px;">Su compra se realizó con éxito.</h1>
+    <p style="font-size: 20px; font-family: 'Pacifico', cursive;">Nos contactaremos pronto contigo.</p>
+  </div>
+  <div style="background-color: #38726C; width: 50%; border-radius: 20px; margin: auto;">
+    <form asp-action="Aprobada" method="POST">
+      <p style="font-size: 30px; color: white; text-align: center;">¿Te gustaría calificar nuestro servicio?</p>
+        <label>¿Qué te pareció la experiencia?</label>
+        <div style="display: flex;">
+          <div style="margin: auto;">
+            <img width="120px" src="/img/sad.png" alt="">
+            @Html.RadioButton("calificacion", "Mala") Mala
+          </div>
+          <div style="margin: auto;">
+            <img width="120px" src="/img/serious.png" alt="">
+            @Html.RadioButton("calificacion", "Regular") Regular
+          </div>
+          <div style="margin: auto;">
+            <img width="120px" src="/img/happy.png" alt="">
+            @Html.RadioButton("calificacion", "Buena") Buena
+          </div>
+        </div>
+        <div >
+          <input type="text" asp-for="comentario" class="form-control text-center" id="" style="margin-left:7rem;margin-top: .8rem; width:70%;"  placeholder="Si deseas puedes agregar un comentario" style="border-radius:30px;" required>
+        </div>
+        <button type="submit" class="btn btn-primary"   style=" padding: 10px 7px 10px 7px; color: white; background-color: #438DB1; margin: 20px; border-radius: 20px; "><b>Enviar</b></button>              
+    </form>
+  </div>
+</section>
 
 
-</div>
+

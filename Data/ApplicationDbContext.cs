@@ -27,6 +27,7 @@ namespace HuertoDelValle.Data
         public DbSet<ProductoPedido> DataProductoPedido { get; set; }
         public DbSet<TipoEnvio> DataTipoEnvio { get; set; }
         public DbSet<Estado> DataEstado { get; set; }
+        public DbSet<Calificacion> DataCalificacion { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

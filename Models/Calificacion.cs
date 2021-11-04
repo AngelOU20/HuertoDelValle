@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Huerto_Del_valle.Models
+namespace HuertoDelValle.Models
 {
       [Table("t_calificacion")]
     public class Calificacion
