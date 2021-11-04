@@ -1,1 +1,49 @@
-<h1>Compra exitosa</h1>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@model IEnumerable<Huerto_Del_valle.Models.Calificacion>
+
+    <div class="container">
+    <div class="text-center" style="margin-top: 50px;">
+        <h1 class="display-4">Calificaciones</h1>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.calificacion) 
+                </th>
+                <th>@Html.DisplayNameFor(model => model.comentario)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var dato in Model) {
+            <tr>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => dato.calificacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => dato.comentario) 
+                </td>
+                <td>
+                    <div class="card-body" style="text-align: center;">
+                            <form action="/Pago/Delete" method="POST">
+                                <input type="hidden" name="Id" value="@dato.id">
+                                <button class="btn btn-outline-danger">Eliminar</button>
+                            </form> 
+                    </div>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+
+
+</div>
