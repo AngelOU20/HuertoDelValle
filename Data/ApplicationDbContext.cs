@@ -19,17 +19,25 @@ namespace HuertoDelValle.Data
 
         public DbSet<Categoria> DataCategoria { get; set; }
         public DbSet<Producto> DataProducto { get; set; }
-        public DbSet<Proforma> DataProforma { get; set; }
         public DbSet<Contacto> DataContacto { get; set; }
         public DbSet<Receta> DataReceta { get; set; }
         public DbSet<Reseña> DataReseña { get; set; }
-        public DbSet<Orden> DataOrden { get; set; }
 
-        public DbSet<Envio> DataEnvio { get; set; }
+        public DbSet<Pedido> DataPedido { get; set; }
+        public DbSet<ProductoPedido> DataProductoPedido { get; set; }
         public DbSet<TipoEnvio> DataTipoEnvio { get; set; }
         public DbSet<Estado> DataEstado { get; set; }
-        public DbSet<Pedido> DataPedido { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+         base.OnModelCreating(modelBuilder);
+
+
+        modelBuilder.Entity<ProductoPedido>()
+        .HasKey(c => new { c.pedidoId, c.productoId });
+
+        
+        }
 
     }
 

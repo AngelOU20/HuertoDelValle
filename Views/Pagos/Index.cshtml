@@ -1,0 +1,51 @@
+
+<link rel="stylesheet" href="~/css/pagos.css" />
+<body class="fondo">
+  <br>
+  <br>
+  <div class="container">
+    <h1 class="title__pago">Metodo de Pago</h1>  
+
+    <div class="row">
+      <div class="col-md-6 img__cont">
+        <img src="https://blog.gosocket.net/wp-content/uploads/2015/06/new-paypal-logo.jpg" alt="" class="img_pago">
+      </div>
+
+      <div class="col-md-6">
+        <div class="payment">
+          <form asp-controller="Pago" asp-action="Confirmacion">
+              <div class="input-group col">
+                <span class="input-group-text" id="basic-addon1"><i class="far fa-user"></i></span>
+                <input type="text" class="form-control" placeholder="Nombre del Propietario" aria-label="Nombre del Propietario" id="owner" aria-describedby="basic-addon1" required>
+              </div>
+              <br>
+              <div class="input-group col">
+                <span class="input-group-text" id="basic-addon1"><i class="fas fa-credit-card"></i></span>
+                <input type="text" class="form-control" placeholder="Número de tarjeta" aria-label="Numero de tarjeta" id="cardNumber" aria-describedby="basic-addon1" required>
+              </div>
+              <br>
+              <div class="row cvv__dateexpe">
+                <div class="input-group col">
+                  <span class="input-group-text" id="basic-addon1"><i class="fas fa-key"></i></span>
+                  <input type="text" class="form-control" placeholder="CVV" aria-label="CVV" id="CVV" aria-describedby="basic-addon1" required>
+                </div>
+                <div class="input-group col">
+                  <span class="input-group-text" id="basic-addon1"><i class="fas fa-calendar-alt"></i></span>
+                  <input type="text" class="form-control" placeholder="Fecha de Expiración" aria-label="expiration-date" id="expiration-date" aria-describedby="basic-addon1" required>
+                </div>
+              </div>
+              <br>
+              <div class="mx-auto">  
+                <a type="button" class="btn__cheackout btn-lg" asp-controller="Pagos" asp-action="Checkout" onclick="myFunction()">Proceder al pago</a>
+              </div>
+              <!-- Colocar varias tipos de tarjetas -->
+          </form>
+      </div>
+    </div>        
+  </div>
+
+</body>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+

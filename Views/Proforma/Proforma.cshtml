@@ -73,6 +73,8 @@
                         <div class="subtotal">
                             <div class=""> <strong> SubTotal </strong> </div>
                             <div class="">S/@ViewBag.subtotal</div>
+                            <div>Total de productos</div>
+						    <div>@count</div>
                         </div>
                     </div>
                     <div>
@@ -97,7 +99,7 @@
                     </div>
                     <div>
                         <div class="compra__btn">
-                            <a asp-controller="Orden" asp-action="Procesar" class="btn__finalizar__compra">Finalizar Compra</a>
+                            <a style="color:#fff;" class="btn__finalizar__compra" data-target="#exampleModalCenter1" data-toggle="modal">Resumen de Compra</a>
                         </div>
                     </div>
 
@@ -135,7 +137,7 @@
                 console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
                 var transaction = orderData.purchase_units[0].payments.captures[0];
                 alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
-                window.location.href = "/Proforma/Aprobada"; //Redireccionar a la página de aprobación
+                window.location.href = "/Pagos/Checkout"; //Redireccionar a la página de aprobación
           });
         }
       }).render('#paypal-button-container');
@@ -218,6 +220,82 @@
 					</div>
 					</div>
 	    }
+
+            <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLongTitle">Resumen de compras</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<table class="table">
+								<thead>
+									<tr>
+									<th scope="col">Productos</th>
+									<th scope="col">Cantidad</th>
+									<th scope="col">Precio</th>
+									<th scope="col">SubTotal</th>
+									</tr>
+								</thead>
+								<tbody>
+									@foreach (var item in ViewBag.cart)
+									{
+										<tr>
+											<td>@item.producto.NombreProducto</td>
+											<td>@item.cantidad</td>
+											<td>S/@item.producto.PrecioProducto</td>
+											<td>S/@(item.cantidad * item.producto.PrecioProducto)</td>
+										</tr>
+									}
+										<tr>
+
+									@if (ViewBag.envios!=null)
+									{
+										@foreach (var item in ViewBag.envios)
+										{
+											<tr>
+												<th colspan="3" align="right">
+													Precio por Envio
+												</th>
+												<td>
+													S/@item.tipoEnvio.precio
+												</td>
+											</tr>	
+										}
+									} else {
+										<tr>
+											<th colspan="3" align="right">
+												Precio por Envio
+											</th>
+											<td>
+												S/ 0.00
+											</td>
+										</tr>	
+									}
+											<th colspan="3" align="right">
+												Total
+											</th>
+											<td>
+											S/ @ViewBag.total	
+											</td>
+										</tr>
+								</tbody>
+								</table>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn__def__envi" data-dismiss="modal">Cancelar</button>
+
+							@if(ViewBag.cart != null) {
+							    <a type="button" class="btn__def__envi" asp-controller="Proforma" asp-action="Proforma">Confirmar</a>
+							}
+
+						</div>
+					</div>
+				</div>
+		    </div>
 
 }
 

@@ -18,6 +18,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using HuertoDelValle.Services;
 using Microsoft.AspNetCore.Http;
+using HuertoDelValle.Models;
 
 namespace HuertoDelValle
 {

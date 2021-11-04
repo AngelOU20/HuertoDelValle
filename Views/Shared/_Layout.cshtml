@@ -53,10 +53,10 @@
 
                 <div class="options__menu">	
 
-                    <a href="#" class="selected">
+                    <a asp-controller="Pedidos" asp-action="Pedidos" class="selected">
                         <div class="option">
                             <i class="fas fa-users" title="Clientes"></i>
-                            <h5>Clientes</h5>
+                            <h5>Pedidos</h5>
                         </div>
                     </a>
 
@@ -136,8 +136,9 @@
                     <div class="footer__section">
                         <h2 class="footer__title">Redes Sociales</h2>
                         <div>
-                            <i class="footer__iconsocial fab fa-facebook"></i>
-                            <i class="footer__iconsocial fab fa-instagram"></i>
+                            <a href="https://www.facebook.com/elhuertodelvalle" target="_blank"><i class="footer__iconsocial fab fa-facebook"></i></a>
+                            <a href="https://www.instagram.com/huertodelvalle/" target="_blank"><i class="footer__iconsocial fab fa-instagram"></i></a>
+                            <a href="https://api.whatsapp.com/send?phone=51922708667&text=" target="_blank"><i class="footer__iconsocial fab fa-whatsapp"></i></a>
                         </div>
                     </div>
                 </div>
@@ -173,6 +174,9 @@
                 </li>
                 <li class="nav__items">
                     <a asp-area="" asp-controller="Proforma" asp-action="Proforma" class="nav__links">Carrito</a>
+                </li>
+                <li class="nav__items">
+                    <a  asp-controller="Customer" asp-action="MisPedidos" class="nav__links">Mis Pedidos</a>
                 </li>
                 <partial name="_LoginPartial"/>
                 <img src="~/img/close.svg" class="nav__close" alt="" >
@@ -221,8 +225,9 @@
             <div class="footer__section">
                 <h2 class="footer__title">Redes Sociales</h2>
                 <div>
-                    <i class="footer__iconsocial fab fa-facebook"></i>
-                    <i class="footer__iconsocial fab fa-instagram"></i>
+                    <a href="https://www.facebook.com/elhuertodelvalle" target="_blank"><i class="footer__iconsocial fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/huertodelvalle/" target="_blank"><i class="footer__iconsocial fab fa-instagram"></i></a>
+                    <a href="https://api.whatsapp.com/send?phone=51922708667&text=" target="_blank"><i class="footer__iconsocial fab fa-whatsapp"></i></a>
                 </div>
             </div>
         </div>
@@ -292,8 +297,9 @@
             <div class="footer__section">
                 <h2 class="footer__title">Redes Sociales</h2>
                 <div>
-                    <i class="footer__iconsocial fab fa-facebook"></i>
-                    <i class="footer__iconsocial fab fa-instagram"></i>
+                    <a href="https://www.facebook.com/elhuertodelvalle" target="_blank"><i class="footer__iconsocial fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/huertodelvalle/" target="_blank"><i class="footer__iconsocial fab fa-instagram"></i></a>
+                    <a href="https://api.whatsapp.com/send?phone=51922708667&text=" target="_blank"><i class="footer__iconsocial fab fa-whatsapp"></i></a>
                 </div>
             </div>
         </div>

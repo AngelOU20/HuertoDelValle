@@ -65,6 +65,10 @@ namespace HuertoDelValle.Controllers
                 return RedirectToAction("Login","Account");
             }
         }
+
+        public IActionResult prueba(){
+            return View();
+        }
         
          public IActionResult Aprobada(){
             return View();

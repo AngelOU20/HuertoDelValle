@@ -1,0 +1,54 @@
+
+.title__pago{
+    font-family: 'Source Code Pro', monospace;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 25px;
+    letter-spacing: 1.1px;
+}
+
+.img__cont{
+    display: grid;
+    grid-template-areas:
+    ". a a ."
+    ". a a .";
+}
+
+.img_pago{
+    width : 80%;
+    grid-area: a;
+    align-self: center;
+    justify-self: center;
+}
+
+.payment{
+    padding: 80px 0;
+}
+
+.cvv__dateexpe{
+    padding: 0 15px;
+}
+
+.input-group{
+    width: 100%;
+}
+
+.btn__cheackout{
+    font-family: 'poppins';
+    background-color: #fff;
+    border: 2px solid  ;
+    border-color: #22353C;
+    border-radius: 50px;
+    color: #000000;
+    padding: 5px 20px;
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
+}
+
+.btn__cheackout:hover{
+    background-color: #22353C;
+    color: #fff;
+    text-decoration: none;
+    border: 2px solid #E7E3E2;
+}

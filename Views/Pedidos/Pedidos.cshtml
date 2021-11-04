@@ -1,0 +1,71 @@
+@model ICollection<Pedido>
+@{
+    ViewData["Title"] = "Pedidos";
+}
+
+<link rel="stylesheet" href="~/css/pedidos.css" />
+
+<div class="container">
+    <div class="card"> 
+        <a asp-controller="CrearPDF" asp-action="ReportePedido" class="btn__pdf">Generar Reporte</a>
+        <h2 class="title__pedido">Pedidos</h2>
+        <br>
+        <table class="table table-light">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>     
+                        <th scope="col">Nombre</th>           
+                        <th scope="col">Total</th>
+                        <th scope="col">Envio</th>
+                        <th scope="col">Direccion</th>
+                        <th scope="col">Fecha de Registro</th> 
+                    </tr>
+                </thead>
+
+            @foreach (var Pedido in Model)
+            {
+                <tr>
+
+                    <td>@Pedido.idpedido</td>
+                    
+                    <td>@Pedido.cliente</td>
+
+                    <td>@Pedido.total</td>
+
+                    <td>@Pedido.tipoenvio.lugar</td>
+                    
+                    @if (Pedido.tipoenvioid==1)
+                    {
+                        <td>Recojo en tienda</td>
+                    }else{ 
+                        <td>@Pedido.direccion</td>
+                    }
+
+                    <td>@Pedido.fechapedido</td>
+
+                    <td>
+                    <a class="btn__detalle__pedido" asp-controller="Pedidos" asp-action="DetallePedido" asp-route-id="@Pedido.idpedido">Detalle</a>
+                    </td>
+
+                    <td>
+                        @if(Pedido.estadoid == 1){
+                            <td class="text-center">
+                                <a class="btn__enviar__pedido" asp-controller="Pedidos" asp-action="PedidoProceso"  asp-route-id="@Pedido.idpedido" >Enviar Pedido</a>
+                            </td>
+                        }else if(Pedido.estadoid == 2){
+                            <td class="text-center" style="font-weight: bold;">
+                                Pedido enviado
+                            </td>
+                        }else if(Pedido.estadoid == 4){
+                            <td class="text-center" style="color:#5DB075; font-weight: bold;">
+                                Pedido Confirmado
+                            </td>
+                        }
+                    </td>
+                </tr>     
+            }
+
+        </table>
+    </div>
+</div>
+

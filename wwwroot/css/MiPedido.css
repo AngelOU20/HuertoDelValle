@@ -1,0 +1,75 @@
+
+.card{
+    padding: 50px;
+    border-radius: 10px;
+}
+
+.title__pedido{
+    font-family: 'Source Code Pro', monospace;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 25px;
+    letter-spacing: 1.1px;
+}
+
+.table{
+    background: #fff;
+}
+
+.btn__detalle__pedido{
+    font-family: 'poppins';
+    background-color: #fff;
+    border: 2px solid  ;
+    border-color: #22353C;
+    border-radius: 50px;
+    color: #000000;
+    padding: 5px 20px;
+    text-align: center;
+    text-decoration: none;
+    width: 7.2rem;
+}
+
+.btn__detalle__pedido:hover{
+    background-color: #22353C;
+    color: #fff;
+    text-decoration: none;
+    border: 2px solid #E7E3E2;
+}
+
+.btn__confirmar__pedido{
+    font-family: 'poppins';
+    padding: 5px 20px;
+    color: #E7E3E2;
+    background-color: #22353C;
+    border: 2px solid #E7E3E2;
+    border-radius: 100px;
+    width: 7.2rem;
+}
+
+.btn__confirmar__pedido:hover{
+    background-color: #fff;
+    text-decoration: none;
+    color: #000000;
+    border-color: #22353C;
+}
+
+.btn__volver{
+    text-align: center;
+    font-family: 'Poppins', serif;
+    background: #209e9b;
+    border: 2px solid #E7E3E2;
+    font-size: 15px;
+    border-radius: 100px;
+    padding: 7px 5px;
+    width:10%;
+    margin: 0;
+    color: #FFFFFF;
+    transition: all 0.5s;
+    transition: transform .3s;
+}
+
+.btn__volver:hover{
+    color: #fff;
+    text-decoration: none;
+    transform: scale(1.082);
+}
