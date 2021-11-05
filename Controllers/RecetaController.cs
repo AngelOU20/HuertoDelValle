@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using HuertoDelValle.Data;
@@ -103,6 +104,28 @@ namespace HuertoDelValle.Controllers
                 return NotFound();
             }
             return View(receta);
+        }
+
+        public async Task<IActionResult> Favoritos(int? id)
+        {
+            var userID = _userManager.GetUserName(User);
+            if(userID == null){ 
+                ViewData["Message"] = "Por favor, debe loguearse antes de agregar una receta";
+                List<Receta> recetas = new List<Receta>();
+                return  View("Recetas",recetas);
+            }else{
+                var receta = await _context.DataReceta.FindAsync(id);
+                
+
+                MisRecetas favorito = new MisRecetas();
+                favorito.Receta = receta;
+                favorito.UserID = userID;
+                
+                _context.Add(favorito);
+                
+                await _context.SaveChangesAsync();
+                return  RedirectToAction(nameof(Recetas));
+            }
         }
 
     }

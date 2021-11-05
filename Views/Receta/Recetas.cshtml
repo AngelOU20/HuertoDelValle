@@ -14,11 +14,15 @@
             @foreach (var item in Model)
             {
                 <div class="receta">
-                    <img src="@Html.DisplayFor(modelItem => item.Imagen)" alt="" class="recetas__img">
-
+                    <a asp-action="Receta" asp-route-id="@item.Id">
+                        <img src="@Html.DisplayFor(modelItem => item.Imagen)" alt="" class="recetas__img">
+                    </a>
                     <div class="receta__description">
                         <h4 class="receta__title">@Html.DisplayFor(modelItem => item.NombreReceta)</h4>
-                        <a class="btn btn-info" asp-action="Receta" asp-route-id="@item.Id">View</a>
+                        <form asp-action="" method="POST">
+                            <input type="hidden" name="id" value="@item.Id">
+                            <button  asp-action ="Favoritos" class="btn__receta"><i class="far fa-heart"></i></button>
+                        </form>
                     </div>
                 </div>
             }

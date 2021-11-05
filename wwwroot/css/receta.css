@@ -177,6 +177,19 @@ textarea:focus {
 }
 /*Pág recetas*/
 
+.btn__receta{
+    background: none;
+    border: none;
+}
+
+.btn__receta i{
+    font-size: 30px;
+}
+
+.btn__receta:focus{
+    outline: none;
+}
+
 .receta-main-tittle{
     text-align: center;
 }
@@ -184,11 +197,24 @@ textarea:focus {
 .container-recetas{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 10px;
+    grid-gap: 30px;
+}
+
+.receta{
+    padding: 10px;
 }
 
 .recetas__img{
     width: 100%;
+}
+
+.receta__title{
+    text-align: center;
+}
+
+.icon__receta{
+    font-size: 30px;
+    cursor: pointer;
 }
 
 /*Pág receta*/
@@ -222,6 +248,29 @@ textarea:focus {
 
 .contenedor__ingredientes{
     width: 40%;
+}
+
+/*Mis Recetas*/
+.cont__icon{
+    display: grid;
+    padding: 0 30px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+}
+
+.icon__fav{
+    text-align: left;
+    font-size: 35px;
+    color: red;
+    cursor: pointer;
+    align-self: center;
+}
+
+.icon__check{
+    text-align: right;
+    font-size: 35px;
+    cursor: pointer;
+    align-self: center;
 }
 
 /*Receta comentarios*/
