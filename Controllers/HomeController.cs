@@ -72,9 +72,24 @@ namespace HuertoDelValle.Controllers
             return View(listcontactos);
         }
 
-        public IActionResult Privacy()
-        {
+
+        public IActionResult Feedback(){
+            var Calificaciones = _context.DataCalificacion.ToList();
+            return View(Calificaciones);
+        }
+
+        public IActionResult EliminarCalificacion(){
             return View();
+        }
+        
+        [HttpPost]
+        public IActionResult EliminarCalificacion(Calificacion c){
+            if(ModelState.IsValid){
+                _context.Remove(c);
+                _context.SaveChanges();
+                return RedirectToAction("Feedback","Home");
+            }
+            return View(c);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

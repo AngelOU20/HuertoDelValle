@@ -3,15 +3,17 @@ using System;
 using HuertoDelValle.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace HuertoDelValle.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211104212528_Calificacion")]
+    partial class Calificacion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -111,27 +113,6 @@ namespace HuertoDelValle.Data.Migrations
                     b.HasKey("id");
 
                     b.ToTable("estados");
-                });
-
-            modelBuilder.Entity("HuertoDelValle.Models.MisRecetas", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasColumnName("Id")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<int?>("RecetaId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("UserID")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RecetaId");
-
-                    b.ToTable("DataMisRecetas");
                 });
 
             modelBuilder.Entity("HuertoDelValle.Models.Pedido", b =>
@@ -284,43 +265,6 @@ namespace HuertoDelValle.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("T_Receta");
-                });
-
-            modelBuilder.Entity("HuertoDelValle.Models.Reclamo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasColumnName("Id")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<string>("Apellido")
-                        .HasColumnType("text")
-                        .HasColumnName("apellido");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("email");
-
-                    b.Property<string>("Mensaje")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("mensaje");
-
-                    b.Property<string>("Nombre")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("nombre");
-
-                    b.Property<string>("Telefono")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("telefono");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("T_Reclamo");
                 });
 
             modelBuilder.Entity("HuertoDelValle.Models.Reseña", b =>
@@ -572,15 +516,6 @@ namespace HuertoDelValle.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("HuertoDelValle.Models.MisRecetas", b =>
-                {
-                    b.HasOne("HuertoDelValle.Models.Receta", "Receta")
-                        .WithMany()
-                        .HasForeignKey("RecetaId");
-
-                    b.Navigation("Receta");
                 });
 
             modelBuilder.Entity("HuertoDelValle.Models.Pedido", b =>

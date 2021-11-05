@@ -71,7 +71,21 @@ namespace HuertoDelValle.Controllers
         }
         
          public IActionResult Aprobada(){
+
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Aprobada([Bind("id,calificacion,comentario")] Calificacion a)
+        {
+            if(ModelState.IsValid){
+                _context.Add(a);
+                _context.SaveChanges();
+                 Console.WriteLine("Calificación agregada");
+                return RedirectToAction("Catalogo","Catalogo");
+            }
+            return View(a);
         }
 
         public IActionResult Buy(int id)
