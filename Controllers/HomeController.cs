@@ -46,6 +46,32 @@ namespace HuertoDelValle.Controllers
             return View(c);
         }
 
+        public IActionResult Reclamo()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Reclamo(Reclamo r){
+            if(ModelState.IsValid){
+                _context.Add(r);
+                _context.SaveChanges();
+                return RedirectToAction("Index","Home");
+            }
+            return View(r);
+        }
+
+        public IActionResult Reclamos(){
+            var listrecla = _context.DataReclamo.OrderBy(x => x.Id).ToList();
+            return View(listrecla);
+        }
+
+
+        public IActionResult Consultas(){
+            var listcontactos = _context.DataContacto.OrderBy(x => x.Id).ToList();
+            return View(listcontactos);
+        }
+
         public IActionResult Privacy()
         {
             return View();
