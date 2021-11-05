@@ -1,0 +1,78 @@
+@model IEnumerable<HuertoDelValle.Models.MisRecetas>
+
+@{
+    ViewData["Title"] = "Favoritos";
+}
+
+<link rel="stylesheet" href="~/css/receta.css" />
+
+
+<script type="text/javascript" >
+function cambiarColor(p) {
+el = document.getElementById(p);
+    if ( el.style.color == 'rgb(0, 0, 0)' ) {
+    el.style.color = 'rgb(21, 189, 21)';
+    } else {
+    el.style.color = 'rgb(0, 0, 0)';        
+    }
+
+}   
+</script>
+
+<main class="main">
+    <div class="container">
+        <h2 class="receta-main-tittle">Recetas Favoritas</h2>
+
+        <section class="container-recetas">
+            @foreach (var item in Model)
+            {
+                <div class="receta">
+                    <h4 class="receta__title" id="el_div">@Html.DisplayFor(modelItem => item.Receta.NombreReceta)</h4>
+                    <a asp-controller="Receta" asp-action="Receta" asp-route-id="@item.Receta.Id">
+                        <img src="@Html.DisplayFor(modelItem => item.Receta.Imagen)" alt="" class="recetas__img">
+                    </a>
+                    <div class="receta__description">
+                        <div class="cont__icon">
+                            <a class= "icon__fav" style="color:red;" asp-action="QuitarReceta" asp-route-id="@item.Id"><i class="fas fa-heart"></i></a>
+                            <i class="far fa-check-square icon__check" id="alerta" onclick="cambiarColor('el_div')" ></i>
+                            <!--<button type="button" onclick="cambiarColor('el_div')" >Cambiar color</button>-->
+                        </div>
+                    </div>
+                </div>
+            }
+        </section>
+    </div>
+</main>
+
+<!--
+<div>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Receta realizada</strong> Bien Hecho!!
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+</div>
+-->
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+<script>
+    const alerta = document.querySelector('#alerta')
+
+    alerta.addEventListener("click",() => {
+        toastr.success('Bien Hecho','Receta realizada!!',{
+            "closeButton": true,
+            "progressBar": true,
+            "positionClass": "toast-bottom-left",
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+        });
+    })
+
+    
+</script>

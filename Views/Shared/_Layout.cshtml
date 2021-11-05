@@ -12,6 +12,7 @@
     <title>@ViewData["Title"] | HuertoDelValle</title>
     <link rel="shortcut icon" href="~/img/logo2.png" type="image/x-icon">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
     <link rel="stylesheet" href="~/css/footer.css" />
     <link rel="stylesheet" href="~/css/header.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -81,10 +82,17 @@
                         </div>
                     </a>
 
-                    <a href="#" class="selected">
+                    <a asp-controller="Home" asp-action="Consultas" class="selected">
                         <div class="option">
                             <i class="fas fa-handshake" title="Consultas"></i>
                             <h5>Consultas</h5>
+                        </div>
+                    </a>
+
+                    <a asp-controller="Home" asp-action="Reclamos" class="selected">
+                        <div class="option">
+                            <i class="fas fa-exclamation-circle" title="Reclamos"></i>
+                            <h5>Reclamos</h5>
                         </div>
                     </a>
 
@@ -161,16 +169,22 @@
 
             <ul class="nav__link nav__link--menu">
                 <li class="nav__items">
+                    <a  asp-area="" asp-controller="Home" asp-action="Nosotros" class="nav__links">Nosotros</a>
+                </li>
+                <li class="nav__items">
                     <a  asp-controller="Catalogo" asp-action="Catalogo" class="nav__links">Catálogo</a>
                 </li>
                 <li class="nav__items">
                     <a  asp-controller="Receta" asp-action="Recetas" class="nav__links">Recetas</a>
                 </li>
                 <li class="nav__items">
-                    <a  asp-area="" asp-controller="Home" asp-action="Nosotros" class="nav__links">Nosotros</a>
+                    <a  asp-controller="MisRecetas" asp-action="MisRecetas" class="nav__links">Mis Recetas</a>
                 </li>
                 <li class="nav__items">
                     <a  asp-area="" asp-controller="Home" asp-action="Contactenos" class="nav__links">Contáctenos</a>
+                </li>
+                <li class="nav__items">
+                    <a asp-area="" asp-controller="Home" asp-action="Reclamo" class="nav__links">Reclamos</a>
                 </li>
                 <li class="nav__items">
                     <a asp-area="" asp-controller="Proforma" asp-action="Proforma" class="nav__links">Carrito</a>
