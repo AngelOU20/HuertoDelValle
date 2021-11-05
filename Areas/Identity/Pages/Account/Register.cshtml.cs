@@ -45,17 +45,18 @@ namespace HuertoDelValle.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
-            [EmailAddress]
+            [Required(ErrorMessage = "El Email es obligatorio.")]
+            [EmailAddress(ErrorMessage = "El Email no es valido.")]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
-            [Required]
-            [StringLength(100, ErrorMessage = "El {0} debe tener al menos {2} y como máximo {1} caracteres.", MinimumLength = 6)]
+            [Required(ErrorMessage = "La contraseña es obligatoria.")]
+            [StringLength(100, ErrorMessage = "La contraseña debe tener al menos {2} y como máximo {1} caracteres.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Password")]
             public string Password { get; set; }
 
+            [Required(ErrorMessage = "La confirmación de la contraseña es obligatoria.")]
             [DataType(DataType.Password)]
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "La contraseña y la contraseña de confirmación no coinciden.")]

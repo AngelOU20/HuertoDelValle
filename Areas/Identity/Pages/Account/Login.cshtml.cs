@@ -42,15 +42,15 @@ namespace HuertoDelValle.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
-            [EmailAddress]
+            [Required(ErrorMessage = "El Email es obligatorio.")]
+            [EmailAddress(ErrorMessage = "Ingrese un Email valido.")]
             public string Email { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "La contraseña es obligatoria.")]
             [DataType(DataType.Password)]
             public string Password { get; set; }
 
-            [Display(Name = "Remember me?")]
+            [Display(Name = "Recordarme?")]
             public bool RememberMe { get; set; }
         }
 
@@ -84,7 +84,7 @@ namespace HuertoDelValle.Areas.Identity.Pages.Account
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User logged in.");
+                    _logger.LogInformation("Usuario conectado.");
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
@@ -98,7 +98,7 @@ namespace HuertoDelValle.Areas.Identity.Pages.Account
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, "Inicio de sesión no válido.");
                     return Page();
                 }
             }
