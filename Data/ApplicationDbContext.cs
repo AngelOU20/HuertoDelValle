@@ -20,7 +20,9 @@ namespace HuertoDelValle.Data
         public DbSet<Categoria> DataCategoria { get; set; }
         public DbSet<Producto> DataProducto { get; set; }
         public DbSet<Contacto> DataContacto { get; set; }
+        public DbSet<Reclamo> DataReclamo { get; set; }
         public DbSet<Receta> DataReceta { get; set; }
+        public DbSet<MisRecetas> DataMisRecetas { get; set; }
         public DbSet<Reseña> DataReseña { get; set; }
 
         public DbSet<Pedido> DataPedido { get; set; }
