@@ -27,7 +27,7 @@
 </div>
 
 <div class="container">
-    <h2 class="mt-3 title__comentario">Comentarios</h2>
+    <h2 class="mt-3 title__comentario">Reseñas</h2>
    @if(@ViewBag.resenas)
    {
         <div class="container reseña__cont">
@@ -80,7 +80,7 @@
             <p>Aun no se han agregado reseñas, puedes agregar una 
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <a asp-controller="Reseña" asp-action="AgregarReseña" asp-route-rece="@Model.Id" class="btn__reseña"> Aqui</a>
+                    <a asp-controller="Reseña" asp-action="AgregarReseña" asp-route-rece="@Model.Id"> Aqui</a>
                 }else{
                     <a asp-page="./Login" class="btn__reseña"> Registrandote aqui</a>
                 }
