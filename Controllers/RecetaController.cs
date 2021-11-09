@@ -25,9 +25,9 @@ namespace HuertoDelValle.Controllers
             return View(await recetas.ToListAsync());
         }
 
-        public IActionResult AdministrarReceta(){
-            var recetas = _context.DataReceta.OrderBy(r => r.Id).ToList();
-            return View(recetas);
+        public async Task<IActionResult> AdministrarReceta(){
+            var recetas = from o in _context.DataReceta select o;
+            return View(await recetas.ToListAsync());
         }
 
         public IActionResult RegistrarReceta(){
@@ -105,6 +105,31 @@ namespace HuertoDelValle.Controllers
             }
             return View(receta);
         }
+
+        public IActionResult DetalleReceta(int? id)
+        {
+            var receta = _context.DataReceta.Find(id);
+            var userID = _userManager.GetUserName(User);
+
+            ViewBag.resenas = false;
+            if (_context.DataReseña.Where(x => x.RecetaId.Equals(id)).Count() > 0)
+            {
+                ViewBag.resenas = true;
+                Random rnd = new Random();
+                int nrouser = rnd.Next(_context.DataReseña.Where(x=>x.RecetaId.Equals(id)).OrderBy(x=>x.Id).ToList().First().Id,_context.DataReseña.Where(x=>x.RecetaId.Equals(id)).OrderBy(x => x.Id).ToList().Last().Id);
+                ViewBag.fecha = _context.DataReseña.Find(nrouser).Fecha.ToString();
+                ViewBag.calificacion = _context.DataReseña.Where(x=>x.RecetaId.Equals(id)).FirstOrDefault(x=>x.Id.Equals(nrouser)).Calificacion;
+                ViewBag.nombreusuario = _userManager.GetUserName(User);
+                ViewBag.resenausuario = _context.DataReseña.Where(x=>x.RecetaId.Equals(id)).FirstOrDefault(x=>x.Id.Equals(nrouser)).Comentario;
+                ViewBag.fecha = _context.DataReseña.Where(x=>x.RecetaId.Equals(id)).FirstOrDefault(x=>x.Id.Equals(nrouser)).Fecha;
+            }
+            if(receta == null){
+                return NotFound();
+            }
+            return View(receta);
+        }
+
+
 
         public async Task<IActionResult> Favoritos(int? id)
         {

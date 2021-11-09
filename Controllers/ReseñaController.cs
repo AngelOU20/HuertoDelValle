@@ -62,6 +62,21 @@ namespace HuertoDelValle.Controllers
             return View(listaResenas);
         }
 
+        public IActionResult AdministrarReseñas(int rece)
+        {
+            var listaResenas = _context.DataReseña.Include(q=>q.Receta).Where(p=>p.RecetaId.Equals(rece)).OrderBy(x=>x.Id).ToList();
+            var receta = _context.DataReceta.Find(rece);
+            ViewBag.rece = receta.NombreReceta;
+            return View(listaResenas);
+        }
+
+        public IActionResult eliminarReseña(int Id){
+            var reseña= _context.DataReseña.Find(Id);
+            _context.Remove(reseña);
+            _context.SaveChanges();
+            return RedirectToAction("AdministrarReceta","Receta");
+        }
+
 
     }
 

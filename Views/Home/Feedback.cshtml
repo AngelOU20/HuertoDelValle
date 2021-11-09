@@ -3,10 +3,15 @@
 @inject UserManager<IdentityUser> UserManager
 @model IEnumerable<HuertoDelValle.Models.Calificacion>
 
-    <div class="container">
-    <div class="text-center" style="margin-top: 50px;">
-        <h1 class="display-4">Calificaciones</h1>
-    </div>
+@{
+    ViewData["Title"] = "Calificaciones del Servicio";
+}
+
+<div class="container">
+
+    <h1>Calificaciones del Servicio</h1>
+    <hr>
+    <br>
     <table class="table">
         <thead>
             <tr class="text-center">
@@ -29,11 +34,10 @@
                     @Html.DisplayFor(modelItem => dato.comentario) 
                 </td>
                 <td>
-                            <form action="/Home/EliminarCalificacion" method="POST">
-                                <input type="hidden" name="Id" value="@dato.id">
-                                <button class="btn btn-danger">Eliminar</button>
-                            </form> 
-
+                    <form action="/Home/EliminarCalificacion" method="POST">
+                        <input type="hidden" name="Id" value="@dato.id">
+                        <button class="btn btn-danger">Eliminar</button>
+                    </form> 
                 </td>
             </tr>
     }
@@ -47,3 +51,13 @@
     <br><br>
 
 </div>
+
+<style>
+h1{
+    font-weight: bold;
+    text-align: center;
+    font-size: 45px;
+    padding-bottom: 10px;
+    letter-spacing: 1.1px;
+}
+</style>

@@ -3,5 +3,40 @@
 @{
     ViewData["Title"] = "Email Confirmado";
 }
+<br>
+<br>
+<b>
+<br>
+<div class="container">
+    <h1 class="text-center">CORREO ELECTRÓNICO CONFIRMADO</h1>
+    <div class="contenedor__img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Yes_Check_Circle.svg/2048px-Yes_Check_Circle.svg.png" alt="">
+    </div>
+</div>
 
-<h1>@ViewData["Title"]</h1>
+<br>
+<br>
+</b>
+
+<style>
+h1{
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 25px;
+    letter-spacing: 1.1px;
+}
+
+.contenedor__img{
+    display: grid;
+    grid-template-areas:
+    ". a a ."
+    ". a a .";
+}
+
+img{
+    width: 20%; 
+    grid-area: a;
+    align-self: center;
+    justify-self: center;
+}
+</style>

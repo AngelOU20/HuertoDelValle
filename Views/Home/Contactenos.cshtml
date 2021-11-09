@@ -28,6 +28,9 @@
         </div>
         <div class="form">
             <h3 class="title__form">contáctenos</h3>
+            <div class="text-center" style="color: green;">
+                <h1>@ViewData["Message"]</h1>
+            </div>
             <form asp-action="Contactenos" method="POST" class="form-list">
                 <div class="form-list__row">
                     <label asp-for="Nombre" ></label>

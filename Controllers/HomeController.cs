@@ -41,7 +41,8 @@ namespace HuertoDelValle.Controllers
             if(ModelState.IsValid){
                 _context.Add(c);
                 _context.SaveChanges();
-                return RedirectToAction("Index","Home");
+                ViewData["Message"] = "Mensaje Enviado";
+                return RedirectToAction("Contactenos","Home");
             }
             return View(c);
         }

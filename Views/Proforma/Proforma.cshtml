@@ -53,7 +53,7 @@
                                 </td>
                                 <td>
                                     <div class="product-quantity">
-                                        <input type="number" name="quantity" value="@item.cantidad" min="1" pattern="^[0-9]+" class="update__cantidad">
+                                        <input type="number" name="quantity" value="@item.cantidad" min="1" max="@item.producto.Stock" pattern="^[0-9]+" class="update__cantidad">
                                     </div>
                                 </td>
                                 <td class="subtotal__td">
@@ -89,7 +89,12 @@
                                     <span>Recoger en tienda</span>
                                 </div>
                             </div>
-                        </div>
+							<div class="container__btn__envio">
+								<button type="button" class="btn__metodo__envio" data-toggle="modal" data-target="#exampleModalCenter">   
+									Método de Envío
+								</button>
+							</div>
+                        </div>	
                     </div>
                     <div>
                         <div class="total__shipping">
@@ -101,6 +106,10 @@
                         <div class="compra__btn">
                             <a style="color:#fff;" class="btn__finalizar__compra" data-target="#exampleModalCenter1" data-toggle="modal">Resumen de Compra</a>
                         </div>
+                    </div>
+
+					<div class="compra__btn">
+                        <a style="color:#fff;" class="btn__finalizar__compra" data-target="#exampleModalCenter2" data-toggle="modal">Pago Contra Entrga</a>
                     </div>
 
                     <!-- Pasarela -->
@@ -145,17 +154,10 @@
     </script>
 
 <!-- Pasarela -->
-
                 </div>
             </div>
         </div>
-}
-
-<div class="container__btn__envio">
-    <button type="button" class="btn__metodo__envio" data-toggle="modal" data-target="#exampleModalCenter">   
-		Método de Envio
-	</button>
-</div>			
+}		
 		@using (Html.BeginForm("envio", "Proforma", FormMethod.Post))
 	    {
 		
@@ -163,7 +165,7 @@
 					<div class="modal-dialog modal-dialog-centered" role="document">
 						<div class="modal-content">
 						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLongTitle">Método de envio</h5>
+							<h5 class="modal-title" id="exampleModalLongTitle">Método de envío</h5>
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 							</button>
@@ -213,7 +215,7 @@
 						</div>
 						<div class="modal-footer cont__btn__env">
 							<button type="button" class="btn__def__envi" data-dismiss="modal">Cancelar</button>
-							<button type="submit" class="btn__def__envi">Guardar</button>
+							<button type="submit" class="btn__def__envi">Confirmar</button>
 							<a type="button" class="btn__def__envi" asp-controller="Proforma" asp-action="recojoTienda">Recojo en tienda</a>
 						</div>
 						</div>
@@ -290,6 +292,32 @@
 
 							@if(ViewBag.cart != null) {
 							    <a type="button" class="btn__def__envi" asp-controller="Proforma" asp-action="Proforma">Confirmar</a>
+							}
+
+						</div>
+					</div>
+				</div>
+		    </div>
+
+			<div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLongTitle">Pago Contra Entrega</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>
+								Realizar el pago contra entrega.
+							</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn__def__envi" data-dismiss="modal">Cancelar</button>
+
+							@if(ViewBag.cart != null) {
+							    <a type="button" class="btn__def__envi" asp-controller="Pagos" asp-action="Checkout">Confirmar</a>
 							}
 
 						</div>

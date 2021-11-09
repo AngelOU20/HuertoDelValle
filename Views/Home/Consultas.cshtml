@@ -6,12 +6,11 @@
 <div class="container">
     <div>
         <h2>Consultas</h2>
-    
         <hr>
         <br>
         <table class="table table-hover">
         <thead class="thead-dark">
-            <tr>
+            <tr class="text-center">
                     <th scope="col">
                         @Html.DisplayNameFor(model => model.Id)
                     </th>
@@ -32,12 +31,12 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
+                <tr class="text-center">
                     <th scope="row">
                         @Html.DisplayFor(modelItem => item.Id)
                     </th>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Nombre)
+                        @Html.DisplayFor(modelItem => item.Nombre) @Html.DisplayFor(modelItem => item.Apellido)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Email)
@@ -54,3 +53,13 @@
         </table>
     </div>
 </div>
+
+<style>
+h2{
+    font-weight: bold;
+    text-align: center;
+    font-size: 45px;
+    padding-bottom: 10px;
+    letter-spacing: 1.1px;
+}
+</style>

@@ -105,7 +105,7 @@ namespace HuertoDelValle.Controllers
                TempData["prueba"] = "prueba01";
 
             }
-            return RedirectToAction("Catalogo", "Catalogo");
+            return RedirectToAction("Aprobada", "Proforma");
         }
     }
 }

@@ -70,23 +70,16 @@
                 </div>
             </div>
             <div class="btn__conte">
-                <a asp-controller="Reseña" asp-action="AgregarReseña" asp-route-rece="@Model.Id" class="btn__reseña">Agregue una reseña</a>
-                <a asp-controller="Reseña" asp-action="VerReseñas" asp-route-rece="@Model.Id" class="btn__reseña">Ver todas las reseñas</a>
+                <a asp-controller="Reseña" asp-action="AdministrarReseñas" asp-route-rece="@Model.Id" class="btn__reseña">Ver todas las reseñas</a>
+                <a asp-controller="Receta" asp-action="AdministrarReceta" class="btn__volver" >Volver</a>    
             </div>
         </div>
 
    }else{
        <div class="container">
-            <p>Aun no se han agregado reseñas, puedes agregar una 
-                @if (User.Identity.IsAuthenticated)
-                {
-                    <a asp-controller="Reseña" asp-action="AgregarReseña" asp-route-rece="@Model.Id"> Aqui</a>
-                }else{
-                    <a asp-page="./Login" class="btn__reseña"> Registrandote aqui</a>
-                }
-            </p> <br/>
+            <p class="msj__receta">Aun no se han agregado reseñas</p><br/>
             <div class="text-center">
-                <a asp-controller="Receta" asp-action="Recetas" class="btn__volver" >Volver</a>
+                <a asp-controller="Receta" asp-action="AdministrarReceta" class="btn__volver" >Volver</a>
             </div>
        </div>
    }
@@ -111,10 +104,15 @@
     color: #dce9e8;
 }
 
+.msj__receta{
+    text-align: center;
+    font-size: 18px;
+}
+
 .title__comentario{
     font-weight: bold;
     text-align: center;
     padding-bottom: 25px;
     letter-spacing: 1.1px;
-}   
+}
 </style>

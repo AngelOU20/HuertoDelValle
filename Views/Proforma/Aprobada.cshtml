@@ -1,4 +1,9 @@
 @model HuertoDelValle.Models.Calificacion
+
+@{
+    ViewData["Title"] = "Calificación de servicio";
+}
+
 <section style= "justify-content: center; width: 100%; text-align: center;">
   <div>
     <img width="200px" height="200px" src="/img/compraExitosa.png" alt="">
@@ -26,7 +31,7 @@
         <div >
           <input type="text" asp-for="comentario" class="form-control text-center" id="" style="margin-left:7rem;margin-top: .8rem; width:70%;"  placeholder="Si deseas puedes agregar un comentario" style="border-radius:30px;" required>
         </div>
-        <button type="submit" class="btn btn-primary"   style=" padding: 10px 7px 10px 7px; color: white; background-color: #438DB1; margin: 20px; border-radius: 20px; "><b>Enviar</b></button>              
+        <button type="submit" class="btn btn-primary"   style=" padding: 10px 7px 10px 7px; color: white; background-color: #438DB1; margin: 20px; border-radius: 20px; "><b>Calificar</b></button>              
     </form>
   </div>
 </section>
