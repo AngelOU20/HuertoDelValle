@@ -17,7 +17,7 @@ namespace HuertoDelValle.Services
 
         public Task SendEmailAsync(string email, string subject, string message)
         {
-            return Execute(Options.SendGridKey, subject, message, email);
+            return Execute(Options.SendGridKey, subject, message, email).Wait();
         }
 
         public Task Execute(string apiKey, string subject, string message, string email)
