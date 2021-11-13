@@ -1,0 +1,5 @@
+{
+    "appService.preDeployTask": "publish-release",
+    "appService.deploySubpath": "bin\\Release\\net5.0\\publish",
+    "appService.defaultWebAppToDeploy": "/subscriptions/4bd4d50f-a10e-429c-8850-7de9d2ea8dd7/resourceGroups/sofware/providers/Microsoft.Web/sites/software-huerto"
+}

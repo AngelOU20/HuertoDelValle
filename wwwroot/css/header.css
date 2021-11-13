@@ -1,203 +1,202 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
 
 :root {
-    --padding-container: 80px 0;
-    --color-title: #001A49;
+  --padding-container: 80px 0;
+  --color-title: #001a49;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .container1 {
-    width: 100%;
-    max-width: 1600px;
-    margin: 0 auto;
-    overflow: hidden;
-    padding: 20px;
+
+  width: 100%;
+  max-width: 1800px;
+  margin: 0 auto;
+  overflow: hidden;
+  padding: 20px;
+
 }
 
 .hero {
+  width: 100%;
+  height: 130px;
+  position: relative;
+  display: grid;
+  grid-template-rows: 100px 1fr;
+  color: #fff;
+  padding: 10px;
+  background: #007175;
+}
+
+/* Nav */
+
+.nav {
+  --padding-container: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.logo1_nav {
+  width: 80px;
+  height: 80px;
+  border: 2px solid #ffbb98;
+}
+
+.nav__link {
+  margin-left: auto;
+  margin-bottom: 0;
+  padding: 0;
+  text-transform: uppercase;
+  font-size: 1rem;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  gap: 2em;
+}
+
+.nav__links:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav__items {
+  list-style: none;
+  display: inline-block;
+  margin: 5px 10px;
+  position: relative;
+  z-index: 99999999;
+}
+
+.nav__links {
+  color: #e5e5f7;
+  text-decoration: none;
+  font-weight: 500;
+  z-index: 9999999999;
+}
+
+.btn__logout {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  text-transform: uppercase;
+  background: none;
+  color: #e5e5f7;
+  border: none;
+}
+
+.btn__logout:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn__logout:focus {
+  outline-style: none;
+}
+
+.nav__menu {
+  margin-left: auto;
+  cursor: pointer;
+  display: none;
+}
+
+.nav__img {
+  display: block;
+  width: 30px;
+}
+
+.nav__close {
+  display: var(--show, none);
+}
+
+/* Hero container */
+
+.hero__container {
+  max-width: 800px;
+  --padding-container: 0;
+  display: grid;
+  grid-auto-rows: max-content;
+  align-content: center;
+  gap: 1em;
+  padding-bottom: 100px;
+  text-align: center;
+}
+
+.hero__paragraph {
+  margin-bottom: 20px;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #2091f9;
+  justify-self: center;
+  color: #fff;
+  text-decoration: none;
+  padding: 13px 30px;
+  border-radius: 32px;
+}
+
+@media (max-width: 1100px) {
+  .container1 {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 10px;
+  }
+
+  .nav__menu {
+    display: block;
+  }
+
+  .logo1_nav {
+    width: 55px;
+    height: 55px;
+    border: 2px solid #ffbb98;
+  }
+
+  .hero {
     width: 100%;
-    height: 130px;
+    height: 100px;
     position: relative;
     display: grid;
     grid-template-rows: 100px 1fr;
     color: #fff;
     padding: 10px;
     background: #007175;
-}
+  }
 
-/* Nav */
-
-.nav {
-    --padding-container: 0;
+  .nav__link--menu {
+    position: fixed;
+    background-color: #000;
+    top: 0;
+    left: 0;
     height: 100%;
+    width: 100%;
     display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
     align-items: center;
-}
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.7s opacity;
+    z-index: 9999999;
+  }
 
-.logo1_nav{
-    width: 80px;
-    height: 80px;
-    border: 2px solid #FFBB98;
-}
+  .nav__link--show {
+    --show: block;
+    opacity: 1;
+    z-index: 999999;
+    pointer-events: unset;
+  }
 
-.nav__link {
-    margin-left: auto;
-    margin-bottom: 0;
-    padding: 0;
-    text-transform: uppercase;
-    font-size: 1rem;
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: max-content;
-    gap: 2em;
-}
-
-.nav__links:hover {
-    color: #fff;
-    text-decoration: none;
-}
-
-
-.nav__items {
-    list-style: none;
-    display: inline-block;
-    margin: 5px 10px;
-    position: relative;
-    z-index: 99999999;
-}
-
-.nav__links {
-    color: #e5e5f7;
-    text-decoration: none;
-    font-weight: 500;
-    z-index: 9999999999;
-}
-
-.btn__logout{
-    font-family: 'Poppins', sans-serif;
-    font-size: 1rem;
-    text-transform: uppercase;
-    background: none;
-    color: #e5e5f7;
-    border: none;
-}
-
-.btn__logout:hover{
-    color: #fff;
-    text-decoration: none;
-}
-
-.btn__logout:focus{
-    outline-style: none;
-}
-
-.nav__menu {
-    margin-left: auto;
-    cursor: pointer;
-    display: none;
-}
-
-.nav__img {
-    display: block;
+  .nav__close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
     width: 30px;
-}
-
-
-.nav__close {
-    display: var(--show, none);
-}
-
-/* Hero container */
-
-.hero__container {
-    max-width: 800px;
-    --padding-container: 0;
-    display: grid;
-    grid-auto-rows: max-content;
-    align-content: center;
-    gap: 1em;
-    padding-bottom: 100px;
-    text-align: center;
-}
-
-.hero__paragraph {
-    margin-bottom: 20px;
-}
-
-.btn {
-    display: inline-block;
-    background-color: #2091F9;
-    justify-self: center;
-    color: #fff;
-    text-decoration: none;
-    padding: 13px 30px;
-    border-radius: 32px;
-}
-
-@media (max-width:1100px){
-    .container1 {
-        width: 90%;
-        max-width: 1200px;
-        margin: 0 auto;
-        overflow: hidden;
-        padding: 10px;
-    }
-
-    .nav__menu{
-        display: block;
-    }
-
-    .logo1_nav{
-        width: 55px;
-        height: 55px;
-        border: 2px solid #FFBB98;
-    }
-
-    .hero {
-        width: 100%;
-        height: 100px;
-        position: relative;
-        display: grid;
-        grid-template-rows: 100px 1fr;
-        color: #fff;
-        padding: 10px;
-        background: #007175;
-    }
-
-    .nav__link--menu{
-        position: fixed;
-        background-color: #000;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: center;
-        z-index: 100;
-        opacity: 0;
-        pointer-events: none;
-        transition: .7s opacity;
-        z-index: 9999999;
-    }
-
-    .nav__link--show{
-        --show: block;
-        opacity:1 ;
-        z-index: 999999;
-        pointer-events: unset;
-    }
-
-    .nav__close{
-        position: absolute;
-        top: 30px;
-        right: 30px;
-        width: 30px;
-        cursor: pointer;
-    }
-
+    cursor: pointer;
+  }
 }
