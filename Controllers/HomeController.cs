@@ -42,7 +42,7 @@ namespace HuertoDelValle.Controllers
                 _context.Add(c);
                 _context.SaveChanges();
                 ViewData["Message"] = "Mensaje Enviado";
-                return RedirectToAction("Contactenos","Home");
+                return RedirectToAction("Index","Home");
             }
             return View(c);
         }
