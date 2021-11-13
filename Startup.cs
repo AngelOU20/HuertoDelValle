@@ -113,7 +113,7 @@ namespace HuertoDelValle
                 endpoints.MapRazorPages();
             });
 
-            Rotativa.AspNetCore.RotativaConfiguration.Setup(env, "..\\Rotativa\\Windows\\");
+
 
         }
     }
