@@ -48,13 +48,14 @@ namespace HuertoDelValle
             services.AddControllersWithViews();
 
             /*Tiempo de espera de inactividad del correo */
-            services.ConfigureApplicationCookie(o => {
+            services.ConfigureApplicationCookie(o =>
+            {
                 o.ExpireTimeSpan = TimeSpan.FromDays(5);
                 o.SlidingExpiration = true;
             });
 
             services.AddRazorPages();
-            
+
 
             services.AddControllersWithViews();
             services.AddMvc(options =>
@@ -66,7 +67,7 @@ namespace HuertoDelValle
             {
                 options.AddPolicy("Admin", policy => policy.RequireRole("Admin"));
             });
-            
+
             services.AddSession(options =>
             {
                 // Set a short timeout for easy testing.
@@ -99,8 +100,13 @@ namespace HuertoDelValle
 
             app.UseRouting();
 
-            app.UseSession(new SessionOptions() { Cookie = new CookieBuilder() { 
-            Name = ".AspNetCore.Session.HuertoDelValle"}});
+            app.UseSession(new SessionOptions()
+            {
+                Cookie = new CookieBuilder()
+                {
+                    Name = ".AspNetCore.Session.HuertoDelValle"
+                }
+            });
 
             app.UseAuthentication();
             app.UseAuthorization();
@@ -112,8 +118,6 @@ namespace HuertoDelValle
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
-
-            Rotativa.AspNetCore.RotativaConfiguration.Setup(env.WebRootPath,"../Rotativa");
 
         }
     }
